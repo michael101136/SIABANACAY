@@ -69,7 +69,7 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">MANTENIMIENTOS</span></a>
                         <ul>                            
-                            <li class=""><a href="#">Cuartel</a>                      
+                            <li class=""><a href="<?php echo site_url('Cuartel/'); ?>">Cuartel</a>                      
                             </li>  
                              <li><a href="charts-nvd3.html"><span class="xn-text">Nichos</span></a></li>
                           

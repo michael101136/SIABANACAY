@@ -1,43 +1,79 @@
  $(document).on("ready" ,function(){
+          listacuartel();
+          
           //lista();
-              ListarCuartel(); //LLAMAR AL METODO META PRESUPUESTAL
-     
+         
 			});
 
-//-------------- MANTENIMIENTO DE META PRESUPUESTAL----------------------
-/*LISTAR LOS META PRESUPUESTAL EN UN DATATABLE*/
-               var ListarCuartel=function() 
+
+      var listacuartel=function()
                 {
                     var table=$("#tabla-cuartel").DataTable({
                      "processing":true,
-                      "scrollY": 350,
-                      "scrollX": true,
                       "scrollCollapse": true,
                       "paging":         true,
                       destroy:true,
-                      dataSrc:"",
+                      "serverSide": false,
                          "ajax":{
-                                    "url":base_url +"index.php/Cuartel/get_alquiler",
+                                    "url": base_url+"index.php/Cuartel/get_cuartel",
                                     "method":"POST",
-                                     "dataSrc":""
+                                    "dataSrc":""
                                     },
-       //para llenado y busqueda por todo los campos
                                 "columns":[
-                                    {"data":"id_cuartel"},
+                                    {"data":"categoria"},
+                                    {"data":"nombrepasaje"},
                                     {"data":"nombre_cuartel"},
-                                    
-                                    {"defaultContent":"<button type='button' class='editar btn btn-primary btn-xs' data-toggle='modal' data-target='#VentanaModificarMetaP'><i class='ace-icon fa fa-pencil bigger-120'></i></button><button type='button' class='eliminar btn btn-danger btn-xs' data-toggle='modal' data-target='#'><i class='fa fa-trash-o'></i></button>"}
+                                
+                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+
                                 ],
 
                                 "language":idioma_espanol
-                    });  
+                    });     
+ //buscador
+
+        //fin buscador
+
+                        			   	
                 }
-/*FIN DE LISTAR META PRESUPUESTAL EN UN DATATABLE*/
 
 
-  
 
+        var idioma_espanol=
+                {
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
 
-       
+     /*function lista()
+					{
+						event.preventDefault();
+						$.ajax({
+              "url": base_url+"index.php/Alquiler/get_alquiler",
+							type:"POST",
+							success:function(respuesta){
+								alert(respuesta);
 
-
+							}
+						});
+					}*/
