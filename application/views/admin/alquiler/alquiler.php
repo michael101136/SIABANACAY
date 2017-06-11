@@ -133,7 +133,7 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="text" class="form-control datepicker" >
+                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="text" class="form-control calendario" >
                                                           </div>
                                                          
                                                 </div>

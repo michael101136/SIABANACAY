@@ -1,10 +1,22 @@
  $(document).on("ready" ,function(){
+          
           ControlAlquiler();
           listaAlquiler();
           //lista();
           $("#btn_alquiler").click(function(){
                   get_categoria(); 
           });
+          $("#txt_fechafinalquiler").blur(function(){
+            var fecha = new Date();
+            fechaA=$("#txt_fechaalquiler").val();
+            fechaAFinal=$("#txt_fechafinalquiler").val();
+            if(fechaA < fechaAFinal)
+              {
+              }else
+              {
+                alert("fecha de inicio de alquiler es mayor");
+              }
+          })
 
           $("#cbCategoria").change(function(){
             var categoria=$("#cbCategoria").val();
@@ -117,7 +129,12 @@
                         success:function(respuesta){
                            var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_nicho"]+"> "+registros[i]["numero_nicho"]+" </option>";   
+                                 if(registros[i]["estado"]==1)
+                                 {
+                                     html +="<option style='color:red' disabled='disabled' value="+registros[i]["id_nicho"]+">" +registros[i]["numero_nicho"]+" Ocupado</option>";   
+                                 }else{
+                                   html +="<option value="+registros[i]["id_nicho"]+"> "+registros[i]["numero_nicho"]+" </option>";   
+                                 }
                             };
                             $("#cbNicho").html(html);//para modificar las entidades
                             $('.selectpicker').selectpicker('refresh'); 
