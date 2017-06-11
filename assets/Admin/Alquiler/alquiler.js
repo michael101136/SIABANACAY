@@ -29,11 +29,13 @@
                         data:$(this).serialize(),
                         success:function(respuesta){
                           alert(respuesta);
+                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
                         }
                     });
 
                 });     
                 //FIN AGREGAR ALQUILER
+
 
 			});
         var get_categoria=function(){
@@ -126,10 +128,10 @@
                 {
                     var table=$("#tabla-alquiler").DataTable({
                      "processing":true,
-                     "serverSide":false,
                       "scrollCollapse": true,
                       "paging":         true,
                       destroy:true,
+                      "serverSide": false,
                          "ajax":{
                                     "url": base_url+"index.php/Alquiler/get_alquiler",
                                     "method":"POST",
@@ -145,6 +147,7 @@
                                     {"data":"responsable"},
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"},
+                                    {"data":"MontoAlquiler"},
                                     {"data": "EstadoA", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta ) 
                                         {
                                           var i=data;
@@ -156,16 +159,20 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
 
                                 ],
 
                                 "language":idioma_espanol
-                    });             
+                    });     
+ //buscador
+
+        //fin buscador
+
                         			   	
                 }
 
- 
+
 
         var idioma_espanol=
                 {

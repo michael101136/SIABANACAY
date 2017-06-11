@@ -6,7 +6,7 @@ class Alquiler_model extends CI_Model {
 
 function get_alquiler(){
 	   $alquiler= $this->db->query("call get_alquiler()");
-        if ($alquiler->num_rows() > 0) 
+        if ($alquiler->num_rows() >= 0) 
         {
             return $alquiler->result();
         } else 
@@ -37,10 +37,10 @@ function get_nivel($id_cuartel){
             return false;
         }
      }
-function AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$txt_direccion,$txt_nombredifunto,$txt_apellidodifunto,$txt_fechaf,$cbNicho,$txt_fechaalquiler,$txt_fechafinalquiler,$txt_detallealquiler)
+function AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$txt_direccion,$txt_nombredifunto,$txt_apellidodifunto,$txt_fechaf,$cbNicho,$txt_precio,$txt_fechaalquiler,$txt_fechafinalquiler,$txt_detallealquiler)
 {
 	$id_usuario="41";
-	$this->db->query("call sp_alquiler_c ('".$txt_Dni."','".$txt_nombreresposable."','".$txt_apellidoresponsable."','".$txt_direccion."','".$txt_nombredifunto."','".$txt_apellidodifunto."','".$txt_fechaf."','".$id_usuario."','".$cbNicho."','".$txt_fechaalquiler."','".$txt_fechafinalquiler."','".$txt_detallealquiler."') ");
+	$this->db->query("call sp_alquiler_c ('".$txt_Dni."','".$txt_nombreresposable."','".$txt_apellidoresponsable."','".$txt_direccion."','".$txt_nombredifunto."','".$txt_apellidodifunto."','".$txt_fechaf."','".$id_usuario."','".$cbNicho."','".$txt_fechaalquiler."','".$txt_fechafinalquiler."','".$txt_detallealquiler."','".$txt_precio."') ");
             if ($this->db->affected_rows() > 0) 
               {
                 return true;

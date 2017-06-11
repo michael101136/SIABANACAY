@@ -1496,6 +1496,7 @@ a.list-group-item:focus {
 .panel .panel-body {
   float: left;
   width: 100%;
+  height: 100%;
 }
 .panel .panel-body {
   padding: 15px;
@@ -3168,6 +3169,11 @@ blockquote.pull-right {
   display: inline;
   margin: 0px 5px;
 }
+tfoot input {
+        width: 100%;
+        padding: 3px;
+        box-sizing: border-box;
+    }
 .dataTables_filter {
   width: 50%;
   float: right;
@@ -3177,12 +3183,13 @@ blockquote.pull-right {
   font-size: 12px;
 }
 .dataTables_filter label {
-  float: right;
+  float:left;
 }
 .dataTables_filter label input {
-  width: 150px;
+  width: 400px;
   display: inline;
   margin-left: 5px;
+  position: center;
 }
 td.dataTables_empty {
   font-size: 11px;
