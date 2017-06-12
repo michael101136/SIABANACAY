@@ -28,7 +28,8 @@
 
                                 ],
 
-                                "language":idioma_espanol
+                                "language":idioma_espanol,
+                                 "lengthMenu": [[4, 10, 20,100], [4, 10, 20, 100]],
                     });     
  //buscador
 
