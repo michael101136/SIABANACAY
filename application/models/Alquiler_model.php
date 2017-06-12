@@ -14,6 +14,16 @@ function get_alquiler(){
             return null;
         }
 	}
+  function factura(){
+     $alquiler= $this->db->query("call sp_factura()");
+        if ($alquiler->num_rows() >= 0) 
+        {
+            return $alquiler->result();
+        } else 
+        {
+            return null;
+        }
+  }
 function Get_categoria(){
 		$this->db->select('id_categoria,categoria');
 		$this->db->from('tcategoria');

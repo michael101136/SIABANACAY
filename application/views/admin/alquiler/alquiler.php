@@ -21,7 +21,6 @@
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    
 
                                     <div class="btn-group pull-right">
                                         <ul class="panel-controls">
@@ -100,20 +99,13 @@
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
                                         </ul>  
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>Exportar</button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
-                                            <li><a href="#" onClick ="$('#customers2').tableExport({type:'pdf',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
+                                            <li><a href="<?php echo site_url('Factura/')?>"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
                                         </ul>
                                     </div>  
                                           
-                                    <div class="btn-group pull-left">
-                                        <button class="btn btn-sm btn-success" id="btn_alquiler" data-toggle="modal" data-target="#modalAlquiler"  data-toggle="dropdown"><i class="fa fa-bars"></i>Alquiler</button>
-                                    </div>
+                                   
                   </div>
                   <div class="panel-body ">
                           <form class="form-horizontal " id="form-addAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
@@ -133,7 +125,7 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="text" class="form-control calendario" >
+                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="date" class="form-control calendario" >
                                                           </div>
                                                          
                                                 </div>
@@ -172,16 +164,18 @@
                                                            <div class="col-md-3">
                                                                 <input  id="txt_precio" name="txt_precio" class="form-control" type="text">
                                                           </div>
-                                                          <label class="col-md-1 control-label">Fecha Alquiler</label>
+                                                           <label class="col-md-1 control-label">Fecha Alquiler</label>
                                                            <div class="col-md-3">
-                                                                <input id="txt_fechaalquiler" name="txt_fechaalquiler"  type="text" class="form-control datepicker" >
+                                                                 <input id="txt_fechaalquiler" name="txt_fechaalquiler"  type="date" class="form-control calendario" >
                                                           </div>
+                                                    
                                                 </div>
                                                  <div class="form-group">
-                                                          <label class="col-md-1 control-label">Fecha Vencimiento</label>
+                                                           <label class="col-md-1 control-label">Fecha Vencimiento</label>
                                                            <div class="col-md-3">
-                                                                <input id="txt_fechafinalquiler" name="txt_fechafinalquiler"  type="text" class="form-control datepicker" >
+                                                                 <input id="txt_fechafinalquiler" name="txt_fechafinalquiler"  type="date" class="form-control calendario" >
                                                           </div>
+                                                        
                                                            <label class="col-md-1 control-label">Detalles</label>
                                                            <div class="col-md-3">
                                                                 <input id="txt_detallealquiler" name="txt_detallealquiler" class="form-control" type="text">
