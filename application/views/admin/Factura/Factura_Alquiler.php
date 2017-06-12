@@ -42,7 +42,7 @@
         }
 
         table{
-            text-align: center;
+            text-align: center; 
         }
 
         /* estilos para el footer y el numero de pagina */
@@ -81,28 +81,82 @@
         <p class="page"></p>
     </div>
     <h2>Beneficencia</h2>
-    <table class="table table-bordered">
+    <table class="table table-bordered"  width="575" border="2" cellspacing="2">
         <thead>
-            <tr>
-                <th>C</th>
-                <th>NUMERO DE NICHO</th>
-                <th>DIFUNTO</th>
-                <th>FECHA DE PAGO</th>
-                <th>FECHA DE VENCIMIENTO</th>
+            <tr colspan="12">
+                <th colspan="5" rowspan="3">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</th>
+                <th colspan="7" rowspan="3">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach($factura as $factura) { ?>
-            <tr>
+            <tr colspan="12">
                 <td><?php echo $factura->nombrepasaje?></td>
                 <td><?php echo $factura->nombre_cuartel?></td>
                 <td><?php echo $factura->numero_nicho?></td>
                 <td><?php echo $factura->nombre?></td>
                 <td><?php echo $factura->responsable?></td>
             </tr>
+
             <?php } ?>
         </tbody>
     </table>
+<table width="575" border="2">
+   <tr>
+    <th colspan="5">Producto</th>
+
+    <th colspan="5">Precio</th>
+   </tr>
+   <tr>
+    <td colspan="12">Tijeras</td>
+   </tr>
+   <tr>
+    <td colspan="12">Tijeras</td>
+   </tr>
+   <tr>
+    <td colspan="1">CANT.</td>
+    <td colspan="7">DESCRIPCIÓN</td>
+    <td>P.UNIT.</td>
+    <td>MPORTE</td>
+   </tr>
+   <tr>
+    <td colspan="1">--</td>
+    <td colspan="7">--</td>
+    <td>--</td>
+    <td>--</td>
+   </tr>
+   <tr>
+    <td colspan="1">--</td>
+    <td colspan="7">--</td>
+    <td>--</td>
+    <td>--</td>
+   </tr>
+   <tr>
+    <td colspan="1">--</td>
+    <td colspan="7">--</td>
+    <td>--</td>
+    <td>--</td>
+   </tr>
+   <tr>
+    <td colspan="1">--</td>
+    <td colspan="7">--</td>
+    <td>--</td>
+    <td>--</td>
+   </tr>
+   <tr>
+        <td colspan="3">Subtotal</td>
+        <td>250</td>
+   </tr> 
+   <tr>
+        <td colspan="3">Gastos de envío</td>
+        <td>5</td>
+       </tr> 
+   <tr>
+        <td colspan="3">Precio total</td>
+        <td>255</td>
+   </tr> 
+  </table>
+
          <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>
