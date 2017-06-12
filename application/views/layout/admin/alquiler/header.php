@@ -60,7 +60,7 @@
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">REPORTES</span></a>
                         <ul>
                             <li><a href="<?php echo site_url('Pdfci/');?>"><span class="xn-text">Nichos vencidos</span></a></li>
-                            <li><a href="charts-nvd3.html"><span class="xn-text">Nichos Disponibles</span></a></li>
+                            <li><a href="<?php echo site_url('NichosDisponibles/'); ?>"><span class="xn-text">Nichos Disponibles</span></a></li>
 
                         </ul>
                     </li>  
@@ -71,7 +71,7 @@
                         <ul>                            
                             <li class=""><a href="<?php echo site_url('Cuartel/'); ?>">Cuartel</a>                      
                             </li>  
-                             <li><a href="charts-nvd3.html"><span class="xn-text">Nichos</span></a></li>
+                             <li><a href=""><span class="xn-text">Nichos</span></a></li>
                           
                         </ul>
                     </li> 

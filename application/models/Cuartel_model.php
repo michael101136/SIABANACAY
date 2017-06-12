@@ -24,5 +24,16 @@ class Cuartel_model extends CI_Model {
                 return null;
             }
         }
+        //NICHOS DISPONIBLES
+    function reportedisponible_Nichos(){
+           $nichosD= $this->db->query("call sp_reportenichosdisponibles()");
+            if ($nichosD->num_rows() >= 0) 
+            {
+                return $nichosD->result();
+            } else 
+            {
+                return null;
+            }
+        }
 
 }
