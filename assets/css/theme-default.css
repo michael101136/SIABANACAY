@@ -3178,7 +3178,7 @@ tfoot input {
   width: 50%;
   float: right;
   padding-left: 5px;
-  padding: 0px 0px 5px;
+  padding: 0px 0px -4px;
   border-bottom: 1px solid #E5E5E5;
   font-size: 12px;
 }
@@ -3190,6 +3190,8 @@ tfoot input {
   display: inline;
   margin-left: 5px;
   position: center;
+  background: #F9F9F9;
+  border: 1px solid #d5d5d5;
 }
 td.dataTables_empty {
   font-size: 11px;
