@@ -5,14 +5,14 @@ class Usuario extends CI_Controller {/* Mantenimiento de division funcional y gr
 
 	public function __construct(){
       parent::__construct();
-      $this->load->model("Cuartel_model");
+      $this->load->model("Login_model");
 
 	}
     public function get_usuarios()
   {
     if ($this->input->is_ajax_request()) {
 
-      $datos = $this->Cuartel_model->get_cuartel();
+      $datos = $this->Login_model ->get_usuarios();
       echo json_encode($datos);
       
     }

@@ -43,12 +43,14 @@
                                     </div>
                                 </div>
                                 <div class="panel-body ">
-                                    <table id="tabla-cuartel" class="table datatable_simple hover display compact">
+                                    <table id="tabla-usuarios" class="table datatable_simple hover display compact">
                                         <thead>
                                             <tr>
                                               
-                                                <th>Nombre y Apellidos</th>
-                                                <th>Usuario</th>
+                                                <th>N°</th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Tipo de usuario</th>
                                                 <th>Contraseña</th>
                                                 <th></th>
                                                 

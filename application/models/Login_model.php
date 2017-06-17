@@ -14,4 +14,14 @@ class Login_model extends CI_Model {
 			return false;
 		}
 	}
+	function get_usuarios(){
+		$usuario=$this->db->query("call sp_usuarios()");
+		if ($usuario->num_rows()>= 0) 
+            {
+                return $usuario->result();
+            } else 
+            {
+                return null;
+            }
+	}
 }
