@@ -60,7 +60,7 @@
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">REPORTES</span></a>
                         <ul>
                             <li><a href="<?php echo site_url('Pdfci/');?>"><span class="xn-text">Nichos vencidos</span></a></li>
-                            <li><a href="<?php echo site_url('NichosDisponibles/'); ?>"><span class="xn-text">Nichos Disponibles</span></a></li>
+                            <li><a href="<?php echo site_url('RNichosDisponibles/generar'); ?>"><span class="xn-text">Nichos Disponibles</span></a></li>
 
                         </ul>
                     </li>  

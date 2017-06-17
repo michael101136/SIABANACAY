@@ -2,7 +2,7 @@
           
           ControlAlquiler();
           listaAlquiler();
-          //lista();
+          lista();
           $("#btn_alquiler").click(function(){
                   get_categoria(); 
           });
@@ -151,7 +151,7 @@
                       "serverSide": false,
                          "ajax":{
                                     "url": base_url+"index.php/Alquiler/get_alquiler",
-                                    "method":"POST",
+                                    "type":"POST",
                                     "dataSrc":""
                                     },
                                 "columns":[
@@ -218,15 +218,15 @@
                     }
                 }
 
-     /*function lista()
+     function lista()
 					{
 						event.preventDefault();
 						$.ajax({
               "url": base_url+"index.php/Alquiler/get_alquiler",
 							type:"POST",
 							success:function(respuesta){
-								alert(respuesta);
+								console.log(respuesta);
 
 							}
 						});
-					}*/
+					}

@@ -10,7 +10,7 @@
          background-color: #fff;
          margin: 10px;
          font-family: Lucida Grande, Verdana, Sans-serif;
-         font-size: 14px;
+         font-size: 10px;
          color: #4F5155;
         }
 
@@ -43,6 +43,7 @@
 
         table{
             text-align: center;
+
         }
 
         /* estilos para el footer y el numero de pagina */
@@ -81,7 +82,7 @@
         <p class="page"></p>
     </div>
     <h2>Beneficencia</h2>
-    <table class="table table-bordered">
+    <center><table  style="text-align:center;" width="575" border="1">
         <thead>
             <tr>
                 <th>PASAJE</th>
@@ -102,7 +103,7 @@
             </tr>
             <?php } ?>
         </tbody>
-    </table>
+    </table></center>
          <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>
