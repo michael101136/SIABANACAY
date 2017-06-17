@@ -12,6 +12,8 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url(); ?>assets/css/theme-default.css"/>
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery.min.js"></script>
+
         <!-- EOF CSS INCLUDE -->  
          <script>
          var base_url="<?php echo  base_url();?>";
@@ -40,7 +42,7 @@
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name">Beneficencia</div>
-                                <div class="profile-data-title">Siab/Admin</div>
+                                <div class="profile-data-title"><?= $this->session->userdata('name')?></div>
                             </div>
                             <div class="profile-controls">
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -72,6 +74,15 @@
                             <li class=""><a href="<?php echo site_url('Cuartel/'); ?>">Cuartel</a>                      
                             </li>  
                              <li><a href=""><span class="xn-text">Nichos</span></a></li>
+                          
+                        </ul>
+                    </li> 
+
+                    <li class="xn-openable">
+                        <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">USUARIOS</span></a>
+                        <ul>                            
+                            <li class=""><a href="<?php echo site_url('Usuario/'); ?>">Usuarios</a>                      
+                            </li>  
                           
                         </ul>
                     </li> 

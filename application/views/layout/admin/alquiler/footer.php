@@ -1,5 +1,5 @@
  <!-- MESSAGE BOX-->
-            
+
             </div>            
             <!-- END PAGE CONTENT -->
         </div>
@@ -9,12 +9,12 @@
                 <div class="mb-middle">
                     <div class="mb-title"><span class="fa fa-times"></span> Remove <strong>Data</strong> ?</div>
                     <div class="mb-content">
-                        <p>Are you sure you want to remove this row?</p>                    
+                        <p>Esta seguro  de salir de la aplicación?</p>                    
                         <p>Press Yes if you sure.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <button class="btn btn-success btn-lg mb-control-yes">Yes</button>
+                            <button id="cerrar" class="btn btn-success btn-lg mb-control-yes">Yes</button>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -22,20 +22,21 @@
             </div>
         </div>
         <!-- END MESSAGE BOX-->        
-        
         <!-- MESSAGE BOX-->
+        <script src="<?php echo base_url();?>assets/Admin/login.js"></script>
         <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
             <div class="mb-container">
                 <div class="mb-middle">
-                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-title"><span class="fa fa-sign-out"></span>Cerrar 
+ <strong>el Sistema </strong> ?</div>
                     <div class="mb-content">
-                        <p>Are you sure you want to log out?</p>                    
-                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                        <p>¿Seguro que quieres salir?</p>                    
+                        <p>Pulse No si desea continuar con el trabajo. Pulse Sí para salir del usuario actual.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                             <a href="<?php echo base_url('index.php/Login/cerrar');?>" class="btn btn-success btn-lg mb-control-yes">Yes</a>
+                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
                 </div>
@@ -86,6 +87,8 @@
 
         <script src="<?php echo base_url(); ?>assets/Admin/Alquiler/alquiler.js"></script>
         <script src="<?php echo base_url(); ?>assets/Admin/Alquiler/cuartel.js"></script>     
+        <script src="<?php echo base_url();?>assets/Admin/login.js"></script>
+
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->                 
     </body>

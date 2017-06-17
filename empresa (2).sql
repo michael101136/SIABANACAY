@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-06-2017 a las 03:49:36
+-- Tiempo de generación: 17-06-2017 a las 20:08:05
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -71,6 +71,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_niveles` (IN `id_cuartel` INT(8)
     SELECT DISTINCT nivel FROM tnicho 
     WHERE tnicho.id_cuartel=id_cuartel ORDER BY  nivel ASC;
 end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportenichosdisponibles` ()  BEGIN
+select pasaje.nombrepasaje,tcategoria.categoria, tcuartel.nombre_cuartel, tnicho.numero_nicho, tnicho.nivel from tnicho inner join tcuartel on tcuartel.id_cuartel=tnicho.id_cuartel inner join pasaje on tcuartel.id_pasaje=pasaje.id_pasaje inner join tcategoria on tcategoria.id_categoria=tcuartel.id_categoria where tnicho.estado=0 LIMIT 1000;
+END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportevencidos` ()  BEGIN
 select tcuartel.nombre_cuartel,tnicho.numero_nicho, concat(tdifunto.nombre,' ',tdifunto.apellido)as nombre, tnicho_detalle.fecha_inicio, tnicho_detalle.fecha_final, concat('VENCIDO') as Estado from tnicho_detalle inner join tnicho on tnicho.id_nicho=tnicho_detalle.id_nicho inner join tcuartel on tcuartel.id_cuartel=tnicho.id_cuartel inner join tdifunto on tdifunto.id_difunto=tnicho_detalle.id_difunto where tnicho_detalle.EstadoA=0 ORDER BY(tcuartel.nombre_cuartel) DESC
@@ -297,7 +301,8 @@ INSERT INTO `tdifunto` (`id_difunto`, `nombre`, `apellido`, `fecha_fallecimiento
 (16, 'CarlosWEWW', 'asdWEW', '0000-00-00', 1, 11, 41),
 (17, 'ROBUEN', 'suarez perez', '0000-00-00', 1, 12, 41),
 (18, 'damian', ' rosas contreras', '0000-00-00', 1, 13, 41),
-(19, 'hola', 'hola', '0000-00-00', 1, 14, 41);
+(19, 'hola', 'hola', '0000-00-00', 1, 14, 41),
+(20, 'gerson', 'farfan', '0000-00-00', 1, 15, 41);
 
 -- --------------------------------------------------------
 
@@ -360,7 +365,8 @@ INSERT INTO `thistorial` (`id_historial`, `id_nicho_detalle`, `fechaih`, `fechaf
 (11, 17, '0000-00-00', '2017-06-21'),
 (12, 18, '2017-06-04', '2018-09-18'),
 (13, 19, '2016-06-16', '2017-06-11'),
-(14, 20, '2017-06-11', '2018-06-11');
+(14, 20, '2017-06-11', '2018-06-11'),
+(15, 21, '2017-06-13', '2018-06-13');
 
 -- --------------------------------------------------------
 
@@ -3648,17 +3654,18 @@ INSERT INTO `tnicho_detalle` (`id_nicho_detalle`, `id_difunto`, `id_nicho`, `fec
 (7, 6, 32, '2017-01-02', '2017-01-30', 0, 1, 'sector señor de animas ', '0'),
 (8, 7, 1421, '2017-06-12', '2018-06-09', 1, 1, 'por dos ños', '0'),
 (9, 8, 652, '2017-06-13', '2018-06-20', 1, 1, 'los se pago', '0'),
-(10, 9, 659, '2000-02-12', '2017-06-13', 1, 1, '2017-06-30', '0'),
-(11, 10, 888, '0000-00-00', '2017-06-13', 1, 1, '2017-06-22', '0'),
+(10, 9, 659, '2000-02-12', '2017-06-13', 0, 1, '2017-06-30', '0'),
+(11, 10, 888, '0000-00-00', '2017-06-13', 0, 1, '2017-06-22', '0'),
 (12, 11, 34, '2017-01-02', '2017-01-30', 0, 1, 'alquilado', '23121'),
 (13, 12, 34, '2017-01-02', '2018-01-30', 1, 1, 'alquilado', '23121'),
 (14, 13, 952, '2000-02-00', '2017-06-01', 0, 1, '2018-12-24', '0'),
 (15, 14, 2350, '0000-00-00', '2017-06-01', 0, 1, '2019-06-15', '0'),
-(16, 15, 2362, '0000-00-00', '2017-06-14', 1, 1, '2017-06-30', '0'),
+(16, 15, 2362, '0000-00-00', '2017-06-14', 0, 1, '2017-06-30', '0'),
 (17, 16, 687, '0000-00-00', '2017-06-21', 1, 1, '2017-08-02', '0'),
 (18, 17, 39, '2017-06-04', '2018-09-18', 1, 1, 'PAGO', '300'),
 (19, 18, 3134, '2016-06-16', '2017-06-10', 0, 1, 'pago', '250'),
-(20, 19, 1544, '2017-06-11', '2018-06-11', 1, 1, 'asffsf', '200');
+(20, 19, 1544, '2017-06-11', '2018-06-11', 1, 1, 'asffsf', '200'),
+(21, 20, 2652, '2017-06-13', '2018-06-13', 1, 1, 'asd', '120');
 
 -- --------------------------------------------------------
 
@@ -3692,7 +3699,8 @@ INSERT INTO `tresponsable` (`idresponsable`, `Dni_responsable`, `nombre_responsa
 (11, 121121, 'roger EQWE', 'pimentelWE', 'av cusco 124'),
 (12, 121212121, 'angel', 'soliz perez', 'av lima 123'),
 (13, 12323234, 'rosas', 'rojas ', 'av castro 123'),
-(14, 8787, 'hola', 'hola', 'hola');
+(14, 8787, 'hola', 'hola', 'hola'),
+(15, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3871,12 +3879,12 @@ ALTER TABLE `tcuartel`
 -- AUTO_INCREMENT de la tabla `tdifunto`
 --
 ALTER TABLE `tdifunto`
-  MODIFY `id_difunto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_difunto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT de la tabla `thistorial`
 --
 ALTER TABLE `thistorial`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `tipo_servicio`
 --
@@ -3891,12 +3899,12 @@ ALTER TABLE `tnicho`
 -- AUTO_INCREMENT de la tabla `tnicho_detalle`
 --
 ALTER TABLE `tnicho_detalle`
-  MODIFY `id_nicho_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_nicho_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `tresponsable`
 --
 ALTER TABLE `tresponsable`
-  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `tservicios`
 --

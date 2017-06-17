@@ -13,7 +13,9 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     /* Pagina principal de la vista entidad Y servicio publico asociado */
 	public function index()
 	{
-		$this->_load_layout('admin/alquiler/alquiler');
+		$this->load->view('layout/admin/alquiler/header');
+		$this->load->view('admin/alquiler/alquiler');
+		$this->load->view('layout/admin/alquiler/footer');
     //$this->_load_layout('Front/Administracion/frmFuncion');
 	}
   //control de pagos actualiza constantemente 
