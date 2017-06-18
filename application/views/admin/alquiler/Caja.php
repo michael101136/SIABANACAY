@@ -24,13 +24,13 @@
                                                        
                                                            <label class="col-md-1 control-label">Fecha Inicio</label>
                                                            <div class="col-md-3">
-                                                                 <input id="txt_fechaInicio" name="txt_fechaInicio"  type="date" >
+                                                                 <input id="txt_fechaInicio" name="txt_fechaInicio" type="date" class="form-control calendario" >
                                                           </div>
                                                            <label class="col-md-1 control-label">Fecha Fin</label>
                                                            <div class="col-md-3">
-                                                                 <input id="txt_fechafin" name="txt_fechafin"  type="date" >
+                                                                 <input id="txt_fechafin" name="txt_fechafin"  type="date" class="form-control calendario">
                                                           </div>
-                                                          <button id="send" type="submit" class="btn btn-success">
+                                                          <button  type="submit" class="btn btn-success">
 						                                      <span class="glyphicon glyphicon-floppy-disk"></span>
 						                                      Reporte
 						                                  </button>

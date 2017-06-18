@@ -58,8 +58,8 @@ public function generarcaja() {
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
  
 // Establecemos el contenido para imprimir
-        $txt_fechaInicio=$this->input->post('$txt_fechaInicio');
-        $txt_fechafin=$this->input->post('$txt_fechafin');
+        $txt_fechaInicio=$this->input->post('txt_fechaInicio');
+        $txt_fechafin=$this->input->post('txt_fechafin');
         $caja = $this->Alquiler_model->reportecajamontos($txt_fechaInicio,$txt_fechafin);
         foreach($caja as $fila)
         {
