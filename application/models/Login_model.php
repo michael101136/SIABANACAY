@@ -24,4 +24,25 @@ class Login_model extends CI_Model {
                 return null;
             }
 	}
+	function AddAusuario($txt_nombre,$txt_apellido,$txt_usuario,$txt_clave,$tipoUser){
+		
+		$this->db->query("call sp_usuario_c('".$txt_nombre."','".$txt_apellido."','".$txt_usuario."','".$txt_clave."','".$tipoUser."')");
+		 if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+	}
+	function Updateusuario($id_usuarioA,$txt_nombre,$txt_apellido,$txt_usuario,$tipoUser){
+		
+		$this->db->query("call sp_usuarios_u('".$id_usuarioA."','".$txt_nombre."','".$txt_apellido."','".$txt_usuario."','".$tipoUser."')");
+		 if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+	}
+
 }

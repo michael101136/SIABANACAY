@@ -1,11 +1,40 @@
  $(document).on("ready" ,function(){
-          //listacuartel();
-        
+         listarUsuario();
+
+         $("#form-addUsurio").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Usuario/AddAusuario",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(respuesta){
+                          alert(respuesta);
+                          $('#tabla-usuarios').dataTable()._fnAjaxUpdate();
+                        }
+                    });
+
+                });  
+          $("#form-Updateusuario").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Usuario/Updateusuario",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(respuesta){
+                          alert(respuesta);
+                          $('#tabla-usuarios').dataTable()._fnAjaxUpdate();
+                        }
+                    });
+
+                });    
+           
          
 			});
 
 
-      var listacuartel=function()
+      var listarUsuario=function()
                 {
                     var table=$("#tabla-usuarios").DataTable({
                      "processing":true,
@@ -23,19 +52,31 @@
                                     {"data":"nombres"},
                                     {"data":"apellidos"},
                                     {"data":"tipo_usuario"},
+                                    {"data":"email"},
                                     {"data":"password"},
-                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='eliminar  btn btn-xs btn-danger' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#ventanaUsuarioAc' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
 
                                 ],
 
                                 "language":idioma_espanol,
                                  "lengthMenu": [[4, 10, 20,100], [4, 10, 20, 100]],
                     });     
- //buscador
+                    ActualizarUsuario("#tabla-usuarios",table);  //obtener data de la division funcional para agregar  AGREGAR                       			   	
+                }
 
-        //fin buscador
+                    var  ActualizarUsuario=function(tbody,table){
+                    $(tbody).on("click","button.editar",function(){
 
-                        			   	
+                        var data=table.row( $(this).parents("tr")).data();
+                        var id_usuario=$('#id_usuarioA').val(data.id_usuario);
+                        var nombres=$('#nombresA').val(data.nombres);
+                        var apellidos=$('#apellidosA').val(data.apellidos);
+                        var apellidos=$('#tipo_usuarioA').val(data.tipo_usuario);
+                        var apellidos=$('#usuarioA').val(data.email);
+                        console.log(data.id_usuario);
+
+                    });
+
                 }
 
 
