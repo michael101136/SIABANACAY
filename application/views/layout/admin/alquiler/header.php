@@ -63,7 +63,7 @@
                         <ul>
                             <li><a href="<?php echo site_url('Pdfci/');?>"><span class="xn-text">Nichos vencidos</span></a></li>
                             <li><a href="<?php echo site_url('RNichosDisponibles/generar'); ?>"><span class="xn-text">Nichos Disponibles</span></a></li>
-
+                            <li><a href="<?php echo site_url('Caja/'); ?>"><span class="xn-text">Caja</span></a></li>
                         </ul>
                     </li>  
                     <li class="xn-title">CONFIGURAR PARAMETROS</li>     

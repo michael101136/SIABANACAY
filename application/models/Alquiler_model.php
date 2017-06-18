@@ -79,5 +79,17 @@ function get_nicho($id_cuartel,$nivel){
      
      }
 
+     function reportecajamontos($txt_fechaInicio,$txt_fechafin){
+        //$this->db->select('id_nicho,CONCAT("Nivel",nivel,":",numero_nicho) as nicho');
+        $cajaMontos= $this->db->query("call sp_reportecaja('".$txt_fechaInicio."','".$txt_fechafin."') ");
+              if ($cajaMontos->num_rows() > 0) 
+              {
+                  return $cajaMontos->result();
+              } else 
+              {
+                  return false;
+              }
+      }
+
 
 }
