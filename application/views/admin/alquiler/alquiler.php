@@ -1,8 +1,8 @@
 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Tables</a></li>
-                    <li class="active">Basic</li>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Principal</a></li>
+                    <li class="active">Alquiler nichos</li>
                 </ul>
                 <!-- END BREADCRUMB -->
                 
