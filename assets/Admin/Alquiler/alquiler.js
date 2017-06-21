@@ -155,13 +155,18 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
+                                     {"data":"id_nicho_detalle"},
                                     {"data":"nombrepasaje"},
                                     {"data":"categoria"},
                                     {"data":"nombre_cuartel"},
                                     {"data":"numero_nicho"},
                                     {"data":"nivel"},
-                                    {"data":"nombre"},
-                                    {"data":"responsable"},
+                                    {"data":"id_difunto","visible": false,},
+                                    {"data":"tnombre"},
+                                    {"data":"tapellido"},
+                                    {"data":"idresponsable","visible": false,},
+                                    {"data":"nombre_responsable"},
+                                    {"data":"apellido_responsable"},
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"},
                                     {"data":"MontoAlquiler"},
@@ -176,18 +181,23 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#VentanaModificarEntidad' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
 
                                 ],
 
                                 "language":idioma_espanol,
                                 "lengthMenu": [[4, 10, 20,100], [4, 10, 20, 100]],
+
                     });     
- //buscador
+                   Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR                       			   	
+                }
+                var  Datalquiler=function(tbody,table)
+                {
+                    $(tbody).on("click","button.editar",function(){
+                        var data=table.row( $(this).parents("tr")).data();
+                        console.log(data.id_nicho_detalle);
+                    });
 
-        //fin buscador
-
-                        			   	
                 }
 
 

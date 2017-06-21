@@ -45,18 +45,23 @@
                                     <table id="tabla-alquiler" class="table datatable_simple hover display compact">
                                         <thead>
                                             <tr>
+                                                <th>#</th>
                                                 <th>Pasaje</th>
                                                 <th>Categía</th>
                                                 <th>Cuartel</th>
                                                 <th>Nicho</th>
                                                 <th>Nivel</th>
-                                                <th>Difunto</th>
-                                                <th>Responsable</th>
-                                                <th>Fecha Incio</th>
+                                                <th>Id difunto</th>
+                                                <th>Difunto Nombre</th>
+                                                <th>Difunto Apellido</th>
+                                                <th>Id responsable</th>
+                                                <th>Responsable Nombre</th>
+                                                <th>Responsable Apellido</th>
+                                                <th>Fecha Inicio</th>
                                                 <th>Fecha Vencimiento</th>
                                                 <th>Monto Alquiler</th>
                                                 <th>Estado</th>
-                                                <th></th>
+                                                <th>Mantenimiento</th>
                                                 
                                             </tr>
                                         </thead>
@@ -273,69 +278,38 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Nombre</label>
                                                            <div class="col-md-4">
-                                                                <input id="txt_nombredifunto" name="txt_nombredifunto"  class="form-control" type="text">
+                                                               <input id="Id_alquileI" name="Id_alquileI"  class="form-control" type="text">
+
+                                                                <input id="txt_nombredifuntoModicar" name="txt_nombredifuntoModicar"  class="form-control" type="text">
                                                           </div>
                                                            <label class="col-md-2 control-label">Apellidos</label>
                                                            <div class="col-md-5">
-                                                                <input id="txt_apellidodifunto" name="txt_apellidodifunto" class="form-control" type="text">
+                                                                <input id="txt_apellidodifuntoModicar" name="txt_apellidodifuntoModicar" class="form-control" type="text">
                                                           </div>
                                                 </div>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="text" class="form-control datepicker" >
+                                                                 <input id="txt_fechafModicar" name="txt_fechafModicar"  type="text" class="form-control datepicker" >
                                                           </div>
                                                          
                                                 </div>
                                  </div>
                                  <br>
                                  <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>  
-                                                <div class="form-group">
-                                                          <label class="col-md-1 control-label">Categoria</label>
-                                                           <div class="col-md-3">
-                                                                 <select class="form-control" id="cbCategoria" name="cbCategoria">
-                                                             
-                                                              </select>
-                                                          </div>
-                                                           <label class="col-md-1 control-label">Cuartel</label>
-                                                           <div class="col-md-3">
-                                                                <select class="form-control" id="cbCuartel" name="cbCuartel" >
-                                                                  
-                                                                </select>
-                                                          </div>
-                                                          <label class="col-md-1 control-label">Nivel</label>
-                                                           <div class="col-md-3">
-                                                                <select class="form-control" id="cbxNivel" name="cbxNivel">
-                                                         
-                                                              </select>
-                                                          </div>
-                                                </div>
+                                                
                                                  <div class="form-group">
-                                                          <label class="col-md-1 control-label">Nicho</label>
-                                                           <div class="col-md-3">
-                                                                <select class="form-control" id="cbNicho" name="cbNicho">
-                                                              
-                                                              </select>
-                                                          </div>
-                                                           <label class="col-md-1 control-label">Precio</label>
-                                                           <div class="col-md-3">
-                                                                <input  id="txt_precio" name="txt_precio" class="form-control" type="text">
-                                                          </div>
                                                           <label class="col-md-1 control-label">Fecha Alquiler</label>
                                                            <div class="col-md-3">
-                                                                <input id="txt_fechaalquiler" name="txt_fechaalquiler"  type="text" class="form-control datepicker" >
+                                                                <input id="txt_fechaalquilerModicar" name="txt_fechaalquilerModicar"  type="text" class="form-control datepicker" >
+                                                          </div>
+                                                          <label class="col-md-1 control-label">Fecha Vencimiento</label>
+                                                           <div class="col-md-3">
+                                                                <input id="txt_fechafinalquilerModicar" name="txt_fechafinalquilerModicar"  type="text" class="form-control datepicker" >
                                                           </div>
                                                 </div>
                                                  <div class="form-group">
-                                                          <label class="col-md-1 control-label">Fecha Vencimiento</label>
-                                                           <div class="col-md-3">
-                                                                <input id="txt_fechafinalquiler" name="txt_fechafinalquiler"  type="text" class="form-control datepicker" >
-                                                          </div>
-                                                           <label class="col-md-1 control-label">Detalles</label>
-                                                           <div class="col-md-3">
-                                                                <input id="txt_detallealquiler" name="txt_detallealquiler" class="form-control" type="text">
-                                                          </div>
+                                                          
                                                          
                                                 </div>
                                  </div>
@@ -345,21 +319,21 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">DNI</label>
                                                            <div class="col-md-4">
-                                                                <input id="txt_Dni" name="txt_Dni"  class="form-control" type="text">
+                                                                <input id="txt_DniModicar" name="txt_DniModicar"  class="form-control" type="text">
                                                           </div>
                                                            <label class="col-md-2 control-label">Nombre</label>
                                                            <div class="col-md-5">
-                                                                <input id="txt_nombreresposable" name="txt_nombreresposable" class="form-control" type="text">
+                                                                <input id="txt_nombreresposableModicar" name="txt_nombreresposableModicar" class="form-control" type="text">
                                                           </div>
                                                 </div>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Apellidos</label>
                                                            <div class="col-md-4">
-                                                                <input id="txt_apellidoresponsable" name="txt_apellidoresponsable"  class="form-control" type="text">
+                                                                <input id="txt_apellidoresponsableModicar" name="txt_apellidoresponsableModicar"  class="form-control" type="text">
                                                           </div>
                                                            <label class="col-md-2 control-label">Direccion</label>
                                                            <div class="col-md-5">
-                                                                <input id="txt_direccion" name="txt_direccion" class="form-control" type="text">
+                                                                <input id="txt_direccionModicar" name="txt_direccionModicar" class="form-control" type="text">
                                                           </div>
                                                 </div>
                                  </div>
