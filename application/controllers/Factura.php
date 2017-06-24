@@ -98,7 +98,7 @@ class Factura extends CI_Controller
 
     //función para crear y enviar el pdf por email
     //ejemplo de la libreria sin modificar
-    
+
 }
 /* End of file pdf_ci.php */
 /* Location: ./application/controllers/pdf_ci.php */

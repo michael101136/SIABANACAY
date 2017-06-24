@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2017 a las 20:08:05
+-- Tiempo de generación: 24-06-2017 a las 23:14:15
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -27,7 +27,7 @@ DELIMITER $$
 -- Procedimientos
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_alquiler` ()  BEGIN
-SELECT nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,CONCAT(tdifunto.nombre," ",tdifunto.apellido) as nombre,CONCAT(tresponsable.nombre_responsable," ",tresponsable.apellido_responsable) as responsable,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable
+SELECT tdifunto.fecha_fallecimiento,id_nicho_detalle,tresponsable.idresponsable,tdifunto.id_difunto,nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,tdifunto.nombre as tnombre,tdifunto.apellido as tapellido,tresponsable.Dni_responsable,tresponsable.nombre_responsable,tresponsable.apellido_responsable ,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable
 ;
 END$$
 
@@ -63,6 +63,10 @@ SET @ultimoiddetalle:=(SELECT MAX(tnicho_detalle.id_nicho_detalle) FROM tnicho_d
 SELECT nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,CONCAT(tdifunto.nombre," ",tdifunto.apellido) as nombre,CONCAT(tresponsable.nombre_responsable," ",tresponsable.apellido_responsable) as responsable,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable where tnicho_detalle.id_nicho_detalle=@ultimoiddetalle;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_gant_r` ()  BEGIN
+SELECT*  FROM gantt_tasks;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_nichos` (IN `id_cuartel` INT(8), IN `nivel` INT(8))  begin SELECT* FROM tnicho
 WHERE tnicho.id_cuartel=id_cuartel and tnicho.nivel=nivel;
 end$$
@@ -72,6 +76,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_niveles` (IN `id_cuartel` INT(8)
     WHERE tnicho.id_cuartel=id_cuartel ORDER BY  nivel ASC;
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportecaja` (IN `fecha1` DATE, IN `fecha2` DATE)  BEGIN
+SELECT nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,CONCAT(tdifunto.nombre," ",tdifunto.apellido) as nombre,CONCAT(tresponsable.nombre_responsable," ",tresponsable.apellido_responsable) as responsable,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable where tnicho_detalle.fecha_inicio BETWEEN fecha1 and fecha2;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportenichosdisponibles` ()  BEGIN
 select pasaje.nombrepasaje,tcategoria.categoria, tcuartel.nombre_cuartel, tnicho.numero_nicho, tnicho.nivel from tnicho inner join tcuartel on tcuartel.id_cuartel=tnicho.id_cuartel inner join pasaje on tcuartel.id_pasaje=pasaje.id_pasaje inner join tcategoria on tcategoria.id_categoria=tcuartel.id_categoria where tnicho.estado=0 LIMIT 1000;
 END$$
@@ -80,6 +88,19 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportevencidos` ()  BEGIN
 select tcuartel.nombre_cuartel,tnicho.numero_nicho, concat(tdifunto.nombre,' ',tdifunto.apellido)as nombre, tnicho_detalle.fecha_inicio, tnicho_detalle.fecha_final, concat('VENCIDO') as Estado from tnicho_detalle inner join tnicho on tnicho.id_nicho=tnicho_detalle.id_nicho inner join tcuartel on tcuartel.id_cuartel=tnicho.id_cuartel inner join tdifunto on tdifunto.id_difunto=tnicho_detalle.id_difunto where tnicho_detalle.EstadoA=0 ORDER BY(tcuartel.nombre_cuartel) DESC
 ;
 END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_usuarios` ()  begin 
+    SELECT* FROM usuarios;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_usuarios_u` (IN `id_user` VARCHAR(120), IN `nombres` VARCHAR(200), IN `apellidos` VARCHAR(200), IN `email` VARCHAR(120), IN `tipo_usuario` VARCHAR(120))  begin 
+    UPDATE usuarios SET nombres=nombres,apellidos=apellidos,email=email,tipo_usuario=tipo_usuario 
+    WHERE id_usuario=id_user;
+end$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_usuario_c` (IN `nombres` VARCHAR(200), IN `apellidos` VARCHAR(200), IN `email` VARCHAR(120), IN `password` VARCHAR(120), IN `tipo_usuario` VARCHAR(120))  begin
+	insert into usuarios(nombres,apellidos,email,password,tipo_usuario,photo) values (nombres,apellidos,email,password,tipo_usuario,'');
+end$$
 
 DELIMITER ;
 
@@ -124,6 +145,30 @@ CREATE TABLE `factura` (
   `monto` float NOT NULL,
   `timestam` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gantt_tasks`
+--
+
+CREATE TABLE `gantt_tasks` (
+  `id` int(11) NOT NULL,
+  `start_date` datetime NOT NULL,
+  `duration` int(11) NOT NULL,
+  `text` varchar(120) NOT NULL,
+  `progress` float NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `parent` int(11) NOT NULL,
+  `open` varchar(120) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `gantt_tasks`
+--
+
+INSERT INTO `gantt_tasks` (`id`, `start_date`, `duration`, `text`, `progress`, `sortorder`, `parent`, `open`) VALUES
+(1, '2013-04-01 00:00:00', 5, 'michael nuevo ingreso ', 0.8, 20, 0, 'true');
 
 -- --------------------------------------------------------
 
@@ -302,7 +347,9 @@ INSERT INTO `tdifunto` (`id_difunto`, `nombre`, `apellido`, `fecha_fallecimiento
 (17, 'ROBUEN', 'suarez perez', '0000-00-00', 1, 12, 41),
 (18, 'damian', ' rosas contreras', '0000-00-00', 1, 13, 41),
 (19, 'hola', 'hola', '0000-00-00', 1, 14, 41),
-(20, 'gerson', 'farfan', '0000-00-00', 1, 15, 41);
+(20, 'gerson', 'farfan', '0000-00-00', 1, 15, 41),
+(21, 'ANA', 'SUAREZ', '0000-00-00', 1, 16, 41),
+(22, '', '', '0000-00-00', 1, 17, 41);
 
 -- --------------------------------------------------------
 
@@ -366,7 +413,9 @@ INSERT INTO `thistorial` (`id_historial`, `id_nicho_detalle`, `fechaih`, `fechaf
 (12, 18, '2017-06-04', '2018-09-18'),
 (13, 19, '2016-06-16', '2017-06-11'),
 (14, 20, '2017-06-11', '2018-06-11'),
-(15, 21, '2017-06-13', '2018-06-13');
+(15, 21, '2017-06-13', '2018-06-13'),
+(16, 22, '2017-06-17', '2018-06-17'),
+(17, 23, '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -3661,11 +3710,13 @@ INSERT INTO `tnicho_detalle` (`id_nicho_detalle`, `id_difunto`, `id_nicho`, `fec
 (14, 13, 952, '2000-02-00', '2017-06-01', 0, 1, '2018-12-24', '0'),
 (15, 14, 2350, '0000-00-00', '2017-06-01', 0, 1, '2019-06-15', '0'),
 (16, 15, 2362, '0000-00-00', '2017-06-14', 0, 1, '2017-06-30', '0'),
-(17, 16, 687, '0000-00-00', '2017-06-21', 1, 1, '2017-08-02', '0'),
+(17, 16, 687, '0000-00-00', '2017-06-21', 0, 1, '2017-08-02', '0'),
 (18, 17, 39, '2017-06-04', '2018-09-18', 1, 1, 'PAGO', '300'),
 (19, 18, 3134, '2016-06-16', '2017-06-10', 0, 1, 'pago', '250'),
 (20, 19, 1544, '2017-06-11', '2018-06-11', 1, 1, 'asffsf', '200'),
-(21, 20, 2652, '2017-06-13', '2018-06-13', 1, 1, 'asd', '120');
+(21, 20, 2652, '2017-06-13', '2018-06-13', 1, 1, 'asd', '120'),
+(22, 21, 706, '2017-06-17', '2018-06-17', 1, 1, '', '100'),
+(23, 22, 0, '0000-00-00', '0000-00-00', 0, 1, '', '0');
 
 -- --------------------------------------------------------
 
@@ -3700,7 +3751,9 @@ INSERT INTO `tresponsable` (`idresponsable`, `Dni_responsable`, `nombre_responsa
 (12, 121212121, 'angel', 'soliz perez', 'av lima 123'),
 (13, 12323234, 'rosas', 'rojas ', 'av castro 123'),
 (14, 8787, 'hola', 'hola', 'hola'),
-(15, 0, '', '', '');
+(15, 0, '', '', ''),
+(16, 123, 'JUANA', 'SUAREZ', 'JR CUSCO 123'),
+(17, 0, '', '', '');
 
 -- --------------------------------------------------------
 
@@ -3751,14 +3804,15 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombres`, `apellidos`, `email`, `password`, `tipo_usuario`, `photo`) VALUES
-(37, 'hamely', 'ponce ', 'hamelysada@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', 'nueva_york1.jpg'),
+(37, 'hamely', 'sarmientos ponce ', 'hamelysada@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 'Administrador', 'nueva_york1.jpg'),
 (38, 'michael', 'pimentel', 'michael101136@gmail.com', 'd41de2ade3d7a6c3692de7e4b6c34a4e872726e0', '', 'nueva_york2.jpg'),
 (39, 'hamely', 'ponce ', 'michael101136@gmail.com', '2513935e7c12afd5ac19783e6f8efa1a99132957', '', ''),
 (40, 'hamely', 'ponce ', 'michael101136@gmail.com', '8cb2237d0679ca88db6464eac60da96345513964', '', ''),
-(41, 'admin', 'admin', 'admin@gmail.com', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrador', ''),
+(41, 'admin', 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'Administrador', ''),
 (42, 'beneficencia', 'publica', 'beneficencia@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', '', ''),
 (43, 'hamy', 'sarmiento', 'h_am_ely@hotmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b', '', ''),
-(44, 'tesorera', 'tesorera', 'tesorera@gmail.com', '25502df52313cb6014e440366e0370c5d4a33ffd', 'Tesorera', '');
+(44, 'tesorera', 'tesorera', 'tesorera@gmail.com', '25502df52313cb6014e440366e0370c5d4a33ffd', 'Tesorera', ''),
+(45, 'juana', 'roman', 'juana', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 'Tesorera', '');
 
 --
 -- Índices para tablas volcadas
@@ -3777,6 +3831,12 @@ ALTER TABLE `empleados`
 ALTER TABLE `factura`
   ADD PRIMARY KEY (`id_factura`),
   ADD KEY `id_tipo_servicio` (`id_tipo_servicio`);
+
+--
+-- Indices de la tabla `gantt_tasks`
+--
+ALTER TABLE `gantt_tasks`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pasaje`
@@ -3866,6 +3926,11 @@ ALTER TABLE `empleados`
 ALTER TABLE `factura`
   MODIFY `id_factura` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `gantt_tasks`
+--
+ALTER TABLE `gantt_tasks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT de la tabla `pasaje`
 --
 ALTER TABLE `pasaje`
@@ -3879,12 +3944,12 @@ ALTER TABLE `tcuartel`
 -- AUTO_INCREMENT de la tabla `tdifunto`
 --
 ALTER TABLE `tdifunto`
-  MODIFY `id_difunto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_difunto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT de la tabla `thistorial`
 --
 ALTER TABLE `thistorial`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `tipo_servicio`
 --
@@ -3899,12 +3964,12 @@ ALTER TABLE `tnicho`
 -- AUTO_INCREMENT de la tabla `tnicho_detalle`
 --
 ALTER TABLE `tnicho_detalle`
-  MODIFY `id_nicho_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_nicho_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `tresponsable`
 --
 ALTER TABLE `tresponsable`
-  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `tservicios`
 --
@@ -3914,7 +3979,7 @@ ALTER TABLE `tservicios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 --
 -- Restricciones para tablas volcadas
 --

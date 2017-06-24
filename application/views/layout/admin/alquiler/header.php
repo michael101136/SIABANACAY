@@ -81,7 +81,8 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">USUARIOS</span></a>
                         <ul>                            
-                            <li class=""><a href="<?php echo site_url('Usuario/'); ?>">Usuarios</a>                      
+                            <li class=""><a href="<?php echo site_url('Usuario/'); ?>">Usuarios</a> 
+                            <li class=""><a href="<?php echo site_url('gant/'); ?>">Gant</a>                       
                             </li>  
                           
                         </ul>

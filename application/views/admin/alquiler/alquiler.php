@@ -5,19 +5,19 @@
                     <li class="active">Basic</li>
                 </ul>
                 <!-- END BREADCRUMB -->
-                
+
                 <!-- PAGE TITLE -->
-                <div class="page-title">                    
+                <div class="page-title">
                     <h2><span class="fa fa-arrow-circle-o-left"></span>Alquiler de nichos</h2>
                 </div>
-                <!-- END PAGE TITLE -->                
-                
+                <!-- END PAGE TITLE -->
+
                 <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
 
                     <div class="row">
                         <div class="col-md-12">
-                            
+
                             <!-- START DATATABLE EXPORT -->
                             <div class="panel panel-default">
                                 <div class="panel-heading">
@@ -25,7 +25,7 @@
                                     <div class="btn-group pull-right">
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        </ul>  
+                                        </ul>
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
                                         <ul class="dropdown-menu">
                                             <li><a href="#" onClick ="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
@@ -35,8 +35,8 @@
                                             <li><a href="#" onClick ="$('#customers2').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
                                             <li><a href="#" onClick ="$('#customers2').tableExport({type:'pdf',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
                                         </ul>
-                                    </div>  
-                                          
+                                    </div>
+
                                     <div class="btn-group pull-left">
                                         <button type="button" class="btn btn-success" class="btn btn-sm btn-Success" id="btn_alquiler" data-toggle="modal" data-target="#modalAlquiler"  data-toggle="dropdown"><i class="fa fa-bars"></i>Alquiler</button>
                                     </div>
@@ -54,7 +54,9 @@
                                                 <th>Id difunto</th>
                                                 <th>Difunto Nombre</th>
                                                 <th>Difunto Apellido</th>
+                                                <th>Fecha De Difusión</th>
                                                 <th>Id responsable</th>
+                                                <th>Dni</th>
                                                 <th>Responsable Nombre</th>
                                                 <th>Responsable Apellido</th>
                                                 <th>Fecha Inicio</th>
@@ -62,15 +64,14 @@
                                                 <th>Monto Alquiler</th>
                                                 <th>Estado</th>
                                                 <th>Mantenimiento</th>
-                                                
                                             </tr>
                                         </thead>
 
                                             <tbody>
-                                               
+
                                             </tbody>
-                                    </table>                                    
-                                    
+                                    </table>
+
                                 </div>
                             </div>
                             <!-- END DEFAULT TABLE EXPORT -->
@@ -78,9 +79,9 @@
                         </div>
                     </div>
 
-                </div>         
+                </div>
                 <!-- END PAGE CONTENT WRAPPER -->
-<!-- /.ventana alquiler -->         
+<!-- /.ventana alquiler -->
 <div class="modal fade" id="modalAlquiler" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -98,25 +99,25 @@
                     </div>
                   FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                  <div class="panel-heading">
-                                    
+
 
                                     <div class="btn-group pull-right">
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        </ul>  
+                                        </ul>
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>Exportar</button>
                                         <ul class="dropdown-menu">
                                             <li><a href="<?php echo site_url('Factura/')?>"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
                                         </ul>
-                                    </div>  
-                                          
-                                   
+                                    </div>
+
+
                   </div>
                   <div class="panel-body ">
                           <form class="form-horizontal " id="form-addAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>  
+                                                DATOS DEL DIFUNTO<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Nombre</label>
                                                            <div class="col-md-4">
@@ -132,29 +133,29 @@
                                                            <div class="col-md-4">
                                                                  <input id="txt_fechaf" name="txt_fechaf"  type="date" class="form-control calendario" >
                                                           </div>
-                                                         
+
                                                 </div>
                                  </div>
                                  <br>
                                  <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>  
+                                                DATOS DEL DIFUNTO<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Categoria</label>
                                                            <div class="col-md-3">
                                                                  <select class="form-control" id="cbCategoria" name="cbCategoria">
-                                                             
+
                                                               </select>
                                                           </div>
                                                            <label class="col-md-1 control-label">Cuartel</label>
                                                            <div class="col-md-3">
                                                                 <select class="form-control" id="cbCuartel" name="cbCuartel" >
-                                                                  
+
                                                                 </select>
                                                           </div>
                                                           <label class="col-md-1 control-label">Nivel</label>
                                                            <div class="col-md-3">
                                                                 <select class="form-control" id="cbxNivel" name="cbxNivel">
-                                                         
+
                                                               </select>
                                                           </div>
                                                 </div>
@@ -162,7 +163,7 @@
                                                           <label class="col-md-1 control-label">Nicho</label>
                                                            <div class="col-md-3">
                                                                 <select class="form-control" id="cbNicho" name="cbNicho">
-                                                              
+
                                                               </select>
                                                           </div>
                                                            <label class="col-md-1 control-label">Precio</label>
@@ -173,24 +174,24 @@
                                                            <div class="col-md-3">
                                                                  <input id="txt_fechaalquiler" name="txt_fechaalquiler"  type="date" class="form-control calendario" >
                                                           </div>
-                                                    
+
                                                 </div>
                                                  <div class="form-group">
                                                            <label class="col-md-1 control-label">Fecha Vencimiento</label>
                                                            <div class="col-md-3">
                                                                  <input id="txt_fechafinalquiler" name="txt_fechafinalquiler"  type="date" class="form-control calendario" >
                                                           </div>
-                                                        
+
                                                            <label class="col-md-1 control-label">Detalles</label>
                                                            <div class="col-md-3">
                                                                 <input id="txt_detallealquiler" name="txt_detallealquiler" class="form-control" type="text">
                                                           </div>
-                                                         
+
                                                 </div>
                                  </div>
                                  <br>
                                  <div class="row">
-                                                DATOS DEL RESPONSABLE<br><br>  
+                                                DATOS DEL RESPONSABLE<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">DNI</label>
                                                            <div class="col-md-4">
@@ -225,7 +226,7 @@
                                     </button>
                                   </div>
                                 </div>
-                          </form> 
+                          </form>
                 </div>
               </div>
             </div><!-- /.span -->
@@ -242,7 +243,7 @@
     </div>
   </div>
 <!-- /.fin alquiler-->
-<!-- /.ventana alquiler -->         
+<!-- /.ventana alquiler -->
 <div class="modal fade" id="VentanaModificarAlquiler" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -256,30 +257,28 @@
                     </div>
                   FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                  <div class="panel-heading">
-                                    
-
                                     <div class="btn-group pull-right">
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        </ul>  
-                                    </div>  
-                                          
+                                        </ul>
+                                    </div>
+
                                     <div class="btn-group pull-left">
-                                        <div class="page-title">                    
+                                        <div class="page-title">
                                             <h3><center></span>Modificar Datos Del Alquiler</span></center></h3>
                                         </div>
                                     </div>
                   </div>
                   <div class="panel-body ">
-                          <form class="form-horizontal " id="form-addAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
+                          <form class="form-horizontal " id="form-ModificarAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>  
+                                                DATOS DEL DIFUNTO<br><br>
                                                 <div class="form-group">
+                                                  <input id="id_difuntoModificar" name="id_difuntoModificar"  type="text" class="form-control datepicker" >
+
                                                           <label class="col-md-1 control-label">Nombre</label>
                                                            <div class="col-md-4">
-                                                               <input id="Id_alquileI" name="Id_alquileI"  class="form-control" type="text">
-
                                                                 <input id="txt_nombredifuntoModicar" name="txt_nombredifuntoModicar"  class="form-control" type="text">
                                                           </div>
                                                            <label class="col-md-2 control-label">Apellidos</label>
@@ -290,15 +289,17 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechafModicar" name="txt_fechafModicar"  type="text" class="form-control datepicker" >
+                                                                 <input id="txt_fechafDifucionModicar" name="txt_fechafDifucionModicar"  type="text" class="form-control datepicker" >
                                                           </div>
-                                                         
+
                                                 </div>
                                  </div>
                                  <br>
                                  <div class="row">
-                                                
+
                                                  <div class="form-group">
+                                                   <input id="Id_alquileINichoDetalle" name="Id_alquileINichoDetalle"  class="form-control" type="text">
+
                                                           <label class="col-md-1 control-label">Fecha Alquiler</label>
                                                            <div class="col-md-3">
                                                                 <input id="txt_fechaalquilerModicar" name="txt_fechaalquilerModicar"  type="text" class="form-control datepicker" >
@@ -309,13 +310,13 @@
                                                           </div>
                                                 </div>
                                                  <div class="form-group">
-                                                          
-                                                         
+
+
                                                 </div>
                                  </div>
                                  <br>
                                  <div class="row">
-                                                DATOS DEL RESPONSABLE<br><br>  
+                                                DATOS DEL RESPONSABLE<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">DNI</label>
                                                            <div class="col-md-4">
@@ -332,9 +333,6 @@
                                                                 <input id="txt_apellidoresponsableModicar" name="txt_apellidoresponsableModicar"  class="form-control" type="text">
                                                           </div>
                                                            <label class="col-md-2 control-label">Direccion</label>
-                                                           <div class="col-md-5">
-                                                                <input id="txt_direccionModicar" name="txt_direccionModicar" class="form-control" type="text">
-                                                          </div>
                                                 </div>
                                  </div>
                                 <br><br><br>
@@ -350,7 +348,7 @@
                                     </button>
                                   </div>
                                 </div>
-                          </form> 
+                          </form>
                 </div>
               </div>
             </div><!-- /.span -->

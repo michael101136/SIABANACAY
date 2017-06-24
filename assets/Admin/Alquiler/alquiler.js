@@ -1,10 +1,10 @@
  $(document).on("ready" ,function(){
-          
+
           ControlAlquiler();
           listaAlquiler();
           lista();
           $("#btn_alquiler").click(function(){
-                  get_categoria(); 
+                  get_categoria();
           });
           $("#txt_fechafinalquiler").blur(function(){
             var fecha = new Date();
@@ -45,22 +45,41 @@
                         }
                     });
 
-                });     
+                });
                 //FIN AGREGAR ALQUILER
+
+                //AGREGAR ALQUILER
+                $("#form-ModificarAlquiler").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Alquiler/ModificarAlquiler",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(respuesta){
+                          alert(respuesta);
+                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
+                        }
+                    });
+
+                });
+                //FIN AGREGAR ALQUILER
+
+
 
 
 			});
         var get_categoria=function(){
           html="";
                     $("#cbCategoria").html(html);
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Alquiler/Get_categoria",
                         type:"POST",
                         success:function(respuesta){
                            var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_categoria"]+"> "+registros[i]["categoria"]+" </option>";   
+                              html +="<option value="+registros[i]["id_categoria"]+"> "+registros[i]["categoria"]+" </option>";
                             };
                             $("#cbCategoria").html(html);//para modificar las entidades
                         }
@@ -74,16 +93,16 @@
                         type:"POST",
                         data:{},
                         success:function(respuesta){
-                          
+
                         }
                     });
-              
+
         }
         //fin control de pagos
         var get_cuartel=function(categoria){
           html="";
                     $("#cbCuartel").html(html);
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Alquiler/get_cuartel",
                         type:"POST",
@@ -91,17 +110,17 @@
                         success:function(respuesta){
                            var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["id_cuartel"]+"> "+registros[i]["nombre_cuartel"]+" </option>";   
+                              html +="<option value="+registros[i]["id_cuartel"]+"> "+registros[i]["nombre_cuartel"]+" </option>";
                             };
                             $("#cbCuartel").html(html);//para modificar las entidades
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
         }
         var  get_nivel=function(id_cuartel){
                     html="";
                     $("#cbxNivel").html(html);
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Alquiler/get_nivel",
                         type:"POST",
@@ -109,11 +128,11 @@
                         success:function(respuesta){
                           var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
-                              html +="<option value="+registros[i]["nivel"]+"> "+registros[i]["nivel"]+" </option>";   
+                              html +="<option value="+registros[i]["nivel"]+"> "+registros[i]["nivel"]+" </option>";
                             };
                             $("#cbxNivel").html(html);//para modificar las entidades
-                            $('.selectpicker').selectpicker('refresh');  
-                       
+                            $('.selectpicker').selectpicker('refresh');
+
                        //alert(respuesta);
                         }
                     });
@@ -121,7 +140,7 @@
         var  get_nicho=function(id_cuartel,nivel){
                     html="";
                     $("#cbNicho").html(html);
-                    event.preventDefault(); 
+                    event.preventDefault();
                     $.ajax({
                         "url":base_url +"index.php/Alquiler/get_nicho",
                         type:"POST",
@@ -131,13 +150,13 @@
                             for (var i = 0; i <registros.length;i++) {
                                  if(registros[i]["estado"]==1)
                                  {
-                                     html +="<option style='color:red' disabled='disabled' value="+registros[i]["id_nicho"]+">" +registros[i]["numero_nicho"]+" Ocupado</option>";   
+                                     html +="<option style='color:red' disabled='disabled' value="+registros[i]["id_nicho"]+">" +registros[i]["numero_nicho"]+" Ocupado</option>";
                                  }else{
-                                   html +="<option value="+registros[i]["id_nicho"]+"> "+registros[i]["numero_nicho"]+" </option>";   
+                                   html +="<option value="+registros[i]["id_nicho"]+"> "+registros[i]["numero_nicho"]+" </option>";
                                  }
                             };
                             $("#cbNicho").html(html);//para modificar las entidades
-                            $('.selectpicker').selectpicker('refresh'); 
+                            $('.selectpicker').selectpicker('refresh');
                         }
                     });
         }
@@ -148,6 +167,8 @@
                       "scrollCollapse": true,
                       "paging":         true,
                       destroy:true,
+                      "scrollY":        "200px",
+        "scrollCollapse": true,
                       "serverSide": false,
                          "ajax":{
                                     "url": base_url+"index.php/Alquiler/get_alquiler",
@@ -155,29 +176,31 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                     {"data":"id_nicho_detalle"},
+                                     {"data":"id_nicho_detalle","visible": false},
                                     {"data":"nombrepasaje"},
                                     {"data":"categoria"},
                                     {"data":"nombre_cuartel"},
                                     {"data":"numero_nicho"},
                                     {"data":"nivel"},
-                                    {"data":"id_difunto","visible": false,},
+                                    {"data":"id_difunto","visible": false},
                                     {"data":"tnombre"},
                                     {"data":"tapellido"},
-                                    {"data":"idresponsable","visible": false,},
+                                    {"data":"fecha_fallecimiento","visible": false},
+                                    {"data":"idresponsable","visible": false},
+                                    {"data":"Dni_responsable","visible": false},
                                     {"data":"nombre_responsable"},
                                     {"data":"apellido_responsable"},
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"},
                                     {"data":"MontoAlquiler"},
-                                    {"data": "EstadoA", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta ) 
+                                    {"data": "EstadoA", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta )
                                         {
                                           var i=data;
                                           if(i==1)
                                           {
-                                            return '<a href="'+data+'"><span class="label label-sm label-success"> Pago</span></a>'  
+                                            return '<a href="'+data+'"><span class="label label-sm label-success"> Pago</span></a>'
                                           }else{
-                                            return '<a href="'+data+'"><span class="label label-sm label-danger"> Vencido</span></a>'  
+                                            return '<a href="'+data+'"><span class="label label-sm label-danger"> Vencido</span></a>'
                                           }
                                        }
                                      },
@@ -188,14 +211,33 @@
                                 "language":idioma_espanol,
                                 "lengthMenu": [[4, 10, 20,100], [4, 10, 20, 100]],
 
-                    });     
-                   Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR                       			   	
+                    });
+                   Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
                 var  Datalquiler=function(tbody,table)
                 {
                     $(tbody).on("click","button.editar",function(){
                         var data=table.row( $(this).parents("tr")).data();
-                        console.log(data.id_nicho_detalle);
+                          $('#Id_alquileINichoDetalle').val(data.id_nicho_detalle);
+                          $('#txt_nombredifuntoModicar').val(data.tnombre);
+                          $('#txt_apellidodifuntoModicar').val(data.tapellido);
+                          $('#id_difuntoModificar').val(data.id_difunto);
+
+
+                          $('#txt_fechafDifucionModicar').val(data.fecha_fallecimiento);
+                          //fecha de alquiler
+                          $('#txt_fechaalquilerModicar').val(data.fecha_inicio);
+                          $('#txt_fechafinalquilerModicar').val(data.fecha_final);
+                          //fin fecha de alquiler
+
+                          //Datos del responsable
+                          $('#txt_nombreresposableModicar').val(data.nombre_responsable);
+                          $('#txt_apellidoresponsableModicar').val(data.apellido_responsable);
+                          $('#txt_DniModicar').val(data.Dni_responsable);
+
+                          //fin datos del responsable
+
+
                     });
 
                 }

@@ -9,7 +9,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
         $this->load->helper("date");
 
 	}
-    
+
     /* Pagina principal de la vista entidad Y servicio publico asociado */
 	public function index()
 	{
@@ -18,11 +18,11 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
 		$this->load->view('layout/admin/alquiler/footer');
     //$this->_load_layout('Front/Administracion/frmFuncion');
 	}
-  //control de pagos actualiza constantemente 
+  //control de pagos actualiza constantemente
   public function ControlAlquiler(){
     if ($this->input->is_ajax_request()) {
 
-      $datos = $this->Alquiler_model->ControlAlquiler();      
+      $datos = $this->Alquiler_model->ControlAlquiler();
     }
     else
     {
@@ -32,7 +32,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
   //fin para actulizar lospagos
   public function AddAlquiler()
   {
-    if ($this->input->is_ajax_request()) 
+    if ($this->input->is_ajax_request())
       {
         $txt_Dni=$this->input->post("txt_Dni");
         $txt_nombreresposable =$this->input->post("txt_nombreresposable");
@@ -59,13 +59,47 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
        show_404();
     }
   }
+
+	public function ModificarAlquiler(){
+
+
+				$id_difuntoModificar=$this->input->post("id_difuntoModificar");
+				$txt_nombredifuntoModicar=$this->input->post("txt_nombredifuntoModicar");
+				$txt_apellidodifuntoModicar=$this->input->post("txt_apellidodifuntoModicar");
+				$txt_fechafDifucionModicar=$this->input->post("txt_fechafDifucionModicar");
+
+				//fecha  de alquiler
+				$Id_alquileINichoDetalle=$this->input->post("Id_alquileINichoDetalle");
+				$txt_fechaalquilerModicar=$this->input->post("txt_fechaalquilerModicar");
+				$txt_fechafinalquilerModicar=$this->input->post("txt_fechafinalquilerModicar");
+				//fecha fin
+
+				//persona modifcar
+				$txt_DniModicar=$this->input->post("txt_DniModicar");
+				$txt_nombreresposableModicar=$this->input->post("txt_nombreresposableModicar");
+				$txt_apellidoresponsableModicar=$this->input->post("txt_apellidoresponsableModicar");
+				//fecha fin
+
+				//if($this->Alquiler_model->AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$txt_direccion,$txt_nombredifunto,$txt_apellidodifunto,$txt_fechaf,$cbNicho,$txt_precio,$txt_fechaalquiler,$txt_fechafinalquiler,$txt_detallealquiler) == true)
+          //echo "Se realizo el proceso de alquiler";
+          //else
+          //echo "No se realizo el proceso de alquiler";
+          echo $txt_nombreresposableModicar,":",$txt_apellidoresponsableModicar;
+
+
+
+
+
+
+	}
+
   public function get_alquiler()
   {
     if ($this->input->is_ajax_request()) {
 
       $datos = $this->Alquiler_model->get_alquiler();
       echo json_encode($datos);
-      
+
     }
     else
     {
@@ -80,7 +114,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       $datos = $this->Alquiler_model->get_cuartel($id_categoria);
       echo json_encode($datos);
     // $data=  date("Y-m-d");
-     //$fecha10diasdespues = date('Y-m-d',strtotime('+11 days', strtotime($data)));    
+     //$fecha10diasdespues = date('Y-m-d',strtotime('+11 days', strtotime($data)));
     }
     else
     {
@@ -92,7 +126,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     if ($this->input->is_ajax_request()) {
       $datos = $this->Alquiler_model->Get_categoria();
       echo json_encode($datos);
-      
+
     }
     else
     {
@@ -104,7 +138,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       $id_cuartel=$this->input->post('id_cuartel');
       $nivel=$this->input->post('nivel');
       $datos = $this->Alquiler_model->get_nicho($id_cuartel,$nivel);
-      echo json_encode($datos); 
+      echo json_encode($datos);
     }
     else
     {
@@ -117,7 +151,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
 
       $datos = $this->Alquiler_model->get_nivel($id_cuartel);
       echo json_encode($datos);
-      
+
     }
     else
     {

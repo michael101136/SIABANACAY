@@ -3,25 +3,24 @@
                     <li><a href="#">UI Kits</a></li>
                     <li class="active">Elements</li>
                 </ul>
-<div class="page-title">                    
+<div class="page-title">
                     <h2><span class="fa fa-arrow-circle-o-left"></span> Caja</h2>
                 </div>
          <div class="row">
-
                         <div class="col-md-12">
-                            <!-- START TABS -->                                
-                            <div class="panel panel-default tabs">                            
+                            <!-- START TABS -->
+                            <div class="panel panel-default tabs">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Caja</a></li>
                                     <li><a href="#tab-second" role="tab" data-toggle="tab">Second</a></li>
                                     <li><a href="#tab-third" role="tab" data-toggle="tab">Third</a></li>
                                     <li><a href="#tab-fourth" role="tab" data-toggle="tab">Fourth</a></li>
-                                </ul>                            
+                                </ul>
                                 <div class="panel-body tab-content">
                                     <div class="tab-pane active" id="tab-first">
                                       <form class="form-horizontal " action="<?php echo  base_url();?>index.php/Caja/generarcaja" method="POST">
                                         <div class="form-group">
-                                                       
+
                                                            <label class="col-md-1 control-label">Fecha Inicio</label>
                                                            <div class="col-md-3">
                                                                  <input id="txt_fechaInicio" name="txt_fechaInicio" type="date" class="form-control calendario" >
@@ -34,7 +33,7 @@
 						                                      <span class="glyphicon glyphicon-floppy-disk"></span>
 						                                      Reporte
 						                                  </button>
-                                                    
+
                                                 </div>
                                          </form>
                                     </div>
@@ -48,6 +47,6 @@
                                         <p>In mattis sapien lorem, nec tincidunt elit scelerisque tempus. Quisque nisl nisl, venenatis eget dignissim et, adipiscing eu tellus. Sed nulla massa, luctus id orci sed, elementum consequat est. Proin dictum odio quis diam gravida facilisis. Sed pharetra dolor a tempor tristique. Sed semper sed urna ac dignissim. Aenean fermentum leo at posuere mattis. Etiam vitae quam in magna viverra dictum. Curabitur feugiat ligula in dui luctus, sed aliquet neque posuere.</p>
                                     </div>
                                 </div>
-                            </div>                                                   
-                            <!-- END TABS -->                        
+                            </div>
+                            <!-- END TABS -->
                         </div>
