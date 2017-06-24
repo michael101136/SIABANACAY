@@ -116,7 +116,7 @@
                                                           
                                                           <label class="col-md-1 control-label">Categoria</label>
                                                            <div class="col-md-3">
-                                                                 <select class="form-control" id="cbxCategoria" name="cbCategoria">
+                                                                 <select class="form-control" id="cbxCategoria" name="cbxCategoria">
                                                              
                                                               </select>
                                                           </div>

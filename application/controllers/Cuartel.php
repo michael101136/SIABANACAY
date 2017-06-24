@@ -37,10 +37,18 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
     {
         if ($this->input->is_ajax_request()) 
             {
+               $cbxCategoria =$this->input->post("cbxCategoria");
              $txt_cuartel =$this->input->post("txt_cuartel");
-             $cbxCategoria =$this->input->post("cbxCategoria");
              $cbxPasaje =$this->input->post("cbxPasaje");
-             if($this->Cuartel_model->AddCuartel($txt_cuartel,$cbxCategoria,$cbxPasaje)== false)
+
+            $datas = array(
+            "id_categoria" =>$cbxCategoria,
+            "id_cuartel" =>$txt_cuartel,
+            "id_pasaje" => $cbxPasaje
+            );
+        
+           if($this->Cuartel_model->AddCuartel($datas)== false)
+             //if($this->Cuartel_model->AddCuartel($txt_cuartel,$cbxCategoria,$cbxPasaje)== false)
                    echo "SE INSERTO UN CUARTEL";
                   else
                   echo "SE INSERTO UN CUARTEL";  
@@ -50,6 +58,7 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
               show_404();
             }  
     }
+  
     /* Pagina principal de la vista entidad Y servicio publico asociado */
 	public function index()
 	{
