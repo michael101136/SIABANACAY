@@ -2,10 +2,60 @@
           listacuartel();
           
           //lista();
-         
+          $("#btn_cuartel").click(function()//para que cargue el como una vez echo click sino repetira datos
+                    {
+
+                    listarcategoria();
+                    });
+            $("#cbxCategoria").change(function(){//para cargar en agregar division funcionañ
+                   listarpasajes();
+             });
+            $("#form-addcuartel").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Cuartel/AddCuartel",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(resp){
+                         swal("REGISTRADO!", resp, "success");
+                         $('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
+                        }
+                    });
+                }); 
 			});
-
-
+      var listarcategoria=function(){
+          html="";
+                    $("#cbCategoria").html(html);
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Alquiler/Get_categoria",
+                        type:"POST",
+                        success:function(respuesta){
+                           var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_categoria"]+"> "+registros[i]["categoria"]+" </option>";   
+                            };
+                            $("#cbxCategoria").html(html);//para modificar las entidades
+                        }
+                    });
+        }
+         var listarpasajes=function(){
+          html="";
+                    $("#cbxPasaje").html(html);
+                    event.preventDefault(); 
+                    $.ajax({
+                        "url":base_url +"index.php/Cuartel/Get_pasaje",
+                        type:"POST",
+                        success:function(respuesta){
+                           var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              html +="<option value="+registros[i]["id_pasaje"]+"> "+registros[i]["nombrepasaje"]+" </option>";   
+                            };
+                            $("#cbxPasaje").html(html);//para modificar las entidades
+                        }
+                    });
+        }
       var listacuartel=function()
                 {
                     var table=$("#tabla-cuartel").DataTable({

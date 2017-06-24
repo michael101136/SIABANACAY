@@ -35,5 +35,24 @@ class Cuartel_model extends CI_Model {
                 return null;
             }
         }
+    function Get_pasaje(){
+        $this->db->select('*');
+        $this->db->from('pasaje');
+        $consulta = $this->db->get();
+        return $consulta->result();
+        }
+
+         function AddCuartel($txt_cuartel,$cbxCategoria,$cbxPasaje)
+        {
+            $this->db->query("insert into tcuartel(nombre_cuartel,id_categoria,id_pasaje) values ('$txt_cuartel','$cbxCategoria','$cbxPasaje')");
+            if ($this->db->affected_rows()> 0) 
+              {
+                return true;
+              }
+              else
+              {
+                return false;
+              }
+        }
 
 }

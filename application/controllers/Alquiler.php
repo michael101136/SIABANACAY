@@ -133,6 +133,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       show_404();
     }
   }
+   
   public function get_nicho(){
       if ($this->input->is_ajax_request()) {
       $id_cuartel=$this->input->post('id_cuartel');
