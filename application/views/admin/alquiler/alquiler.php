@@ -308,6 +308,7 @@
                                                            <div class="col-md-3">
                                                                 <input id="txt_fechafinalquilerModicar" name="txt_fechafinalquilerModicar"  type="text" class="form-control datepicker" >
                                                           </div>
+
                                                 </div>
                                                  <div class="form-group">
 
@@ -317,6 +318,8 @@
                                  <br>
                                  <div class="row">
                                                 DATOS DEL RESPONSABLE<br><br>
+                                                <input id="txt_idresponsableModificar" name="txt_idresponsableModificar"  type="text" class="form-control datepicker" >
+
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">DNI</label>
                                                            <div class="col-md-4">

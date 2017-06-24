@@ -63,34 +63,44 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
 	public function ModificarAlquiler(){
 
 
-				$id_difuntoModificar=$this->input->post("id_difuntoModificar");
+
 				$txt_nombredifuntoModicar=$this->input->post("txt_nombredifuntoModicar");
 				$txt_apellidodifuntoModicar=$this->input->post("txt_apellidodifuntoModicar");
 				$txt_fechafDifucionModicar=$this->input->post("txt_fechafDifucionModicar");
-
-				//fecha  de alquiler
-				$Id_alquileINichoDetalle=$this->input->post("Id_alquileINichoDetalle");
-				$txt_fechaalquilerModicar=$this->input->post("txt_fechaalquilerModicar");
-				$txt_fechafinalquilerModicar=$this->input->post("txt_fechafinalquilerModicar");
-				//fecha fin
+				$id_difuntoModificar=$this->input->post("id_difuntoModificar");
+				$datos = array(
+				"nombre" => $txt_nombredifuntoModicar,
+				"apellido" => $txt_apellidodifuntoModicar,
+				"fecha_fallecimiento" => $txt_fechafDifucionModicar,
+				);
 
 				//persona modifcar
 				$txt_DniModicar=$this->input->post("txt_DniModicar");
 				$txt_nombreresposableModicar=$this->input->post("txt_nombreresposableModicar");
 				$txt_apellidoresponsableModicar=$this->input->post("txt_apellidoresponsableModicar");
+
+				$txt_idresponsableModificar=$this->input->post("txt_idresponsableModificar");
+				$datas = array(
+				"Dni_responsable" => $txt_DniModicar,
+				"nombre_responsable" => $txt_nombreresposableModicar,
+				"apellido_responsable" => $txt_apellidoresponsableModicar,
+				);
 				//fecha fin
 
-				//if($this->Alquiler_model->AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$txt_direccion,$txt_nombredifunto,$txt_apellidodifunto,$txt_fechaf,$cbNicho,$txt_precio,$txt_fechaalquiler,$txt_fechafinalquiler,$txt_detallealquiler) == true)
-          //echo "Se realizo el proceso de alquiler";
-          //else
-          //echo "No se realizo el proceso de alquiler";
-          echo $txt_nombreresposableModicar,":",$txt_apellidoresponsableModicar;
+				//fecha  de alquiler
+				$txt_fechaalquilerModicar=$this->input->post("txt_fechaalquilerModicar");
+				$txt_fechafinalquilerModicar=$this->input->post("txt_fechafinalquilerModicar");
 
+				$Id_alquileINichoDetalle=$this->input->post("Id_alquileINichoDetalle");
+				$datass = array(
+				"fecha_inicio" => $txt_fechaalquilerModicar,
+				"fecha_final" => $txt_fechafinalquilerModicar,
+				);
 
-
-
-
-
+				if($this->Alquiler_model->ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle) == true)
+          echo "Se actualizo el el proceso de alquiler";
+          else
+          echo "Se actualizo el el proceso de alquiler";
 	}
 
   public function get_alquiler()
@@ -133,7 +143,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       show_404();
     }
   }
-   
+
   public function get_nicho(){
       if ($this->input->is_ajax_request()) {
       $id_cuartel=$this->input->post('id_cuartel');

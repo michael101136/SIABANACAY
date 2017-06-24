@@ -16,67 +16,67 @@ public function generarcaja() {
         $pdf->SetTitle('Ejemplo de provincías con TCPDF');
         $pdf->SetSubject('Tutorial TCPDF');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
- 
+
 // datos por defecto de cabecera, se pueden modificar en el archivo tcpdf_config_alt.php de libraries/config
         $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE . ' 001', PDF_HEADER_STRING, array(0, 64, 255), array(0, 64, 128));
         $pdf->setFooterData($tc = array(0, 64, 0), $lc = array(0, 64, 128));
- 
+
 // datos por defecto de cabecera, se pueden modificar en el archivo tcpdf_config.php de libraries/config
         $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
         $pdf->setFooterFont(Array(PDF_FONT_NAME_DATA, '', PDF_FONT_SIZE_DATA));
- 
+
 // se pueden modificar en el archivo tcpdf_config.php de libraries/config
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
- 
+
 // se pueden modificar en el archivo tcpdf_config.php de libraries/config
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
         $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
- 
+
 // se pueden modificar en el archivo tcpdf_config.php de libraries/config
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
- 
+
 //relación utilizada para ajustar la conversión de los píxeles
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
- 
- 
+
+
 // ---------------------------------------------------------
 // establecer el modo de fuente por defecto
         $pdf->setFontSubsetting(true);
- 
+
 // Establecer el tipo de letra
- 
+
 //Si tienes que imprimir carácteres ASCII estándar, puede utilizar las fuentes básicas como
 // Helvetica para reducir el tamaño del archivo.
-        $pdf->SetFont('freemono', '', 10, '', true);
- 
+        $pdf->SetFont('freemono', '',9, '', true);
+
 // Añadir una página
 // Este método tiene varias opciones, consulta la documentación para más información.
         $pdf->AddPage();
- 
+
 //fijar efecto de sombra en el texto
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
- 
+
 // Establecemos el contenido para imprimir
         $txt_fechaInicio=$this->input->post('txt_fechaInicio');
         $txt_fechafin=$this->input->post('txt_fechafin');
         $caja = $this->Alquiler_model->reportecajamontos($txt_fechaInicio,$txt_fechafin);
+				$suma=0;
         foreach($caja as $fila)
         {
-            $pasaje = $fila->fecha_inicio;
-            $pasaje1 = $fila->fecha_final;
+            $suma=$fila->MontoAlquiler;
         }
         //preparamos y maquetamos el contenido a crear
         $html = '';
         $html .= "<style type=text/css>";
-        $html .= "th{color: #070707; font-weight: bold; background-color: #222}";
-        $html .= "td{background-color: #AAC7E3; color: #070707}";
+        $html .= "th{color: #070707; font-weight: bold; background-color: #FFFFFF}";
+        $html .= "td{background-color: #FFFFFF; color: #070707}";
         $html .= "</style>";
-        $html .= "<h2>CUARTELES".$txt_fechaInicio."</h2><h4>Actualmente: ".$txt_fechafin." PASAJES</h4>";
+        $html .= "<h3>Caja ".$txt_fechaInicio." Hasta: ".$txt_fechafin."$suma</h3>";
         $html .= "<table width='100%'>";
         $html .= "<tr><th>PASAJE</th><th>CATEGORIA</th><th>CUARTEL</th><th>NICHO</th><th>NIVEL</th><th>DIFUNTO</th><th>RESPONSABLE</th><th>FECHA INICIO</th><th>FECHA FIN</th><th>ESTADO</th><th>PRECIO</th></tr>";
-        
-        foreach ($caja as $fila) 
+
+        foreach ($caja as $fila)
         {
             $pasajes = $fila->nombrepasaje;
             $categoria = $fila->categoria;
@@ -92,14 +92,14 @@ public function generarcaja() {
             $html .= "<tr><td class='id'>" .$pasajes. "</td><td class='localidad'>" .$categoria."</td><td class='localidad'>" .$nombre_cuartel."</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nivel."</td><td class='localidad'>" .$difunto."</td><td class='localidad'>" .$responsable."</td><td class='localidad'>" .$fechaalquiler."</td><td class='localidad'>" .$fechavenc."</td><td class='localidad'>" .$estado."</td><td class='localidad'>" .$precio."</td></tr>";
         }
         $html .= "</table>";
- 
+
 // Imprimimos el texto con writeHTMLCell()
         $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
- 
+
 // ---------------------------------------------------------
 // Cerrar el documento PDF y preparamos la salida
 // Este método tiene varias opciones, consulte la documentación para más información.
-        $nombre_archivo = utf8_decode("Localidades de ".$pasaje.".pdf");
+        $nombre_archivo = utf8_decode("Localidades de ".$categoria.".pdf");
         $pdf->Output($nombre_archivo, 'I');
     }
 

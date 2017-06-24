@@ -6,20 +6,39 @@ class Alquiler_model extends CI_Model {
 
 function get_alquiler(){
 	   $alquiler= $this->db->query("call get_alquiler()");
-        if ($alquiler->num_rows() >= 0) 
+        if ($alquiler->num_rows() >= 0)
         {
             return $alquiler->result();
-        } else 
+        } else
         {
             return null;
         }
 	}
+function ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle){
+
+		$this->db->where('id_difunto',$id_difuntoModificar);
+		$this->db->update('tdifunto', $datos);
+
+		$this->db->where('idresponsable',$txt_idresponsableModificar);
+		$this->db->update('tresponsable', $datas);
+
+		$this->db->where('id_nicho_detalle',$Id_alquileINichoDetalle);
+		$this->db->update('tnicho_detalle', $datass);
+		
+		if ($this->db->affected_rows() > 0) {
+			return true;
+		}
+		else{
+			return false;
+		}
+
+}
   function factura(){
      $alquiler= $this->db->query("call sp_factura()");
-        if ($alquiler->num_rows() >= 0) 
+        if ($alquiler->num_rows() >= 0)
         {
             return $alquiler->result();
-        } else 
+        } else
         {
             return null;
         }
@@ -39,10 +58,10 @@ function get_cuartel($id_categoria){
 		}
 function get_nivel($id_cuartel){
 	  $nivel= $this->db->query("call sp_niveles(".$id_cuartel.") ");
-        if ($nivel->num_rows() > 0) 
+        if ($nivel->num_rows() > 0)
         {
             return $nivel->result();
-        } else 
+        } else
         {
             return false;
         }
@@ -51,7 +70,7 @@ function AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$tx
 {
 	$id_usuario="41";
 	$this->db->query("call sp_alquiler_c ('".$txt_Dni."','".$txt_nombreresposable."','".$txt_apellidoresponsable."','".$txt_direccion."','".$txt_nombredifunto."','".$txt_apellidodifunto."','".$txt_fechaf."','".$id_usuario."','".$cbNicho."','".$txt_fechaalquiler."','".$txt_fechafinalquiler."','".$txt_detallealquiler."','".$txt_precio."') ");
-            if ($this->db->affected_rows() > 0) 
+            if ($this->db->affected_rows() > 0)
               {
                 return true;
               }
@@ -63,10 +82,10 @@ function AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$tx
 function get_nicho($id_cuartel,$nivel){
 				//$this->db->select('id_nicho,CONCAT("Nivel",nivel,":",numero_nicho) as nicho');
 				$nichos= $this->db->query("call sp_nichos(".$id_cuartel.",".$nivel.") ");
-			        if ($nichos->num_rows() > 0) 
+			        if ($nichos->num_rows() > 0)
 			        {
 			            return $nichos->result();
-			        } else 
+			        } else
 			        {
 			            return false;
 			        }
@@ -76,16 +95,16 @@ function get_nicho($id_cuartel,$nivel){
      function ControlAlquiler(){
      $this->db->query("call sp_ControlAlquiler()");
      $this->db->query("call sp_ControlAlquilerRenovar()");
-     
+
      }
 
      function reportecajamontos($txt_fechaInicio,$txt_fechafin){
         //$this->db->select('id_nicho,CONCAT("Nivel",nivel,":",numero_nicho) as nicho');
         $cajaMontos= $this->db->query("call sp_reportecaja('".$txt_fechaInicio."','".$txt_fechafin."') ");
-              if ($cajaMontos->num_rows() > 0) 
+              if ($cajaMontos->num_rows() > 0)
               {
                   return $cajaMontos->result();
-              } else 
+              } else
               {
                   return false;
               }

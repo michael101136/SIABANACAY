@@ -234,6 +234,7 @@
                           $('#txt_nombreresposableModicar').val(data.nombre_responsable);
                           $('#txt_apellidoresponsableModicar').val(data.apellido_responsable);
                           $('#txt_DniModicar').val(data.Dni_responsable);
+                          $('#txt_idresponsableModificar').val(data.idresponsable);
 
                           //fin datos del responsable
 
