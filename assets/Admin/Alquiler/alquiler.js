@@ -1,5 +1,4 @@
  $(document).on("ready" ,function(){
-
           ControlAlquiler();
           listaAlquiler();
           lista();
@@ -17,7 +16,6 @@
                 alert("fecha de inicio de alquiler es mayor");
               }
           })
-
           $("#cbCategoria").change(function(){
             var categoria=$("#cbCategoria").val();
               get_cuartel(categoria);
@@ -44,10 +42,8 @@
                           $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
                         }
                     });
-
                 });
                 //FIN AGREGAR ALQUILER
-
                 //AGREGAR ALQUILER
                 $("#form-ModificarAlquiler").submit(function(event)
                 {
@@ -61,13 +57,8 @@
                           $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
                         }
                     });
-
                 });
                 //FIN AGREGAR ALQUILER
-
-
-
-
 			});
         var get_categoria=function(){
           html="";
@@ -96,7 +87,6 @@
 
                         }
                     });
-
         }
         //fin control de pagos
         var get_cuartel=function(categoria){
@@ -132,7 +122,6 @@
                             };
                             $("#cbxNivel").html(html);//para modificar las entidades
                             $('.selectpicker').selectpicker('refresh');
-
                        //alert(respuesta);
                         }
                     });
@@ -205,12 +194,9 @@
                                        }
                                      },
                                     {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
-
                                 ],
-
                                 "language":idioma_espanol,
                                 "lengthMenu": [[4, 10, 20,100], [4, 10, 20, 100]],
-
                     });
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
@@ -222,28 +208,18 @@
                           $('#txt_nombredifuntoModicar').val(data.tnombre);
                           $('#txt_apellidodifuntoModicar').val(data.tapellido);
                           $('#id_difuntoModificar').val(data.id_difunto);
-
-
                           $('#txt_fechafDifucionModicar').val(data.fecha_fallecimiento);
                           //fecha de alquiler
                           $('#txt_fechaalquilerModicar').val(data.fecha_inicio);
                           $('#txt_fechafinalquilerModicar').val(data.fecha_final);
                           //fin fecha de alquiler
-
-                          //Datos del responsable
+                         //Datos del responsable
                           $('#txt_nombreresposableModicar').val(data.nombre_responsable);
                           $('#txt_apellidoresponsableModicar').val(data.apellido_responsable);
                           $('#txt_DniModicar').val(data.Dni_responsable);
-
                           //fin datos del responsable
-
-
                     });
-
                 }
-
-
-
         var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",
