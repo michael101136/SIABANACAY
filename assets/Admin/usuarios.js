@@ -14,7 +14,7 @@
                         }
                     });
 
-                });  
+                });
           $("#form-Updateusuario").submit(function(event)
                 {
                     event.preventDefault();
@@ -28,9 +28,9 @@
                         }
                     });
 
-                });    
-           
-         
+                });
+
+
 			});
 
 
@@ -59,9 +59,9 @@
                                 ],
 
                                 "language":idioma_espanol,
-                                 "lengthMenu": [[4, 10, 20,100], [4, 10, 20, 100]],
-                    });     
-                    ActualizarUsuario("#tabla-usuarios",table);  //obtener data de la division funcional para agregar  AGREGAR                       			   	
+                                 "lengthMenu": [[4, 10, 20,100,20000], [4, 10, 20, 100,20000]],
+                    });
+                    ActualizarUsuario("#tabla-usuarios",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
 
                     var  ActualizarUsuario=function(tbody,table){
@@ -106,5 +106,3 @@
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 }
-
-

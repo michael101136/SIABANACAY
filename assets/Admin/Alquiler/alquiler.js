@@ -195,7 +195,7 @@
                                     {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
                                 ],
                                 "language":idioma_espanol,
-                                "lengthMenu": [[3, 10, 20,100,500], [3, 10, 20, 100,500]],
+                                "lengthMenu": [[3, 10, 20,100,500,20000], [3, 10, 20, 100,500,20000]],
                     });
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
