@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2017 a las 23:14:15
+-- Tiempo de generación: 25-06-2017 a las 16:51:16
 -- Versión del servidor: 10.1.22-MariaDB
 -- Versión de PHP: 7.0.18
 
@@ -27,7 +27,7 @@ DELIMITER $$
 -- Procedimientos
 --
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_alquiler` ()  BEGIN
-SELECT tdifunto.fecha_fallecimiento,id_nicho_detalle,tresponsable.idresponsable,tdifunto.id_difunto,nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,tdifunto.nombre as tnombre,tdifunto.apellido as tapellido,tresponsable.Dni_responsable,tresponsable.nombre_responsable,tresponsable.apellido_responsable ,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable
+SELECT tdifunto.fecha_fallecimiento,id_nicho_detalle,tresponsable.idresponsable,tdifunto.id_difunto,nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,tdifunto.nombre as tnombre,tdifunto.apellido as tapellido,tresponsable.Dni_responsable,tresponsable.nombre_responsable,tresponsable.apellido_responsable ,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable ORDER BY id_nicho_detalle
 ;
 END$$
 
@@ -71,13 +71,17 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_nichos` (IN `id_cuartel` INT(8),
 WHERE tnicho.id_cuartel=id_cuartel and tnicho.nivel=nivel;
 end$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_nichos_r` ()  BEGIN
+SELECT tcuartel.nombre_cuartel,tnicho.numero_nicho,tnicho.nivel from tcuartel inner join tnicho on tcuartel.id_cuartel=tnicho.id_cuartel;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_niveles` (IN `id_cuartel` INT(8))  begin 
     SELECT DISTINCT nivel FROM tnicho 
     WHERE tnicho.id_cuartel=id_cuartel ORDER BY  nivel ASC;
 end$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportecaja` (IN `fecha1` DATE, IN `fecha2` DATE)  BEGIN
-SELECT nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,CONCAT(tdifunto.nombre," ",tdifunto.apellido) as nombre,CONCAT(tresponsable.nombre_responsable," ",tresponsable.apellido_responsable) as responsable,fecha_inicio,fecha_final,EstadoA,CONCAT("S/ ",tnicho_detalle.MontoAlquiler) as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable where tnicho_detalle.fecha_inicio BETWEEN fecha1 and fecha2;
+SELECT nombrepasaje,categoria,nombre_cuartel,numero_nicho,nivel,CONCAT(tdifunto.nombre," ",tdifunto.apellido) as nombre,CONCAT(tresponsable.nombre_responsable," ",tresponsable.apellido_responsable) as responsable,fecha_inicio,fecha_final,EstadoA,tnicho_detalle.MontoAlquiler as  MontoAlquiler FROM tnicho INNER JOIN tcuartel ON tnicho.id_cuartel=tcuartel.id_cuartel INNER JOIN tcategoria on tcategoria.id_categoria=tcuartel.id_categoria INNER JOIN pasaje ON pasaje.id_pasaje=tcuartel.id_pasaje INNER JOIN tnicho_detalle ON tnicho_detalle.id_nicho=tnicho.id_nicho INNER JOIN tdifunto ON tnicho_detalle.id_difunto=tdifunto.id_difunto INNER JOIN tresponsable ON tresponsable.idresponsable=tdifunto.idresponsable where tnicho_detalle.fecha_inicio BETWEEN fecha1 and fecha2;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_reportenichosdisponibles` ()  BEGIN
@@ -333,8 +337,8 @@ CREATE TABLE `tdifunto` (
 --
 
 INSERT INTO `tdifunto` (`id_difunto`, `nombre`, `apellido`, `fecha_fallecimiento`, `estado`, `idresponsable`, `id_usuario`) VALUES
-(6, 'rosa', 'PIMENTEL', '0000-00-00', 1, 1, 41),
-(7, 'robeto', 'espiñoza', '0000-00-00', 1, 2, 41),
+(6, 'rosa norka', 'rosa pimentel palomino', '0000-00-00', 1, 1, 41),
+(7, 'robeto', 'robeto', '0000-00-00', 1, 2, 41),
 (8, 'michael', 'pimente palomino', '0000-00-00', 1, 3, 41),
 (9, 'RONAL', 'roman guiierres', '0000-00-00', 1, 4, 41),
 (10, 'Carlos', 'roman salaz', '0000-00-00', 1, 5, 41),
@@ -346,10 +350,11 @@ INSERT INTO `tdifunto` (`id_difunto`, `nombre`, `apellido`, `fecha_fallecimiento
 (16, 'CarlosWEWW', 'asdWEW', '0000-00-00', 1, 11, 41),
 (17, 'ROBUEN', 'suarez perez', '0000-00-00', 1, 12, 41),
 (18, 'damian', ' rosas contreras', '0000-00-00', 1, 13, 41),
-(19, 'hola', 'hola', '0000-00-00', 1, 14, 41),
+(19, 'holajuan', 'holajuan', '0000-00-00', 1, 14, 41),
 (20, 'gerson', 'farfan', '0000-00-00', 1, 15, 41),
 (21, 'ANA', 'SUAREZ', '0000-00-00', 1, 16, 41),
-(22, '', '', '0000-00-00', 1, 17, 41);
+(22, '', '', '0000-00-00', 1, 17, 41),
+(23, 'dasd', 'sad', '0000-00-00', 1, 18, 41);
 
 -- --------------------------------------------------------
 
@@ -415,7 +420,8 @@ INSERT INTO `thistorial` (`id_historial`, `id_nicho_detalle`, `fechaih`, `fechaf
 (14, 20, '2017-06-11', '2018-06-11'),
 (15, 21, '2017-06-13', '2018-06-13'),
 (16, 22, '2017-06-17', '2018-06-17'),
-(17, 23, '0000-00-00', '0000-00-00');
+(17, 23, '0000-00-00', '0000-00-00'),
+(18, 24, '2017-06-01', '2017-06-08');
 
 -- --------------------------------------------------------
 
@@ -3700,8 +3706,8 @@ CREATE TABLE `tnicho_detalle` (
 --
 
 INSERT INTO `tnicho_detalle` (`id_nicho_detalle`, `id_difunto`, `id_nicho`, `fecha_inicio`, `fecha_final`, `EstadoA`, `Estado_AD`, `Detalle_alquiler`, `MontoAlquiler`) VALUES
-(7, 6, 32, '2017-01-02', '2017-01-30', 0, 1, 'sector señor de animas ', '0'),
-(8, 7, 1421, '2017-06-12', '2018-06-09', 1, 1, 'por dos ños', '0'),
+(7, 6, 32, '2017-06-30', '2018-02-21', 1, 1, 'sector señor de animas ', '0'),
+(8, 7, 1421, '2017-06-01', '2018-01-01', 1, 1, 'por dos ños', '0'),
 (9, 8, 652, '2017-06-13', '2018-06-20', 1, 1, 'los se pago', '0'),
 (10, 9, 659, '2000-02-12', '2017-06-13', 0, 1, '2017-06-30', '0'),
 (11, 10, 888, '0000-00-00', '2017-06-13', 0, 1, '2017-06-22', '0'),
@@ -3713,10 +3719,11 @@ INSERT INTO `tnicho_detalle` (`id_nicho_detalle`, `id_difunto`, `id_nicho`, `fec
 (17, 16, 687, '0000-00-00', '2017-06-21', 0, 1, '2017-08-02', '0'),
 (18, 17, 39, '2017-06-04', '2018-09-18', 1, 1, 'PAGO', '300'),
 (19, 18, 3134, '2016-06-16', '2017-06-10', 0, 1, 'pago', '250'),
-(20, 19, 1544, '2017-06-11', '2018-06-11', 1, 1, 'asffsf', '200'),
+(20, 19, 1544, '0000-00-00', '0000-00-00', 0, 1, 'asffsf', '200'),
 (21, 20, 2652, '2017-06-13', '2018-06-13', 1, 1, 'asd', '120'),
 (22, 21, 706, '2017-06-17', '2018-06-17', 1, 1, '', '100'),
-(23, 22, 0, '0000-00-00', '0000-00-00', 0, 1, '', '0');
+(23, 22, 0, '0000-00-00', '0000-00-00', 0, 1, '', '0'),
+(24, 23, 701, '2017-06-01', '2017-06-08', 0, 1, '21', '231');
 
 -- --------------------------------------------------------
 
@@ -3737,7 +3744,7 @@ CREATE TABLE `tresponsable` (
 --
 
 INSERT INTO `tresponsable` (`idresponsable`, `Dni_responsable`, `nombre_responsable`, `apellido_responsable`, `Direccion_responsable`) VALUES
-(1, 111111, 'norka', 'pimentel', 'av  camani'),
+(1, 111119, 'rodrigues', 'pimentel palomino', 'av  camani'),
 (2, 2312, 'roger ', 'espinoza', 'av tambuerco'),
 (3, 213, 'norka', 'roman', 'av castro 123'),
 (4, 123433, 'donal', 'roman  gutieres', 'av. jiron lima'),
@@ -3753,7 +3760,8 @@ INSERT INTO `tresponsable` (`idresponsable`, `Dni_responsable`, `nombre_responsa
 (14, 8787, 'hola', 'hola', 'hola'),
 (15, 0, '', '', ''),
 (16, 123, 'JUANA', 'SUAREZ', 'JR CUSCO 123'),
-(17, 0, '', '', '');
+(17, 0, '', '', ''),
+(18, 12323123, 'juana', 'michael', 'dasd');
 
 -- --------------------------------------------------------
 
@@ -3944,12 +3952,12 @@ ALTER TABLE `tcuartel`
 -- AUTO_INCREMENT de la tabla `tdifunto`
 --
 ALTER TABLE `tdifunto`
-  MODIFY `id_difunto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_difunto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `thistorial`
 --
 ALTER TABLE `thistorial`
-  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_historial` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `tipo_servicio`
 --
@@ -3964,12 +3972,12 @@ ALTER TABLE `tnicho`
 -- AUTO_INCREMENT de la tabla `tnicho_detalle`
 --
 ALTER TABLE `tnicho_detalle`
-  MODIFY `id_nicho_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_nicho_detalle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT de la tabla `tresponsable`
 --
 ALTER TABLE `tresponsable`
-  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idresponsable` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `tservicios`
 --
