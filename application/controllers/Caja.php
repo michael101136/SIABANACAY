@@ -68,7 +68,7 @@ public function generarcaja() {
 
 //Si tienes que imprimir carácteres ASCII estándar, puede utilizar las fuentes básicas como
 // Helvetica para reducir el tamaño del archivo.
-        $pdf->SetFont('freemono', '',9, '', true);
+        $pdf->SetFont('freemono', '',8, '', true);
 
 // Añadir una página
 // Este método tiene varias opciones, consulta la documentación para más información.
@@ -95,8 +95,8 @@ public function generarcaja() {
 				$html .= "td{background-color: #FFFFFF; color: #070707;border: 1px solid #000000}";
         $html .= "</style>";
         $html .= "<h3>Caja ".$txt_fechaInicio." Hasta: ".$txt_fechafin." Total S/. ".$suma."</h3>";
-        $html .= "<table border='1' width='100%'>";
-        $html .= "<tr><th>PASAJE</th><th>CATEGORIA</th><th>CUARTEL</th><th>NICHO</th><th>NIVEL</th><th>DIFUNTO</th><th>RESPONSABLE</th><th>FECHA INICIO</th><th>FECHA FIN</th><th>PRECIO</th></tr>";
+        $html .= "<table width='100%'>";
+        $html .= "<thead><tr><th>PASAJE</th><th>CATEGORIA</th><th>CUARTEL</th><th>NICHO</th><th>NIVEL</th><th>DIFUNTO</th><th>RESPONSABLE</th><th>FECHA INICIO</th><th>FECHA FIN</th><th>PRECIO</th></tr></thead>";
 
         foreach ($caja as $fila)
         {
