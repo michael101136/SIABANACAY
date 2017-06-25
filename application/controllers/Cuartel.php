@@ -44,9 +44,9 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
 
             $datas = array(
             
-            "id_cuartel" =>$txt_cuartel,
+            "nombre_cuartel" =>$txt_cuartel,
             "id_categoria" =>$cbxCategoria,
-            "id_pasaje" => $cbxPasaje
+            "id_pasaje" => $cbxPasaje,
             );
         
            if($this->Cuartel_model->AddCuartel($datas)== false)

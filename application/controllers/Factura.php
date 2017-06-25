@@ -40,7 +40,7 @@ class Factura extends CI_Controller
 
         //datos que queremos enviar a la vista, lo mismo de siempre
         $data = array(
-            'title' => 'BENEFICENCI PUBLICA  DE ABANCAY',
+            'title' => 'BENEFICENCIA PUBLICA  DE ABANCAY',
             'factura' => $this->Alquiler_model->factura()
         );
 

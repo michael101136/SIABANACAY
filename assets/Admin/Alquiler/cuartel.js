@@ -18,9 +18,9 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(resp){
-                         swal("REGISTRADO!", resp, "success");
+                        alert(resp);
                          $('#tabla-cuartel').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA 
-                        }
+                     }
                     });
                 }); 
 			});

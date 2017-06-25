@@ -84,20 +84,13 @@
     <table class="table table-bordered"  width="575" border="2" cellspacing="2">
         <thead>
             <tr colspan="12">
-                <th colspan="5" rowspan="3">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</th>
-                <th colspan="7" rowspan="3">DIFERENCIAS ENTRE EL PERRO Y EL HOMBRE</th>
+                <th colspan="5" rowspan="3">BENEFICENCIA PUBLICA DE LA ABANCAY</th>
+                <th colspan="7" rowspan="3">RUC:2020202020</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach($factura as $factura) { ?>
-            <tr colspan="12">
-                <td><?php echo $factura->nombrepasaje?></td>
-                <td><?php echo $factura->nombre_cuartel?></td>
-                <td><?php echo $factura->numero_nicho?></td>
-                <td><?php echo $factura->nombre?></td>
-                <td><?php echo $factura->responsable?></td>
-            </tr>
-
+           
             <?php } ?>
         </tbody>
     </table>
@@ -108,32 +101,32 @@
     <th colspan="5">Precio</th>
    </tr>
    <tr>
-    <td colspan="12">Tijeras</td>
+    <td colspan="12" align="left">Señor(a): <?php echo $factura->responsable?></td>
    </tr>
    <tr>
-    <td colspan="12">Tijeras</td>
+    <td colspan="12" align="left">Direccion:</td>
    </tr>
    <tr>
     <td colspan="1">CANT.</td>
-    <td colspan="7">DESCRIPCIÓN</td>
+    <td colspan="7">DESCRIPCION</td>
     <td>P.UNIT.</td>
-    <td>MPORTE</td>
+    <td>IMPORTE</td>
    </tr>
    <tr>
     <td colspan="1">--</td>
-    <td colspan="7">--</td>
-    <td>--</td>
-    <td>--</td>
-   </tr>
-   <tr>
-    <td colspan="1">--</td>
-    <td colspan="7">--</td>
+    <td colspan="7" align="left"> Alquiler de un cuartel en: Pasaje <?php echo $factura->nombrepasaje?></td>
     <td>--</td>
     <td>--</td>
    </tr>
    <tr>
+    <td colspan="1"></td>
+    <td colspan="7" align="left"> Cuartel: <?php echo $factura->nombre_cuartel?>, Num nicho: <?php echo $factura->numero_nicho?> </td>
+    <td>--</td>
+    <td>--</td>
+   </tr>
+   <tr>
     <td colspan="1">--</td>
-    <td colspan="7">--</td>
+    <td colspan="7" align="left"> Difunto: <?php echo $factura->nombre?></td>
     <td>--</td>
     <td>--</td>
    </tr>
