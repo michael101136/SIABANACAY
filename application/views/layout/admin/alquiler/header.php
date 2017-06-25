@@ -73,7 +73,7 @@
                         <ul>
                             <li class=""><a href="<?php echo site_url('Cuartel/'); ?>">Cuartel</a>
                             </li>
-                             <li><a href=""><span class="xn-text">Nichos</span></a></li>
+                             <li><a href="<?php echo site_url('Nicho/'); ?>"><span class="xn-text">Nichos</span></a></li>
 
                         </ul>
                     </li>

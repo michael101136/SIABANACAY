@@ -89,7 +89,7 @@
         <script src="<?php echo base_url(); ?>assets/Admin/Alquiler/cuartel.js"></script>     
         <script src="<?php echo base_url();?>assets/Admin/login.js"></script>
         <script src="<?php echo base_url();?>assets/Admin/usuarios.js"></script>
-
+        <script src="<?php echo base_url();?>assets/Admin/Alquiler/nicho.js"></script>
 
         <!-- END TEMPLATE -->
     <!-- END SCRIPTS -->                 
