@@ -48,9 +48,9 @@
                 
                     </div>
                     <div class="pull-right">
-                        <a href="#">About</a> |
-                        <a href="#">Privacy</a> |
-                        <a href="#">Contact Us</a>
+                        <a href="#"></a> 
+                        <a href="#"></a> 
+                        <a href="#"></a>
                     </div>
                 </div>
             </div>
