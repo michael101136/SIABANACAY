@@ -14,4 +14,16 @@ class Nicho_model extends CI_Model {
                 return null;
             }
     	}
+        function AddNichos($datas)
+        {
+
+              $this->db->insert("tnicho",$datas);
+                if ($this->db->affected_rows() > 0) {
+                    return true;
+                }
+                else{
+                    return false;
+                }
+        }
+
 }

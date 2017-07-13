@@ -23,6 +23,35 @@ class Nicho extends CI_Controller {/* Mantenimiento de division funcional y grup
 
   }
   
+  public function AddNichos()
+    {
+        if ($this->input->is_ajax_request())
+            {
+             $txt_num_nicho   = $this->input->post("txt_num_nicho");
+             $cbxCuartelN  = $this->input->post("cbxCuartelN");
+             $txt_nivel_nicho     = $this->input->post("txt_nivel_nicho");
+             $txt_precio_nicho     = $this->input->post("txt_precio_nicho");
+            // $estado_nicho='0';
+             $datas = array(
+
+            "numero_nicho" =>$txt_num_nicho,
+            "id_cuartel" =>$cbxCuartelN,
+            "nivel" => $txt_nivel_nicho,
+            "precio" => $txt_precio_nicho,
+            //"id_pasaje" => $estado_nicho,
+            );
+
+           if($this->Nicho_model->AddNichos($datas)== false)
+             if($this->Nicho_model->AddNichos($txt_num_nicho,$txt_nivel_nicho,$txt_precio_nicho,$txt_precio_nicho)== false)
+                   echo "SE INSERTO UN NICHO";
+                  else
+                  echo "SE INSERTO UN NICHO";
+            }
+        else
+            {
+              show_404();
+            }
+    }
 	public function index()
 	{
 		$this->_load_layout('admin/alquiler/nicho');

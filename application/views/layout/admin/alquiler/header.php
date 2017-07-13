@@ -42,7 +42,7 @@
                             </div>
                             <div class="profile-data">
                                 <div class="profile-data-name">Beneficencia </div>
-                                <div class="profile-data-title">Usuario:<?= $this->session->userdata('tipo_usuario')?> </br>Nombre:<?= $this->session->userdata('name')?></div>
+                                <div class="profile-data-title">Usuario: <?= $this->session->userdata('tipo_usuario')?> </br>Nombre: <?= $this->session->userdata('name')?></div>
                             </div>
                             <div class="profile-controls">
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -83,7 +83,7 @@
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">USUARIOS</span></a>
                         <ul>
                             <li class=""><a href="<?php echo site_url('Usuario/'); ?>">Usuarios</a>
-                            <li class=""><a href="<?php echo site_url('gant/'); ?>">Gant</a>
+                            <!--<li class=""><a href="<?php echo site_url('gant/'); ?>">Gant</a>-->
                             </li>
 
                         </ul>

@@ -140,7 +140,7 @@
                                  </div>
                                  <br>
                                  <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>
+                                                DATOS DEL NICHO<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Categoria</label>
                                                            <div class="col-md-3">

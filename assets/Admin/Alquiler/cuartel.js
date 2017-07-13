@@ -173,9 +173,6 @@
 
                 }
                 //agregar cuartel
-                
-
-
 
         var idioma_espanol=
                 {

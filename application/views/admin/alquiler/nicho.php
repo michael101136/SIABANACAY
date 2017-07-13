@@ -107,29 +107,35 @@
 
                   </div>
                   <div class="panel-body ">
-                          <form class="form-horizontal " id="form-addcuartel" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
+                          <form class="form-horizontal " id="form-addnicho" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
 
                                  <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>
+                                                DATOS DEL NICHO<br><br>
                                                 <div class="form-group">
 
-                                                          <label class="col-md-1 control-label">Categoria</label>
-                                                           <div class="col-md-3">
-                                                                 <select class="form-control" id="cbxCategoria" name="cbxCategoria">
-
-                                                              </select>
-                                                          </div>
-
-                                                          <label class="col-md-1 control-label">Pasaje</label>
-                                                           <div class="col-md-3">
-                                                                <select class="form-control" id="cbxPasaje" name="cbxPasaje">
-
-                                                              </select>
-                                                          </div>
                                                           <label class="col-md-1 control-label">Cuartel</label>
                                                            <div class="col-md-3">
-                                                                 <input id="txt_cuartel" name="txt_cuartel" class="form-control" type="text">
+                                                                 <select class="form-control" id="cbxCuartelN" name="cbxCuartelN">
+
+                                                              </select>
+                                                          </div>
+
+                                                      
+                                                          <label class="col-md-1 control-label">N° Nicho</label>
+                                                           <div class="col-md-3">
+                                                                 <input id="txt_num_nicho" name="txt_num_nicho" class="form-control" type="text">
+                                                          </div>
+                                                          <label class="col-md-1 control-label">Nivel</label>
+                                                           <div class="col-md-3">
+                                                                 <input id="txt_nivel_nicho" name="txt_nivel_nicho" class="form-control" type="text">
+                                                          </div>
+                                                         
+                                                </div>
+                                                <div class="form-group">
+                                                 <label class="col-md-1 control-label">Precio</label>
+                                                           <div class="col-md-3">
+                                                                 <input id="txt_precio_nicho" name="txt_precio_nicho" class="form-control" type="text">
                                                           </div>
                                                 </div>
                                  </div>
@@ -216,7 +222,7 @@
                                  </div>
                                  <br>
                                  <div class="row">
-                                                DATOS DEL DIFUNTO<br><br>
+                                                DATOS DEL  NICHO<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Categoria</label>
                                                            <div class="col-md-3">

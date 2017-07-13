@@ -1,9 +1,21 @@
  $(document).on("ready" ,function(){
           
           listanichos();
-         
+         listarcuartel();
 			});
-      
+        $("#form-addnicho").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Nicho/AddNichos",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(resp){
+                        alert(resp);
+                         $('#tabla-nicho').dataTable()._fnAjaxUpdate();    //SIRVE PARA REFRESCAR LA TABLA
+                     }
+                    });
+                });
       var listanichos=function()
                 {
                     var table=$("#tabla-nicho").DataTable({
@@ -36,7 +48,24 @@
 
                 }
 
-
+     //LISTAR CUATELES EN COMBO PARA REGISTRAR NICHOS           
+var listarcuartel=function(){
+          htmlCuartel="";
+                    $("#cbxCuartelN").html(htmlCuartel);
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Cuartel/get_cuartel",
+                        type:"POST",
+                        success:function(respuesta){
+                           var registros = eval(respuesta);
+                            for (var i = 0; i <registros.length;i++) {
+                              htmlCuartel +="<option value="+registros[i]["id_cuartel"]+"> "+registros[i]["nombre_cuartel"]+" </option>";
+                            };
+                            $("#cbxCuartelN").html(htmlCuartel);//para modificar las entidades
+                        }
+                    });
+        }
+//FIN LISTAR CUATELES EN COMBO PARA REGISTRAR NICHOS  
 
         var idioma_espanol=
                 {
