@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                            <button id="cerrar" class="btn btn-success btn-lg mb-control-yes">Yes</button>
+                            <button id="cerrar" class="btn btn-success btn-lg mb-control-yes">Si</button>
                             <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
@@ -30,12 +30,12 @@
                     <div class="mb-title"><span class="fa fa-sign-out"></span>Cerrar 
  <strong>el Sistema </strong> ?</div>
                     <div class="mb-content">
-                        <p>¿Seguro que quieres salir?</p>                    
-                        <p>Pulse No si desea continuar con el trabajo. Pulse Sí para salir del usuario actual.</p>
+                        <p>¿Seguro que quieres salir de la Aplicacion?</p>                    
+                        <p>Pulse No si desea continuar. Pulse Sí para salir del usuario actual.</p>
                     </div>
                     <div class="mb-footer">
                         <div class="pull-right">
-                             <a href="<?php echo base_url('index.php/Login/cerrar');?>" class="btn btn-success btn-lg mb-control-yes">Yes</a>
+                             <a href="<?php echo base_url('index.php/Login/cerrar');?>" class="btn btn-success btn-lg mb-control-yes">Sí</a>
                              <button class="btn btn-default btn-lg mb-control-close">No</button>
                         </div>
                     </div>
