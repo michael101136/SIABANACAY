@@ -7,9 +7,11 @@
                 <!-- END BREADCRUMB -->
 
                 <!-- PAGE TITLE -->
+              
                 <div class="page-title">
                     <h2><span class="fa fa-arrow-circle-o-left"></span>Alquiler de nichos</h2>
                 </div>
+           
                 <!-- END PAGE TITLE -->
 
                 <!-- PAGE CONTENT WRAPPER -->
@@ -275,7 +277,7 @@
                                 <div class="row">
                                                 DATOS DEL DIFUNTO<br><br>
                                                 <div class="form-group">
-                                                  <input id="id_difuntoModificar" name="id_difuntoModificar"  type="text" class="form-control datepicker" >
+                                                  <input id="id_difuntoModificar" name="id_difuntoModificar"  type="hidden" class="form-control datepicker" >
 
                                                           <label class="col-md-1 control-label">Nombre</label>
                                                            <div class="col-md-4">
@@ -289,7 +291,7 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechafDifucionModicar" name="txt_fechafDifucionModicar"  type="text" class="form-control datepicker" >
+                                                                 <input id="txt_fechafDifucionModicar" name="txt_fechafDifucionModicar" type="date" class="form-control calendario" >
                                                           </div>
 
                                                 </div>
@@ -298,15 +300,15 @@
                                  <div class="row">
 
                                                  <div class="form-group">
-                                                   <input id="Id_alquileINichoDetalle" name="Id_alquileINichoDetalle"  class="form-control" type="text">
+                                                   <input id="Id_alquileINichoDetalle" name="Id_alquileINichoDetalle"  class="form-control" type="hidden">
 
                                                           <label class="col-md-1 control-label">Fecha Alquiler</label>
                                                            <div class="col-md-3">
-                                                                <input id="txt_fechaalquilerModicar" name="txt_fechaalquilerModicar"  type="text" class="form-control datepicker" >
+                                                                <input id="txt_fechaalquilerModicar" name="txt_fechaalquilerModicar" type="date" class="form-control calendario"  >
                                                           </div>
                                                           <label class="col-md-1 control-label">Fecha Vencimiento</label>
                                                            <div class="col-md-3">
-                                                                <input id="txt_fechafinalquilerModicar" name="txt_fechafinalquilerModicar"  type="text" class="form-control datepicker" >
+                                                                <input id="txt_fechafinalquilerModicar" name="txt_fechafinalquilerModicar"  type="date" class="form-control calendario"  >
                                                           </div>
 
                                                 </div>
@@ -318,7 +320,7 @@
                                  <br>
                                  <div class="row">
                                                 DATOS DEL RESPONSABLE<br><br>
-                                                <input id="txt_idresponsableModificar" name="txt_idresponsableModificar"  type="text" class="form-control datepicker" >
+                                                <input id="txt_idresponsableModificar" name="txt_idresponsableModificar"  type="hidden" class="form-control datepicker" >
 
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">DNI</label>

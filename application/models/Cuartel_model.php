@@ -6,20 +6,30 @@ class Cuartel_model extends CI_Model {
 
     function get_cuartel(){
     	   $cuartel= $this->db->query("call sp_cuartel_r()");
-            if ($cuartel->num_rows() >= 0) 
+            if ($cuartel->num_rows() >= 0)
             {
                 return $cuartel->result();
-            } else 
+            } else
             {
                 return null;
             }
     	}
+      function get_gantt(){
+      	   $cuartel= $this->db->query("call sp_gant_r()");
+              if ($cuartel->num_rows() >= 0)
+              {
+                  return $cuartel->result();
+              } else
+              {
+                  return null;
+              }
+      	}
     function reportevencidos_Nichos(){
            $nichosV= $this->db->query("call sp_reportevencidos()");
-            if ($nichosV->num_rows() >= 0) 
+            if ($nichosV->num_rows() >= 0)
             {
                 return $nichosV->result();
-            } else 
+            } else
             {
                 return null;
             }
@@ -27,10 +37,10 @@ class Cuartel_model extends CI_Model {
         //NICHOS DISPONIBLES
     function reportedisponible_Nichos(){
            $nichosD= $this->db->query("call sp_reportenichosdisponibles()");
-            if ($nichosD->num_rows() >= 0) 
+            if ($nichosD->num_rows() >= 0)
             {
                 return $nichosD->result();
-            } else 
+            } else
             {
                 return null;
             }
@@ -46,7 +56,7 @@ class Cuartel_model extends CI_Model {
          //function AddCuartel($txt_cuartel,$cbxCategoria,$cbxPasaje)
         {
            /* $this->db->query("insert into tcuartel(nombre_cuartel,id_categoria,id_pasaje) values ('$txt_cuartel','$cbxCategoria','$cbxPasaje')");
-            if ($this->db->affected_rows()> 0) 
+            if ($this->db->affected_rows()> 0)
               {
                 return true;
               }

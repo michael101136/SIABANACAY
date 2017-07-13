@@ -12,7 +12,10 @@
         
         <!-- CSS INCLUDE -->        
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url(); ?>assets/css/theme-default.css"/>
-        <!-- EOF CSS INCLUDE -->                                    
+        <!-- EOF CSS INCLUDE -->   
+        <script>
+         var base_url="<?php echo  base_url();?>";
+         </script>                                 
     </head>
     <body>
         

@@ -41,8 +41,8 @@
                                 <img src="<?php echo base_url();?>assets/images/users/avatar.jpg" alt="John Doe"/>
                             </div>
                             <div class="profile-data">
-                                <div class="profile-data-name">Beneficencia</div>
-                                <div class="profile-data-title"><?= $this->session->userdata('name')?></div>
+                                <div class="profile-data-name">Beneficencia </div>
+                                <div class="profile-data-title">Usuario:<?= $this->session->userdata('tipo_usuario')?> </br>Nombre:<?= $this->session->userdata('name')?></div>
                             </div>
                             <div class="profile-controls">
                                 <a href="pages-profile.html" class="profile-control-left"><span class="fa fa-info"></span></a>
@@ -67,7 +67,7 @@
                         </ul>
                     </li>
                     <li class="xn-title">CONFIGURAR PARAMETROS</li>
-
+                <?php if($this->session->userdata('tipo_usuario')=="Administrador") {?>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">MANTENIMIENTOS</span></a>
                         <ul>
@@ -77,7 +77,8 @@
 
                         </ul>
                     </li>
-
+                     <?php }?>
+                     <?php if($this->session->userdata('tipo_usuario')=="Administrador") {?>
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-sitemap"></span> <span class="xn-text">USUARIOS</span></a>
                         <ul>
@@ -87,6 +88,7 @@
 
                         </ul>
                     </li>
+                    <?php }?>
 
                 </ul>
                 <!-- END X-NAVIGATION -->

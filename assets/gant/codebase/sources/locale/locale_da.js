@@ -9,7 +9,7 @@ This software is covered by GPL license. You also can obtain Commercial or Enter
 gantt.locale = {
 	date: {
 		month_full: ["Januar", "Februar", "Marts", "April", "Maj", "Juni", "Juli", "August", "September", "Oktober", "November", "December"],
-		month_short: ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
+		month_short: ["Jan", "Feb", "Mar", "Abril", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"],
 		day_full: ["Søndag", "Mandag", "Tirsdag", "Onsdag", "Torsdag", "Fredag", "Lørdag"],
 		day_short: ["Søn", "Man", "Tir", "Ons", "Tor", "Fre", "Lør"]
 	},
@@ -59,4 +59,3 @@ gantt.locale = {
 		message_cancel: "Fortryd"
 	}
 };
-

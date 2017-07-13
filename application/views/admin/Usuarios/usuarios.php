@@ -165,7 +165,7 @@
                                 <div class="row">
                                                <h5> DATOS DEL DIFUNTO</h5>
                                                 <div class="form-group">
-                                                          <input id="id_usuarioA" name="id_usuarioA"  class="form-control" type="text">
+                                                          <input id="id_usuarioA" name="id_usuarioA"  class="form-control" type="hidden">
                                                           <label class="col-md-2 control-label">Nombre</label>
                                                            <div class="col-md-4">
                                                                 <input id="nombresA" name="nombresA"  class="form-control" type="text">
@@ -203,9 +203,59 @@
                                  </div>
                                  <br>
                                  
-                                 
+                                
 
                                 <br><br><br>
+                               <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">
+                                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                                      Guardar
+                                    </button>
+                                     <button  class="btn btn-danger" data-dismiss="modal">
+                                       <span class="glyphicon glyphicon-remove"></span>
+                                      Cancelar
+                                    </button>
+                                  </div>
+                                </div>
+                          </form> 
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">cerrar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="LoginCambi" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">CAMBIAR LA CONTRASEÑA</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal " id="form-UpdaCambioContrasena" action="" method="POST">
+                                <div class="hr hr-1 dotted hr-double"></div>
+                                <div class="row">
+                                               <h5>Cambio de Contraseña</h5>
+                                                <div class="form-group">
+                                                          <input id="IdUsuario" name="IdUsuario"  class="form-control" type="hidden">
+                                                          <label class="col-md-2 control-label">Actual Contrseña</label>
+                                                           <div class="col-md-4">
+                                                                <input id="ContraseActual" name="ContraseActual"  class="form-control" type="text">
+                                                          </div>
+                                                           <label class="col-md-2 control-label">Nueva Contraseña</label>
+                                                           <div class="col-md-4">
+                                                                <input id="ContraseNueva" name="ContraseNueva" class="form-control" type="text">
+                                                          </div>
+                                                </div>
+                                 </div>
+
                                <div class="form-group">
                                   <div class="col-md-12 col-md-offset-3">
                                     <button id="send" type="submit" class="btn btn-success">

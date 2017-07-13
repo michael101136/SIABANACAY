@@ -12,7 +12,7 @@ function main(){
 					alert("error");
 				}
 				else{
-					window.location.href="http://localhost/siabanacay/index.php/Alquiler/"
+					window.location.href=base_url+"index.php/Alquiler/"
 				}
 			}
 		});

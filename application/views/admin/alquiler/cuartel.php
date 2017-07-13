@@ -134,6 +134,33 @@
                                                 </div>
                                  </div>
                                  <br><br><br>
+                                 
+                                  <div>
+                                    
+
+                                     <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Basic example</h3>
+                                </div>
+                                <div class="panel-body">
+                                     <button id="addCarritoCuartel" name="addCarritoCuartel" type="button" class="btn btn-success">
+                                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                                      carrito
+                                    </button>
+                                    <button id="addCuartelTodo" name="addCuartelTodo" type="button" class="btn btn-success">
+                                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                                        Guardar Cuarteles
+                                    </button>
+                                    <button type="button"  id="btn_borrar" name="btn_borrar"> borrar </button>
+                                    <table class="table" id="tblList">
+                                        
+                                    </table>                                
+                                </div>
+                            </div>
+
+
+                                  </div>
+
                                <div class="form-group">
                                   <div class="col-md-12 col-md-offset-3">
                                     <button id="send" type="submit" class="btn btn-success">

@@ -9,7 +9,7 @@ This software is covered by GPL license. You also can obtain Commercial or Enter
 gantt.locale = {
 	date:{
 		month_full:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-		month_short:["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+		month_short:["Jan", "Feb", "Mar", "Abril", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
 		day_full:["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 		day_short:["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
 	},
@@ -56,4 +56,3 @@ gantt.locale = {
 
 	}
 };
-

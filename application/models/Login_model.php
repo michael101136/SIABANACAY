@@ -14,6 +14,27 @@ class Login_model extends CI_Model {
 			return false;
 		}
 	}
+	function loginVerificarContrasenia($id_usuario,$password){
+			$this->db->where("id_usuario",$id_usuario);
+			$this->db->where("password",$password);
+			$resultados = $this->db->get("usuarios");
+			if ($resultados->num_rows()>0) {
+				return $resultados->row();
+			}
+			else{
+				return false;
+			}
+	}
+	function loginCambio($IdUsuario,$data){
+			$this->db->where('id_usuario', $IdUsuario);
+            $this->db->update('usuarios', $data);
+			if ($this->db->affected_rows()>0) {
+				return true;
+			}
+			else{
+				return false;
+			}
+	}
 	function get_usuarios(){
 		$usuario=$this->db->query("call sp_usuarios()");
 		if ($usuario->num_rows()>= 0) 

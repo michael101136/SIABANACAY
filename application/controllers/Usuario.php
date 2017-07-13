@@ -28,6 +28,43 @@ class Usuario extends CI_Controller {/* Mantenimiento de division funcional y gr
     }
 
   }
+    public function UpdaCambioContrasena()
+  {
+    if ($this->input->is_ajax_request()) {
+        $IdUsuario=$this->input->post("IdUsuario");
+        $ContraseActual =sha1($this->input->post("ContraseActual"));
+        $ContraseNueva =sha1($this->input->post("ContraseNueva"));
+        $resp = $this->Login_model->loginVerificarContrasenia($IdUsuario,$ContraseActual);
+          if($resp)
+                {
+                  $data = [
+                    "password" => $ContraseNueva
+                    ];    
+                	 if($this->Login_model->loginCambio($IdUsuario,$data)==true)
+                	   echo "Se cambio La contraseña";
+                	   else
+                	   echo "No Se cambio La contraseña";
+
+
+                }
+                else
+                {
+                  echo "error no coincide la contraseña";
+                }
+        //$tipoUser =$this->input->post("ContraseNueva");
+
+      /*if($this->Login_model->AddAusuario($txt_nombre,$txt_apellido,$txt_usuario,$txt_clave,$tipoUser)== true)
+        echo "Se registro nuevos usuario";
+      else
+        echo "Se registro nuevos usuario"; */
+      
+    }
+    else
+    {
+      show_404();
+    }
+
+  }
 
   public function  Updateusuario()
   {

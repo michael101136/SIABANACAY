@@ -156,8 +156,8 @@
                       "scrollCollapse": true,
                       "paging":         true,
                       destroy:true,
-
                       "serverSide": false,
+                      
                          "ajax":{
                                     "url": base_url+"index.php/Alquiler/get_alquiler",
                                     "type":"POST",
