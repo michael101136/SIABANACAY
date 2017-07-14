@@ -59,6 +59,22 @@
                     });
                 });
                 //FIN AGREGAR ALQUILER
+                
+                //AGREGAR ALQUILER
+                $("#form_darBajaDifunto").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Alquiler/DarBajaAlquiler",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(respuesta){
+                          alert(respuesta);
+                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
+                        }
+                    });
+                });
+                //FIN AGREGAR ALQUILER
 			});
         var get_categoria=function(){
           html="";
@@ -192,12 +208,13 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='btn btn-xs btn-danger' data-toggle='modal' data-target='#' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-trash-o bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn-warning' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
                                 ],
                                 "language":idioma_espanol,
                                 "lengthMenu": [[3, 10, 20,100,500,20000], [3, 10, 20, 100,500,20000]],
                     });
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
+                   DatalDarBaja("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
                 var  Datalquiler=function(tbody,table)
                 {
@@ -218,10 +235,17 @@
                           $('#txt_DniModicar').val(data.Dni_responsable);
 
                           $('#txt_idresponsableModificar').val(data.idresponsable);
-
-
                           //fin datos del responsable
                     });
+                }
+                var DatalDarBaja=function(tbody,table)
+                {
+                      $(tbody).on("click","button.DarBajaDifunto",function(){
+                       var data=table.row( $(this).parents("tr")).data();
+                              var id_nicho_detalle =data.id_nicho_detalle;
+                              $("#txt_nichoDetalle").val(id_nicho_detalle);
+                              //fin datos del responsable
+                        });
                 }
         var idioma_espanol=
                 {

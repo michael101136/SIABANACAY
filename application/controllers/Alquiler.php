@@ -117,6 +117,24 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     }
 
   }
+  
+   public function DarBajaAlquiler()//a los nichos
+  {
+    if ($this->input->is_ajax_request()) {
+        $id_detallenicho=$this->input->post('txt_nichoDetalle');
+        $datas = array(
+          "estado" =>0,
+          );
+      $datos = $this->Alquiler_model->DarBajaAlquiler($datas,$id_detallenicho);
+      echo json_encode($datos);
+
+    }
+    else
+    {
+      show_404();
+    }
+
+  }
   public function get_cuartel()
   {
     if ($this->input->is_ajax_request()) {

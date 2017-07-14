@@ -120,7 +120,7 @@
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div class="row">
                                                 DATOS DEL DIFUNTO<br><br>
-                                                <div class="form-group">
+                                                <div class="form-group has success">
                                                           <label class="col-md-1 control-label">Nombre</label>
                                                            <div class="col-md-4">
                                                                 <input id="txt_nombredifunto" name="txt_nombredifunto"  class="form-control" type="text">
@@ -161,7 +161,7 @@
                                                               </select>
                                                           </div>
                                                 </div>
-                                                 <div class="form-group">
+                                                 <div class="form-group ">
                                                           <label class="col-md-1 control-label">Nicho</label>
                                                            <div class="col-md-3">
                                                                 <select class="form-control" id="cbNicho" name="cbNicho">
@@ -196,8 +196,9 @@
                                                 DATOS DEL RESPONSABLE<br><br>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">DNI</label>
-                                                           <div class="col-md-4">
-                                                                <input id="txt_Dni" name="txt_Dni"  class="form-control" type="text">
+                                                           <div class="col-md-4 controls">
+                                                                <input id="txt_Dni" name="txt_Dni"  class="form-control" type="number">
+                                                                <p class="help-block"></p>
                                                           </div>
                                                            <label class="col-md-2 control-label">Nombre</label>
                                                            <div class="col-md-5">
@@ -370,3 +371,32 @@
     </div>
   </div>
 <!-- /.fin alquiler-->
+
+ <!-- Modal -->
+  <div class="modal fade" id="VentaDarBaja" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <form  class="form-horizontal" id="form_darBajaDifunto"  method="POST" >
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Dar de baja al Difunto</h4>
+        </div>
+        <div class="modal-body">
+         <input type="text" id="txt_nichoDetalle" class="form-control" id="pwd">
+        </div>
+        <div class="modal-footer">
+          <button id="send" type="submit" class="btn btn-success">
+                 <span class="glyphicon glyphicon-floppy-disk"></span>
+                  Guardar
+         </button>
+          <button data-dismiss="modal" class="btn btn-danger">
+                  <span class="glyphicon glyphicon-remove">Cancelar</span>
+            </button>        
+        </div>
+      </div>
+    </form>
+      
+    </div>
+  </div>

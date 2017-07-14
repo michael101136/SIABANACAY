@@ -14,6 +14,18 @@ function get_alquiler(){
             return null;
         }
 	}
+  function DarBajaAlquiler($datas,$id_detallenicho){
+
+    $this->db->where('id_nicho',$id_detallenicho);
+    $this->db->update('tdifunto', $datas);
+    if ($this->db->affected_rows() > 0) {
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
 function ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle){
 
 		$this->db->where('id_difunto',$id_difuntoModificar);
