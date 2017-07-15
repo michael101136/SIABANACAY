@@ -17,7 +17,7 @@ function get_alquiler(){
   function DarBajaAlquiler($datas,$id_detallenicho){
 
     $this->db->where('id_nicho',$id_detallenicho);
-    $this->db->update('tdifunto', $datas);
+    $this->db->update('tnicho', $datas);
     if ($this->db->affected_rows() > 0) {
       return true;
     }

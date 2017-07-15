@@ -180,7 +180,8 @@
                                     "dataSrc":""
                                     },
                                 "columns":[
-                                     {"data":"id_nicho_detalle","visible": false},
+                                    {"data":"id_nicho"},
+                                    {"data":"id_nicho_detalle","visible": false},
                                     {"data":"nombrepasaje"},
                                     {"data":"categoria"},
                                     {"data":"nombre_cuartel"},
@@ -242,8 +243,8 @@
                 {
                       $(tbody).on("click","button.DarBajaDifunto",function(){
                        var data=table.row( $(this).parents("tr")).data();
-                              var id_nicho_detalle =data.id_nicho_detalle;
-                              $("#txt_nichoDetalle").val(id_nicho_detalle);
+                              var id_nicho =data.id_nicho;
+                              $("#txt_nichoDetalle").val(id_nicho);
                               //fin datos del responsable
                         });
                 }

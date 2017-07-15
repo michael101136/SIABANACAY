@@ -50,7 +50,6 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
           echo "Se realizo el proceso de alquiler";
           else
           echo "No se realizo el proceso de alquiler";
-          echo $txt_precio;
 
 
     }
