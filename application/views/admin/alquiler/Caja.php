@@ -12,9 +12,6 @@
                             <div class="panel panel-default tabs">
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="active"><a href="#tab-first" role="tab" data-toggle="tab">Caja</a></li>
-                                    <li><a href="#tab-second" role="tab" data-toggle="tab">Second</a></li>
-                                    <li><a href="#tab-third" role="tab" data-toggle="tab">Third</a></li>
-                                    <li><a href="#tab-fourth" role="tab" data-toggle="tab">Fourth</a></li>
                                 </ul>
                                 <div class="panel-body tab-content">
                                     <div class="tab-pane active" id="tab-first">

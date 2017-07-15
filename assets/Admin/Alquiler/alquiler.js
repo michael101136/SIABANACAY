@@ -203,9 +203,9 @@
                                           var i=data;
                                           if(i==1)
                                           {
-                                            return '<a href="'+data+'"><span class="label label-sm label-success"> Pago</span></a>'
+                                            return '<a href=""><span class="label label-sm label-success"> Pago</span></a>'
                                           }else{
-                                            return '<a href="'+data+'"><span class="label label-sm label-danger"> Vencido</span></a>'
+                                            return '<a href=""><span class="label label-sm label-danger"> Vencido</span></a>'
                                           }
                                        }
                                      },

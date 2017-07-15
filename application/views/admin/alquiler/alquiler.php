@@ -28,7 +28,7 @@
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
                                         </ul>
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
                                         <ul class="dropdown-menu">
                                             <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
                                             <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
@@ -110,7 +110,7 @@
                                         </ul>
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>Exportar</button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="<?php echo site_url('Factura/')?>"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
+                                            <li><a href="<?php echo site_url('Factura/')?>"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> BOLETA</a></li>
                                         </ul>
                                     </div>
 

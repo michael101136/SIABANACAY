@@ -124,6 +124,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
         $datas = array(
           "estado" =>0,
           );
+ 
       $datos = $this->Alquiler_model->DarBajaAlquiler($datas,$id_detallenicho);
       echo json_encode($datos);
 

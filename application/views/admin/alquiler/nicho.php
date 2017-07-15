@@ -27,7 +27,7 @@
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
                                         </ul>
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
                                         <ul class="dropdown-menu">
                                             <li><a href="#" onClick ="$('#tabla-nicho').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
                                             <li><a href="#" onClick ="$('#tabla-nicho').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
@@ -93,7 +93,7 @@
                                         <ul class="panel-controls">
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
                                         </ul>
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Export Data</button>
+                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
                                         <ul class="dropdown-menu">
                                             <li><a href="#" onClick ="$('#customers2').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
                                             <li><a href="#" onClick ="$('#customers2').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>

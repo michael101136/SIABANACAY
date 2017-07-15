@@ -57,6 +57,7 @@ var listarcuartel=function(){
                         "url":base_url +"index.php/Cuartel/get_cuartel",
                         type:"POST",
                         success:function(respuesta){
+              
                            var registros = eval(respuesta);
                             for (var i = 0; i <registros.length;i++) {
                               htmlCuartel +="<option value="+registros[i]["id_cuartel"]+"> "+registros[i]["nombre_cuartel"]+" </option>";

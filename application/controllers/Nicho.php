@@ -46,6 +46,7 @@ class Nicho extends CI_Controller {/* Mantenimiento de division funcional y grup
                    echo "SE INSERTO UN NICHO";
                   else
                   echo "SE INSERTO UN NICHO";
+                  
             }
         else
             {
