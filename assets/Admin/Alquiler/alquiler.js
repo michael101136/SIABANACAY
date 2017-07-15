@@ -245,6 +245,7 @@
                        var data=table.row( $(this).parents("tr")).data();
                               var id_nicho =data.id_nicho;
                               $("#txt_nichoDetalle").val(id_nicho);
+                              $("#nombreDifunto").val(data.tnombre+' '+data.tapellido);
                               //fin datos del responsable
                         });
                 }
