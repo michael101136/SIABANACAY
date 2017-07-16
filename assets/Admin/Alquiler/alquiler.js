@@ -247,6 +247,9 @@
                               var id_nicho_detalle =data.id_nicho_detalle;
                               $("#txt_nichoDetalle").val(id_nicho);
                               $("#txt_nichoDetalle2").val(id_nicho_detalle);
+
+                              $("#nombreDifunto").val(data.tnombre+' '+data.tapellido);
+
                               //fin datos del responsable
                         });
                 }

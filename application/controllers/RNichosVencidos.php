@@ -3,7 +3,7 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class RNichosDisponibles extends CI_Controller {
+class RNichosVencidos extends CI_Controller {
 
     function __construct() {
         parent::__construct();
@@ -68,10 +68,10 @@ class RNichosDisponibles extends CI_Controller {
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 1, 'blend_mode' => 'Normal'));
 
 // Establecemos el contenido para imprimir
-        $nichosD = $this->Cuartel_model->reportedisponible_Nichos();
+        $nichosD =  $this->Cuartel_model->reportevencidos_Nichos();
         foreach($nichosD as $fila)
         {
-            $pasaje = $fila->nombrepasaje;
+            $pasaje = $fila->nombre_cuartel;
         }
         //preparamos y maquetamos el contenido a crear
         $html = '';
@@ -82,17 +82,18 @@ class RNichosDisponibles extends CI_Controller {
         $html .= "</style>";
         $html .= "<h2>CUARTELES ".$pasaje."</h2><h4>Actualmente: ".$pasaje." PASAJES</h4>";
         $html .= "<table width='100%'>";
-        $html .= "<thead><tr><th>PASAJE</th><th>CATEGORIA</th><th>CUARTEL</th><th>NUMERO DE NICHO</th><th>NIVEL</th></tr></thead>";
+        $html .= "<thead><tr><th>Nombre Cuartel</th><th>Numero Nicho</th><th> Difunto </th><th>Fecha Inicio</th><th>Fecha Fin</th></tr></thead>";
 
         foreach ($nichosD as $fila)
         {
-            $pasajes = $fila->nombrepasaje;
-            $categoria = $fila->categoria;
             $nombre_cuartel = $fila->nombre_cuartel;
-            $numero_nicho = $fila->numero_nicho;
-            $nivel = $fila->nivel;
+            $numero_nicho   = $fila->numero_nicho;
+            $nombre         = $fila->nombre;
+            $fecha_inicio   = $fila->$fecha_inicio;
+            $fecha_final    = $fila->$fecha_final;
+            $Estado         = $fila->$Estado;
 
-            $html .= "<tr><td class='id'>" .$pasajes. "</td><td class='localidad'>" .$categoria."</td><td class='localidad'>" .$nombre_cuartel."</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nivel."</td></tr>";
+            $html .= "<tr><td class='id'>" .$nombre_cuartel. "</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nombre."</td><td class='localidad'>" .$fecha_inicio."</td><td class='localidad'>" .$fecha_final."</td></tr>";
         }
         $html .= "</table>";
 

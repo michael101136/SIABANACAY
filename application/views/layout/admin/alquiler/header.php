@@ -74,7 +74,7 @@
                     <li class="xn-openable">
                         <a href="#"><span class="fa fa-bar-chart-o"></span> <span class="xn-text">REPORTES</span></a>
                         <ul>
-                            <li><a href="<?php echo site_url('Pdfci/');?>" target="_blank"><span class="xn-text">Nichos vencidos</span></a></li>
+                            <li><a href="<?php echo site_url('RNichosVencidos/generar');?>" target="_blank"><span class="xn-text">Nichos vencidos</span></a></li>
                             <li><a href="<?php echo site_url('RNichosDisponibles/generar'); ?>" target="_blank"><span class="xn-text">Nichos Disponibles</span></a></li>
                             <li><a href="<?php echo site_url('Caja/'); ?>"><span class="xn-text">Caja</span></a></li>
                         </ul>

@@ -35,7 +35,7 @@
                                             <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
                                             <li class="divider"></li>
                                             <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'pdf',pdfFontSize:'8',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
+                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'pdf',pdfFontSize:'7',escape:'false',columns: ':visible'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
                                         </ul>
                                     </div>
 
@@ -382,16 +382,19 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Dar de baja al Difunto</h4>
+          <h4 class="modal-title">Eliminar  Difunto</h4>
         </div>
         <div class="modal-body">
-         <input type="text" id="txt_nichoDetalle" name="txt_nichoDetalle" class="form-control">
+         <input type="hidden" id="txt_nichoDetalle" name="txt_nichoDetalle" class="form-control">
+         <input type="text" id="nombreDifunto" name="nombreDifunto" class="form-control">
         </div>
         <div class="modal-footer">
           <button id="send" type="submit" class="btn btn-success">
                  <span class="glyphicon glyphicon-floppy-disk"></span>
-                  Guardar
+                  Eliminar
+
          </button>
+
           <button data-dismiss="modal" class="btn btn-danger">
                   <span class="glyphicon glyphicon-remove">Cancelar</span>
             </button>        
