@@ -26,13 +26,8 @@ class Cuartel_model extends CI_Model {
       	}
     function reportevencidos_Nichos(){
            $nichosV= $this->db->query("call sp_reportevencidos()");
-            if ($nichosV->num_rows() >= 0)
-            {
+
                 return $nichosV->result();
-            } else
-            {
-                return null;
-            }
         }
         //NICHOS DISPONIBLES
     function reportedisponible_Nichos(){

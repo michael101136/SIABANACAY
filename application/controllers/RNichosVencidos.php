@@ -23,7 +23,7 @@ class RNichosVencidos extends CI_Controller {
         $pdf = new Pdf('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetAuthor('Beneficenia Publica De abancay');
-        $pdf->SetTitle('Nichos disponibles');
+        $pdf->SetTitle('Nichos Vencidos');
         $pdf->SetSubject('Tutorial TCPDF');
         $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
 
@@ -69,9 +69,12 @@ class RNichosVencidos extends CI_Controller {
 
 // Establecemos el contenido para imprimir
         $nichosD =  $this->Cuartel_model->reportevencidos_Nichos();
+        $total=0;//vencidos
+        $nombreCuartel="Cuateles Vencidos";
         foreach($nichosD as $fila)
         {
-            $pasaje = $fila->nombre_cuartel;
+            $total+=1;
+            
         }
         //preparamos y maquetamos el contenido a crear
         $html = '';
@@ -80,20 +83,20 @@ class RNichosVencidos extends CI_Controller {
         $html .= "table{color:2px solid #000000;}";
         $html .= "td{background-color: #FFFFFF; color: #070707;border: 1px solid #000000}";
         $html .= "</style>";
-        $html .= "<h2>CUARTELES ".$pasaje."</h2><h4>Actualmente: ".$pasaje." PASAJES</h4>";
+        $html .= "<h2></h2><h4>Actualmente: ".$total." Nichos Vencidos</h4>";
         $html .= "<table width='100%'>";
-        $html .= "<thead><tr><th>Nombre Cuartel</th><th>Numero Nicho</th><th> Difunto </th><th>Fecha Inicio</th><th>Fecha Fin</th></tr></thead>";
+        $html .= "<thead><tr><th>Nombre Cuartel</th><th>Numero Nicho</th><th> Difunto </th><th>Fecha Inicio</th><th>Fecha Fin</th><th>Estado</th></tr></thead>";
 
         foreach ($nichosD as $fila)
         {
             $nombre_cuartel = $fila->nombre_cuartel;
             $numero_nicho   = $fila->numero_nicho;
             $nombre         = $fila->nombre;
-            $fecha_inicio   = $fila->$fecha_inicio;
-            $fecha_final    = $fila->$fecha_final;
-            $Estado         = $fila->$Estado;
+            $fecha_inicio   = $fila->fecha_inicio;
+            $fecha_final    = $fila->fecha_final;
+            $Estado         = $fila->Estado;
 
-            $html .= "<tr><td class='id'>" .$nombre_cuartel. "</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nombre."</td><td class='localidad'>" .$fecha_inicio."</td><td class='localidad'>" .$fecha_final."</td></tr>";
+            $html .= "<tr><td class='id'>" .$nombre_cuartel. "</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nombre."</td><td class='localidad'>" .$fecha_inicio."</td><td class='localidad'>" .$fecha_final."</td><td class='localidad'>" .$Estado."</td></tr>";
         }
         $html .= "</table>";
 
@@ -103,7 +106,7 @@ class RNichosVencidos extends CI_Controller {
 // ---------------------------------------------------------
 // Cerrar el documento PDF y preparamos la salida
 // Este método tiene varias opciones, consulte la documentación para más información.
-        $nombre_archivo = utf8_decode("Localidades de ".$pasaje.".pdf");
+        $nombre_archivo = utf8_decode("Localidades de ".$nombreCuartel.".pdf");
         $pdf->Output($nombre_archivo, 'I');
     }
 }
