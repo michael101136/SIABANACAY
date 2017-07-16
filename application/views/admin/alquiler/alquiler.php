@@ -387,6 +387,7 @@
         <div class="modal-body">
          <input type="hidden" id="txt_nichoDetalle" name="txt_nichoDetalle" class="form-control">
          <input type="text" id="nombreDifunto" name="nombreDifunto" class="form-control">
+          <input type="text" id="txt_nichoDetalle2" name="txt_nichoDetalle2" class="form-control">
         </div>
         <div class="modal-footer">
           <button id="send" type="submit" class="btn btn-success">

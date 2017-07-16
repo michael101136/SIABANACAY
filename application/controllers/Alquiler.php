@@ -121,11 +121,14 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
   {
     if ($this->input->is_ajax_request()) {
         $id_detallenicho=$this->input->post('txt_nichoDetalle');
+         $id_detallenicho2=$this->input->post('txt_nichoDetalle2');
         $datas = array(
           "estado" =>0,
           );
- 
-      $datos = $this->Alquiler_model->DarBajaAlquiler($datas,$id_detallenicho);
+         $datoDetalle = array(
+          "Estado_AD" =>0,
+          );
+      $datos = $this->Alquiler_model->DarBajaAlquiler($datas,$id_detallenicho,$datoDetalle,$id_detallenicho2);
       echo json_encode($datos);
 
     }

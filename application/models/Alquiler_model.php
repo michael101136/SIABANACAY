@@ -14,10 +14,12 @@ function get_alquiler(){
             return null;
         }
 	}
-  function DarBajaAlquiler($datas,$id_detallenicho){
+  function DarBajaAlquiler($datas,$id_detallenicho,$datoDetalle,$id_detallenicho2){
 
     $this->db->where('id_nicho',$id_detallenicho);
     $this->db->update('tnicho', $datas);
+    $this->db->where('id_nicho_detalle',$id_detallenicho2);
+    $this->db->update('tnicho_detalle', $datoDetalle);
     if ($this->db->affected_rows() > 0) {
       return true;
     }
