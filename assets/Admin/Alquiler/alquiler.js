@@ -209,10 +209,10 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn-warning' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn-warning' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
                                 ],
                                 "language":idioma_espanol,
-                                "lengthMenu": [[3, 10, 20,100,500,20000], [3, 10, 20, 100,500,20000]],
+                                "lengthMenu": [[3, 10, 20,100,500,20000,10000000], [3, 10, 20, 100,500,20000,10000000]],
                     });
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                    DatalDarBaja("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR

@@ -1,7 +1,7 @@
 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">UI Kits</a></li>
-                    <li class="active">Elements</li>
+                    <li><a href="#">Alquiler</a></li>
+                    <li><a href="#">Caja</a></li>
+                    <li class="active"><?=date('m/d/Y');?></li>
                 </ul>
 <div class="page-title">
                     <h2><span class="fa fa-arrow-circle-o-left"></span> Caja</h2>

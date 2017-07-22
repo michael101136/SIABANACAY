@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Cuartel_model extends CI_Model {
 
 
+    
     function get_cuartel(){
     	   $cuartel= $this->db->query("call sp_cuartel_r()");
             if ($cuartel->num_rows() >= 0)
@@ -60,12 +61,19 @@ class Cuartel_model extends CI_Model {
                 return false;
               }*/
               $this->db->insert("tcuartel",$datas);
-                if ($this->db->affected_rows() > 0) {
-                    return true;
-                }
-                else{
-                    return false;
-                }
+              return false;
+                
         }
+
+        function Get_Categoria()
+        {
+
+        	$this->db->select('*');
+        	$this->db->from('tcategoria');
+        	$consulta = $this->db->get();
+        	return $consulta->result();
+
+        }
+
 
 }

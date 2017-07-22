@@ -8,20 +8,30 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
       $this->load->model("Cuartel_model");
 
 	}
-    public function get_cuartel()
+    /*public function get_cuartel()
+	  {
+		    if ($this->input->is_ajax_request()) {
+
+		      $datos = $this->Cuartel_model->get_cuartel();
+		      echo json_encode($datos);
+
+		    }
+		    else
+		    {
+		      show_404();
+		    }
+
+	  }*/
+	public function index()
   {
-    if ($this->input->is_ajax_request()) {
 
-      $datos = $this->Cuartel_model->get_cuartel();
-      echo json_encode($datos);
+		 $listarCurteles = $this->Cuartel_model->get_cuartel();
 
-    }
-    else
-    {
-      show_404();
-    }
+		  $this->load->view('layout/admin/alquiler/header');
+     	 $this->load->view('admin/Cuartel/Cuartel',['listarCuarteles' => $listarCurteles]);
+     	 $this->load->view('layout/admin/alquiler/footer');
 
-  }
+	}
 	public function get_gantt(){
 		if ($this->input->is_ajax_request()) {
 
@@ -34,18 +44,8 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
 			show_404();
 		}
 	}
-  public function Get_pasaje(){
-    if ($this->input->is_ajax_request()) {
-      $datos = $this->Cuartel_model->Get_pasaje();
-      echo json_encode($datos);
 
-    }
-    else
-    {
-      show_404();
-    }
-  }
-  public function AddCuartel()
+  /*public function AddCuartel()
     {
         if ($this->input->is_ajax_request())
             {
@@ -72,40 +72,40 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
               show_404();
             }
     }
-     public function AddCuartelTodo()
-    {
-        if ($this->input->is_ajax_request())
-            {
-             $txt_cuartel   = $this->input->post("txt_cuartel");
-             $cbxCategoria  = $this->input->post("cbxCategoria");
+	*/
+   public  function insertar()
+   {
+	   	if($_POST)
+	      {
+		     $hdIdcategoria	= $this->input->post('hdIdcategoria');
+	         $hdIdPasaje	    = $this->input->post('hdIdPasaje');
+	      	 $nombre_cuartel	= $this->input->post('Cuartel');
+	      	 for ($i=0; $i <count($hdIdcategoria) ; $i++) { 
+	      	 	 $datas = array(
+			            "nombre_cuartel" =>$nombre_cuartel[$i],
+			            "id_categoria" =>$hdIdcategoria[$i],
+			            "id_pasaje" => $hdIdPasaje[$i],     
+	            );
+	      	 	$this->Cuartel_model->AddCuartel($datas);
+	      	 }
+	      	 echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'nombre_cuartel' => $nombre_cuartel]);exit;
+	      }
+	    $categoria= $this->Cuartel_model->Get_Categoria();
+	    $pasajes= $this->Cuartel_model->Get_pasaje();
+	    //var_dump($pasajes);exit();
+	    $this->load->view('admin/Cuartel/insertar',['categoria' => $categoria ,'pasajes' => $pasajes]);
+   }
+  public function editar()
+  {
+      if($_POST)
+      {
+      	
 
-             $cbxPasaje     = $this->input->post("cbxPasaje");
+      }
 
-            $datas = array(
+      $this->load->view('admin/Cuartel/editar');
 
-            "nombre_cuartel" =>$txt_cuartel,
-            "id_categoria" =>$cbxCategoria,
-            "id_pasaje" => $cbxPasaje,
-            );
-
-           if($this->Cuartel_model->AddCuartel($datas)== false)
-             if($this->Cuartel_model->AddCuartel($txt_cuartel,$cbxCategoria,$cbxPasaje)== false)
-                   echo "SE INSERTO LOS CUARTELES ";
-                  else
-                  echo "SE INSERTO LOS CUARTELES ";
-            }
-        else
-            {
-              show_404();
-            }
-    }
-
-    /* Pagina principal de la vista entidad Y servicio publico asociado */
-	public function index()
-	{
-		$this->_load_layout('admin/alquiler/cuartel');
-    //$this->_load_layout('Front/Administracion/frmFuncion');
-	}
+  }
 
 	function _load_layout($template)
     {

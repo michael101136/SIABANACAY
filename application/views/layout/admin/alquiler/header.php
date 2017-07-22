@@ -25,6 +25,8 @@
         <!-- END PLUGINS -->
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jqBootstrapValidation.js"></script>
 
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/Helper/jsHelper.js"></script>
+
         
 
         <!-- EOF CSS INCLUDE -->
