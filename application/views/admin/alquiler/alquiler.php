@@ -4,17 +4,11 @@
                     <li><a href="#">Principal</a></li>
                     <li class="active">Alquiler nichos</li>
                 </ul>
-                <!-- END BREADCRUMB -->
 
-                <!-- PAGE TITLE -->
-                 script:js  
                 <div class="page-title">
                     <h2><span class="fa fa-arrow-circle-o-left"></span>Alquiler de nichos</h2>
                 </div>
            
-                <!-- END PAGE TITLE -->
-
-                <!-- PAGE CONTENT WRAPPER -->
                 <div class="page-content-wrap">
 
                     <div class="row">
