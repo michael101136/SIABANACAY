@@ -3,12 +3,12 @@
 
 	<div class="row">
 		DATOS DEL NICHO<br><br>
-		<div class="form-group">
+		<div class="form-group" id="divNicho">
 
 			<label class="col-md-1 control-label">Cuartel</label>
 			<div class="col-md-3">
 				<input id="hdIdcuartel" name="hdIdcuartel" value= "<?=$listarCbxcuartel->id_cuartel;?>" class="form-control" type="hidden">
-				<input id="txtCuartel" name="txtCuartel" value="<?=$listarCbxcuartel->nombre_cuartel;?>" class="form-control" type="text" >
+				<input id="txtCuartel" name="txtCuartel" value="<?=$listarCbxcuartel->nombre_cuartel;?>" class="form-control notValidate" type="text" >
 			</div>
 
 			<label class="col-md-1 control-label">N° Nicho</label>
@@ -83,6 +83,128 @@
 			$('#addTableNichos > tbody').append(tempNichos);
 
 		});
+
+		$(function()
+		{
+			$('#form-addnicho').formValidation(
+			{
+				framework: 'bootstrap',
+				excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+				live: 'enabled',
+				message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+				trigger: null,
+				fields:
+				{
+					txt_num_nicho:
+					{
+						validators: 
+						{
+							notEmpty:
+							{
+								message: '<b style="color: red;">El campo "Número de nicho" es requerido.</b>'
+							}
+						}
+					},
+
+					txt_nivel_nicho:
+					{
+						validators: 
+						{
+							notEmpty:
+							{
+								message: '<b style="color: red;">El campo "Nivel" es requerido.</b>'
+							}
+						}
+					},
+					txt_precio_nicho:
+					{
+						validators: 
+						{
+							notEmpty:
+							{
+								message: '<b style="color: red;">El campo "Precio" es requerido.</b>'
+							}
+						}
+					}
+				}
+			});
+
+			$('#divNicho').formValidation(
+			{
+				framework: 'bootstrap',
+				excluded: [':disabled', ':hidden', ':not(:visible)', '[class*="notValidate"]'],
+				live: 'enabled',
+				message: '<b style="color: #9d9d9d;">Asegúrese que realmente no necesita este valor.</b>',
+				trigger: null,
+				fields:
+				{
+					txt_num_nicho:
+					{
+						validators: 
+						{
+							notEmpty:
+							{
+								message: '<b style="color: red;">El campo "Número de nicho" es requerido.</b>'
+							}
+						}
+					},
+
+					txt_nivel_nicho:
+					{
+						validators: 
+						{
+							notEmpty:
+							{
+								message: '<b style="color: red;">El campo "Nivel" es requerido.</b>'
+							}
+						}
+					},
+					txt_precio_nicho:
+					{
+						validators: 
+						{
+							notEmpty:
+							{
+								message: '<b style="color: red;">El campo "Precio" es requerido.</b>'
+							}
+						}
+					}
+				}
+			});
+
+		});
+	$('#btnEnviarFormulario').on('click', function(event)
+	{
+		event.preventDefault();
+
+		$('#form-addnicho').data('formValidation').validate();
+
+		if(!($('#form-addnicho').data('formValidation').isValid()))
+		{
+			return;
+		}
+
+		paginaAjaxJSON($('#form-addnicho').serialize(), '<?=base_url();?>index.php/Cuartel/insertar', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+
+			objectJSON=JSON.parse(objectJSON);
+
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error') 
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/Cuartel/index/'+objectJSON.idEstudioInversion;
+
+				renderLoading();
+			});
+		}, false, true);
+	});
+
 
 	</script>
 
