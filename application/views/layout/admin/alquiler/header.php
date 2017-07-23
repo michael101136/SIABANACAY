@@ -24,7 +24,9 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jqBootstrapValidation.js"></script>
-
+        
+        <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/Helper/jsHelper.js"></script>
 
         

@@ -29,19 +29,19 @@
                                         </ul>
                                         <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
                                         <ul class="dropdown-menu">
-                                            <li><a href="#" onClick ="$('#tabla-cuartel').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-cuartel').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-cuartel').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+                                            <li><a href="#" onClick ="$('#tabla-Litarcuartel').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
+                                            <li><a href="#" onClick ="$('#tabla-Litarcuartel').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
+                                            <li><a href="#" onClick ="$('#tabla-Litarcuartel').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
                                             <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#tabla-cuartel').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-cuartel').tableExport({type:'pdf',pdfFontSize:'9',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
+                                            <li><a href="#" onClick ="$('#tabla-Litarcuartel').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
+                                            <li><a href="#" onClick ="$('#tabla-Litarcuartel').tableExport({type:'pdf',pdfFontSize:'9',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
                                         </ul>
                                     </div>
 
                                     <div class="btn-group pull-left">
                                         <button type="button" class="btn btn-success"  onclick="paginaAjaxDialogo(null, 'Registrar Nuevos Cuarteles',null, base_url+'index.php/Cuartel/insertar', 'GET', null, null, false, true);">
                                             <i class="fa fa-bars"></i>
-                                            Cuartelds
+                                            Cuartel
                                       </button>
                                     </div>
                                 </div>

@@ -73,7 +73,10 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/settings.js"></script>
         
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins.js"></script>        
-        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/actions.js"></script> 
+        <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/actions.js"></script>
+
+        <script src="<?php echo base_url(); ?>assets/formValidation.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/bootstrap.validation.min.js"></script>
 
 
         <script src="<?php echo base_url(); ?>assets/Admin/Alquiler/alquiler.js"></script>
