@@ -74,6 +74,11 @@ class Cuartel_model extends CI_Model {
         	return $consulta->result();
 
         }
+        function GetIdCuartelParaNombrecuartel($id_cuartel)
+        {
+        	$nichosD= $this->db->query("select * from tcuartel where id_cuartel='".$id_cuartel."'");
+        	return $nichosD->result();
+        }
 
 
 }
