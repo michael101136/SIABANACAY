@@ -79,13 +79,13 @@
 			                                                        	
 			                                                        </li>
 			                                                        <li>
-			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, 'Agregar nichos a un cuartel',{id_cuartel:'<?=$itemp->id_cuartel?>'},base_url+'index.php/Nicho/insertar', 'GET', null, null, false, true);" >
+			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, 'Agregar nichos',{id_cuartel:'<?=$itemp->id_cuartel?>'},base_url+'index.php/Nicho/insertar', 'GET', null, null, false, true);" >
 			                                                        		<span class="fa  ffa fa-th-large"></span>
 			                                                        	    Agregar Nichos
 			                                                        	</button>
 			                                                        </li>
 			                                                        <li>
-			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, 'Eliminar Registro de presupuesto para formulación y evaluación',null,base_url+'index.php/Cuartel/editar', 'GET', null, null, false, true);" >
+			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, ' Detalle cuartel y sus  Nichos',{id_cuartel:'<?= $itemp->id_cuartel?>'},base_url+'index.php/Cuartel/verNichosCuarteles', 'GET', null, null, false, true);" >
 			                                                        		<span class="fa  ffa fa-th-large"></span>
 			                                                        	    Mostrar nichos
 			                                                        	</button>
