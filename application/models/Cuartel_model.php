@@ -91,6 +91,19 @@ class Cuartel_model extends CI_Model {
         	return $listaCuarteIdPadre->result();
 
         }
+         function   NichoIdCuartelNivel($id_cuartel)
+        {
+          $listaCuarteIdPadre= $this->db->query("SELECT DISTINCT tnicho.nivel FROM tcuartel inner join pasaje on tcuartel.id_pasaje=pasaje.id_pasaje inner join tcategoria on tcuartel.id_categoria=tcategoria.id_categoria INNER join tnicho on tcuartel.id_cuartel=tnicho.id_cuartel WHERE tcuartel.id_cuartel='".$id_cuartel."' ORDER BY tnicho.nivel ASC");
+          return $listaCuarteIdPadre->result();
+
+        }
+        function nombreCuartel($id_cuartel)
+        {
+
+         $listaCuarteIdPadre= $this->db->query("SELECT tcuartel.id_cuartel,tcuartel.nombre_cuartel FROM tcuartel  WHERE tcuartel.id_cuartel='".$id_cuartel."'");
+        return $listaCuarteIdPadre->result();
+        
+     }
 
 
 }

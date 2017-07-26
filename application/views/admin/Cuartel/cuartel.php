@@ -90,6 +90,12 @@
 			                                                        	    Mostrar nichos
 			                                                        	</button>
 			                                                        </li>
+                                                                    <li>
+                                                                        <button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, ' Actualizar Precios Nichos',{id_cuartel:'<?= $itemp->id_cuartel?>'},base_url+'index.php/Cuartel/verNichosPrecios','GET', null, null, false, true);" >
+                                                                            <span class="fa  fa fa-usd"></span>
+                                                                            Precios de Nichos
+                                                                        </button>
+                                                                    </li>
 			                                                        <li>
 			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, 'Eliminar Registro de presupuesto para formulación y evaluación',null,base_url+'index.php/Cuartel/editar', 'GET', null, null, false, true);" >
 			                                                        		<span class="fa  fa-times-circle"></span>

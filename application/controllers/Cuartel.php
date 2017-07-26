@@ -116,6 +116,17 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
   	$this->load->view('admin/Nicho/verNichosCuarteles',['CuartelesPadres' =>$CuartelesPadres, 'listarNichosCuarteleId' => $listarNichosCuarteleId]);
   }
 
+  public function verNichosPrecios()
+  {
+    $id_cuartel=$this->input->GET('id_cuartel');
+
+    $listarNichosCuarteleIdNivel=$this->Cuartel_model->NichoIdCuartelNivel($id_cuartel);
+    $nombreCuartel=$this->Cuartel_model->nombreCuartel($id_cuartel)[0];
+    
+    
+    $this->load->view('admin/Nicho/preciosNichos',['listarNichosCuarteleId' => $listarNichosCuarteleIdNivel,'nombreCuartel' =>$nombreCuartel]);
+  }
+
 	function _load_layout($template)
     {
       $this->load->view('layout/admin/alquiler/header');

@@ -58,6 +58,18 @@ class Nicho extends CI_Controller {/* Mantenimiento de division funcional y grup
 		$this->_load_layout('admin/alquiler/nicho');
     //$this->_load_layout('Front/Administracion/frmFuncion');
 	}
+  public function updatePrecios()
+  {
+    if($_POST)
+    {
+      $txt_IdCuartel=$this->input->post('txt_IdCuartel');
+      $combo_Nivel=$this->input->post('combo_Nivel');
+      $txt_nivel_Precios=$this->input->post('txt_nivel_Precios');
+      $this->Nicho_model->updatePrecios($txt_IdCuartel,$combo_Nivel,$txt_nivel_Precios);
+      echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'nombre_cuartel' => $combo_Nivel]);
+
+    }
+  }
 
 
 	public function insertar()
