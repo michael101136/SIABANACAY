@@ -11,14 +11,19 @@
                   get_categoria();
           });
           $("#txt_fechafinalquiler").blur(function(){
+             var html2="";
+             $("#ErrorFecha").html(html2);
             var fecha = new Date();
             fechaA=$("#txt_fechaalquiler").val();
             fechaAFinal=$("#txt_fechafinalquiler").val();
             if(fechaA < fechaAFinal)
               {
+                var html1="";
+                $("#ErrorFecha").html(html1);
               }else
               {
-                alert("fecha de inicio de alquiler es mayor");
+                var html="fecha de vencimiento no puede ser menor al de inicio";
+                $("#ErrorFecha").html(html);
               }
           })
           $("#cbCategoria").change(function(){
@@ -33,6 +38,11 @@
             var id_cuartel=$("#cbCuartel").val();
             var nivel=$("#cbxNivel").val();
              get_nicho(id_cuartel,nivel);
+          });
+          $("#cbNicho").click(function() {
+            var id_cuartel=$("#cbCuartel").val();
+            var nivel=$("#cbxNivel").val();
+            mostrarPrecioNicho(id_cuartel,nivel);
           });
                 //AGREGAR ALQUILER
                 $("#form-addAlquiler").submit(function(event)
@@ -96,6 +106,24 @@
                               html +="<option value="+registros[i]["id_categoria"]+"> "+registros[i]["categoria"]+" </option>";
                             };
                             $("#cbCategoria").html(html);//para modificar las entidades
+                        }
+                    });
+        }
+        var mostrarPrecioNicho=function(id_cuartel,nivel)
+        {             
+                    var precio="";
+                    $("#txt_precio").val("");
+                    event.preventDefault();
+                    $.ajax({
+                        "url":base_url +"index.php/Nicho/Get_Precio",
+                        type:"POST",
+                        data:{id_cuartel:id_cuartel,nivel:nivel},
+                        success:function(respuesta){
+                           var registros = eval(respuesta);
+                            for (var i = 0; i <1;i++) {
+                              precio=registros[i]["precio"]; 
+                            };
+                            $("#txt_precio").val(precio);
                         }
                     });
         }

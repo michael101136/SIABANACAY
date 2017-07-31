@@ -14,6 +14,13 @@ class Nicho_model extends CI_Model {
                 return null;
             }
     	}
+        function Get_Precio($id_cuartel,$nivel)  
+        {
+            $nichoPrecio= $this->db->query("select tnicho.precio from  tnicho inner join tcuartel on 
+                                    tcuartel.id_cuartel=tnicho.id_cuartel WHERE tcuartel.id_cuartel='".$id_cuartel."' and tnicho.nivel='".$nivel."'");
+            return $nichoPrecio->result();
+       
+        }
         function AddNichos($datas)
         {
 

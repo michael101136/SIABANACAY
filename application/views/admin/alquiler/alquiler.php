@@ -201,7 +201,7 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"   class="form-control datepicker" value="2017-07-29" required >
+                                                                 <input id="txt_fechaf" name="txt_fechaf"   type="date" class="form-control calendario"  required >
                                                           </div>
 
                                                 </div>
@@ -251,9 +251,11 @@
                                                            <div class="col-md-3">
                                                                  <input id="txt_fechafinalquiler" name="txt_fechafinalquiler"  type="date" class="form-control calendario" required >
                                                           </div>
-
+                                                          <div class="col-md-3" id="ErrorFecha" style="text-align:center;color:red">
+                                                               
+                                                          </div>
                                                            <label class="col-md-1 control-label">Detalles</label>
-                                                           <div class="col-md-3">
+                                                           <div class="col-md-4">
                                                                 <input id="txt_detallealquiler" name="txt_detallealquiler" class="form-control" type="text" required>
                                                           </div>
 

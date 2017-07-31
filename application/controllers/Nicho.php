@@ -22,6 +22,22 @@ class Nicho extends CI_Controller {/* Mantenimiento de division funcional y grup
     }
 
   }
+  public function Get_Precio()
+  {
+    if ($this->input->is_ajax_request()) {
+
+      $id_cuartel=$this->input->post('id_cuartel');
+      $nivel=$this->input->post('nivel');
+      $datos = $this->Nicho_model->Get_Precio($id_cuartel,$nivel);
+      echo json_encode($datos);
+      
+    }
+    else
+    {
+      show_404();
+    }
+
+  }
   
   public function AddNichos()
     {
