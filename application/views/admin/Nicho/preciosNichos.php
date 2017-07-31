@@ -3,7 +3,7 @@
 	<div class="row">
 		<div class="col-md-7">
 			 PRECIOS DE NICHO POR CUARTEL <?php echo $nombreCuartel->nombre_cuartel ?> 
-			 <input id="txt_IdCuartel" name="txt_IdCuartel" value="<?php echo $nombreCuartel->id_cuartel ?>" class="form-control" type="text" notValidate>
+			 <input id="txt_IdCuartel" name="txt_IdCuartel" value="<?php echo $nombreCuartel->id_cuartel ?>" class="form-control" type="hidden" notValidate>
 		</div>
 	</div></br>
 	<div class="row">
@@ -14,11 +14,34 @@
 				 	<?php }?>
 				 </select>
 			</div>
-			<label>Precios</label>
 			<div class="col-md-3">
 				<input id="txt_nivel_Precios" name="txt_nivel_Precios" class="form-control" type="text">
 			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12">
+					<input type="button" class="btn btn-success " id="btnAgregarNichoPrecio" name="btnAgregarNichoPrecio" value="Agregar Precios">
+			</div>
 	
+	</div><br>
+	<div class="row">
+		<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Precios Nicho</h3>
+				</div>
+				<div class="panel-body">
+					<table class="table table-striped table-bordered table-hover" name="addPreciosNichos" id="addPreciosNichos">
+						<thead>
+							<tr>
+								<td>Nivel</td>
+								<td>Precio</td>
+								<td></td>
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>                                
+				</div>
+			</div>
 	</div>
 
 	<div class="row" style="text-align: right;">
@@ -27,6 +50,22 @@
 		</div>
 </form>
 <script>
+
+	$("#btnAgregarNichoPrecio").on('click',function(event) {
+		
+			
+
+			var nivel=$("#combo_Nivel").val();
+			var precio  =$("#txt_nivel_Precios").val();
+
+			var tepPrecioNicho= '<tr>' +
+				'<td> <input type="hidden" value='+nivel+' name="hdIdnivel[]"> '+nivel+'</td>'+
+				'<td> <input type="hidden" value='+precio+' name="hdIdPrecio[]"> '+precio+'</td>'+
+				'<td class="col-md-1"><a href="#" class="btn btn-warning" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
+			'</tr>'
+			$('#addPreciosNichos > tbody').append(tepPrecioNicho);
+
+		});
 		
 	$(function()
 		{

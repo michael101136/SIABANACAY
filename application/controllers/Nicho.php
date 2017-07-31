@@ -63,9 +63,11 @@ class Nicho extends CI_Controller {/* Mantenimiento de division funcional y grup
     if($_POST)
     {
       $txt_IdCuartel=$this->input->post('txt_IdCuartel');
-      $combo_Nivel=$this->input->post('combo_Nivel');
-      $txt_nivel_Precios=$this->input->post('txt_nivel_Precios');
-      $this->Nicho_model->updatePrecios($txt_IdCuartel,$combo_Nivel,$txt_nivel_Precios);
+      $combo_Nivel=$this->input->post('hdIdnivel');
+      $txt_nivel_Precios=$this->input->post('hdIdPrecio');
+      for ($i=0; $i <count($combo_Nivel) ; $i++) { 
+            $this->Nicho_model->updatePrecios($txt_IdCuartel,$combo_Nivel[$i],$txt_nivel_Precios[$i]);
+           }
       echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados correctamente.', 'nombre_cuartel' => $combo_Nivel]);
 
     }
