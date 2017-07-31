@@ -10,72 +10,145 @@
                 </div>
            
                 <div class="page-content-wrap">
-
                     <div class="row">
+
                         <div class="col-md-12">
+                            <!-- START TABS -->                                
+                            <div class="panel panel-default tabs">                            
+                                <ul class="nav nav-tabs" role="tablist">
+                                    <li class="active"><a href="#tab-alquiler" role="tab" data-toggle="tab">Alquiler</a></li>
+                                    <li><a href="#tab-EliminadoDifunto" role="tab" data-toggle="tab">Difuntos desabilidtos</a></li>
+                                </ul>                            
+                                <div class="panel-body tab-content">
+                                    <div class="tab-pane active" id="tab-alquiler">
+										<div class="row">
+					                        <div class="col-md-12">
+					                            <div class="panel panel-default">
+					                                <div class="panel-heading">
 
-                            <!-- START DATATABLE EXPORT -->
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
+					                                    <div class="btn-group pull-right">
+					                                        <ul class="panel-controls">
+					                                            <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+					                                        </ul>
+					                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
+					                                        <ul class="dropdown-menu">
+					                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
+					                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
+					                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+					                                            <li class="divider"></li>
+					                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
+					                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'pdf',pdfFontSize:'7',escape:'false',columns: ':visible'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
+					                                        </ul>
+					                                    </div>
 
-                                    <div class="btn-group pull-right">
-                                        <ul class="panel-controls">
-                                            <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        </ul>
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
-                                            <li class="divider"></li>
-                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
-                                            <li><a href="#" onClick ="$('#tabla-alquiler').tableExport({type:'pdf',pdfFontSize:'7',escape:'false',columns: ':visible'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
-                                        </ul>
+					                                    <div class="btn-group pull-left">
+					                                        <button type="button" class="btn btn-success" class="btn btn-sm btn-Success" id="btn_alquiler" data-toggle="modal" data-target="#modalAlquiler"  data-toggle="dropdown"><i class="fa fa-bars"></i>Alquiler</button>
+					                                    </div>
+					                                </div>
+					                                <div class="panel-body ">
+					                                    <table id="tabla-alquiler" class="table datatable_simple hover display compact">
+					                                        <thead>
+					                                            <tr>
+					                                                <th>#</th>
+					                                                <th>#</th>
+					                                                <th>Pasaje</th>
+					                                                <th>Categía</th>
+					                                                <th>Cuartel</th>
+					                                                <th>Nicho</th>
+					                                                <th>Nivel</th>
+					                                                <th>Id difunto</th>
+					                                                <th>Difunto Nombre</th>
+					                                                <th>Difunto Apellido</th>
+					                                                <th>Fecha De Difusión</th>
+					                                                <th>Id responsable</th>
+					                                                <th>Dni</th>
+					                                                <th>Responsable Nombre</th>
+					                                                <th>Responsable Apellido</th>
+					                                                <th>Fecha Inicio</th>
+					                                                <th>Fecha Vencimiento</th>
+					                                                <th>Monto Alquiler</th>
+					                                                <th>Estado</th>
+					                                                <th>Mantenimiento</th>
+					                                            </tr>
+					                                        </thead>
+
+					                                            <tbody>
+
+					                                            </tbody>
+					                                    </table>
+
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div>
                                     </div>
+                                    <div class="tab-pane" id="tab-EliminadoDifunto">
+											<div class="row">
+					                        <div class="col-md-12">
+					                            <div class="panel panel-default">
+					                                <div class="panel-heading">
 
-                                    <div class="btn-group pull-left">
-                                        <button type="button" class="btn btn-success" class="btn btn-sm btn-Success" id="btn_alquiler" data-toggle="modal" data-target="#modalAlquiler"  data-toggle="dropdown"><i class="fa fa-bars"></i>Alquiler</button>
+					                                    <div class="btn-group pull-right">
+					                                        <ul class="panel-controls">
+					                                            <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+					                                        </ul>
+					                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i> Exportar</button>
+					                                        <ul class="dropdown-menu">
+					                                            <li><a href="#" onClick ="$('#tabla-DifuntoEliminados').tableExport({type:'excel',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/xls.png' width="24"/> XLS</a></li>
+					                                            <li><a href="#" onClick ="$('#tabla-DifuntoEliminados').tableExport({type:'doc',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/word.png' width="24"/> Word</a></li>
+					                                            <li><a href="#" onClick ="$('#tabla-DifuntoEliminados').tableExport({type:'powerpoint',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/ppt.png' width="24"/> PowerPoint</a></li>
+					                                            <li class="divider"></li>
+					                                            <li><a href="#" onClick ="$('#tabla-DifuntoEliminados').tableExport({type:'png',escape:'false'});"><img src='<?php echo  base_url();?>assets/img/icons/png.png' width="24"/> PNG</a></li>
+					                                            <li><a href="#" onClick ="$('#tabla-DifuntoEliminados').tableExport({type:'pdf',pdfFontSize:'7',escape:'false',columns: ':visible'});"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> PDF</a></li>
+					                                        </ul>
+					                                    </div>
+
+					                                    <div class="btn-group pull-left">
+					                                        <button type="button" class="btn btn-success" class="btn btn-sm btn-Success" id="btn_alquiler" data-toggle="modal" data-target="#modalAlquiler"  data-toggle="dropdown"><i class="fa fa-bars"></i>Alquiler</button>
+					                                    </div>
+					                                </div>
+					                                <div class="panel-body ">
+					                                    <table id="tabla-DifuntoEliminados" class="table datatable_simple hover display compact">
+					                                        <thead>
+					                                            <tr>
+					                                                <th>#</th>
+					                                                <th>#</th>
+					                                                <th>Pasaje</th>
+					                                                <th>Categía</th>
+					                                                <th>Cuartel</th>
+					                                                <th>Nicho</th>
+					                                                <th>Nivel</th>
+					                                                <th>Id difunto</th>
+					                                                <th>Difunto Nombre</th>
+					                                                <th>Difunto Apellido</th>
+					                                                <th>Fecha De Difusión</th>
+					                                                <th>Id responsable</th>
+					                                                <th>Dni</th>
+					                                                <th>Responsable Nombre</th>
+					                                                <th>Responsable Apellido</th>
+					                                                <th>Fecha Inicio</th>
+					                                                <th>Fecha Vencimiento</th>
+					                                                <th>Monto Alquiler</th>
+					                                                <th>Estado</th>
+					                                         
+					                                            </tr>
+					                                        </thead>
+
+				                                            <tbody>
+
+				                                            </tbody>
+					                                    </table>
+
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div>
                                     </div>
                                 </div>
-                                <div class="panel-body ">
-                                    <table id="tabla-alquiler" class="table datatable_simple hover display compact">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>#</th>
-                                                <th>Pasaje</th>
-                                                <th>Categía</th>
-                                                <th>Cuartel</th>
-                                                <th>Nicho</th>
-                                                <th>Nivel</th>
-                                                <th>Id difunto</th>
-                                                <th>Difunto Nombre</th>
-                                                <th>Difunto Apellido</th>
-                                                <th>Fecha De Difusión</th>
-                                                <th>Id responsable</th>
-                                                <th>Dni</th>
-                                                <th>Responsable Nombre</th>
-                                                <th>Responsable Apellido</th>
-                                                <th>Fecha Inicio</th>
-                                                <th>Fecha Vencimiento</th>
-                                                <th>Monto Alquiler</th>
-                                                <th>Estado</th>
-                                                <th>Mantenimiento</th>
-                                            </tr>
-                                        </thead>
-
-                                            <tbody>
-
-                                            </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                            <!-- END DEFAULT TABLE EXPORT -->
-
-                        </div>
-                    </div>
-
+                            </div>                                                   
+                            <!-- END TABS -->                        
+                        </div>  
+                    </div>          
                 </div>
                 <!-- END PAGE CONTENT WRAPPER -->
 <!-- /.ventana alquiler -->
@@ -128,7 +201,7 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="date" class="form-control calendario" required >
+                                                                 <input id="txt_fechaf" name="txt_fechaf"   class="form-control datepicker" value="2017-07-29" required >
                                                           </div>
 
                                                 </div>

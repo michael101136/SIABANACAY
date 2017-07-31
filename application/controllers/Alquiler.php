@@ -116,6 +116,19 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     }
 
   }
+   public function get_DifuntoBaja()
+  {
+  	if ($this->input->is_ajax_request()) {
+
+      $datos = $this->Alquiler_model->get_DifuntoBaja();
+      echo json_encode($datos);
+    }
+    else
+    {
+      show_404();
+    }
+
+  }
   
    public function DarBajaAlquiler()//a los nichos
   {
@@ -126,7 +139,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
           "estado" =>0,
           );
          $datoDetalle = array(
-          "Estado_AD" =>0,
+          "Estado_AD" =>1,//Desablitar los disfuntos
           );
       $datos = $this->Alquiler_model->DarBajaAlquiler($datas,$id_detallenicho,$datoDetalle,$id_detallenicho2);
       echo json_encode($datos);
@@ -190,6 +203,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       show_404();
     }
   }
+
 	function _load_layout($template)
     {
       $this->load->view('layout/admin/alquiler/header');

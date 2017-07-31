@@ -1,6 +1,11 @@
 ﻿ $(document).on("ready" ,function(){
+          $("#txt_fechaf").datepicker({ 
+             showButtonPanel: true,
+             maxDate: '+0d' 
+         });
           ControlAlquiler();
           listaAlquiler();
+          get_DifuntoBaja();
           lista();
           $("#btn_alquiler").click(function(){
                   get_categoria();
@@ -69,10 +74,12 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(respuesta){
-                          alert(respuesta);
                           $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
+                            swal('Se elimino','Correctamente el Difunto','success');
+                            $("#VentaDarBaja").modal('hide');
                         }
                     });
+                    get_DifuntoBaja();
                 });
                 //FIN AGREGAR ALQUILER
 			});
@@ -178,7 +185,7 @@
                                     "url": base_url+"index.php/Alquiler/get_alquiler",
                                     "type":"POST",
                                     "dataSrc":""
-                                    },
+                                  },
                                 "columns":[
                                     {"data":"id_nicho"},
                                     {"data":"id_nicho_detalle","visible": false},
@@ -217,6 +224,7 @@
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                    DatalDarBaja("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
+
                 var  Datalquiler=function(tbody,table)
                 {
                     $(tbody).on("click","button.editar",function(){
@@ -253,6 +261,50 @@
                               //fin datos del responsable
                         });
                 }
+                 var  get_DifuntoBaja=function ()
+                 {
+                   var table=$("#tabla-DifuntoEliminados").DataTable({
+                     "processing":true,
+                      "scrollCollapse": true,
+                      "paging":         true,
+                      destroy:true,
+                      "serverSide": false,
+                      
+                         "ajax":{
+                                    "url": base_url+"index.php/Alquiler/get_DifuntoBaja",
+                                    "type":"POST",
+                                    "dataSrc":""
+                                  },
+                                "columns":[
+                                    {"data":"id_nicho"},
+                                    {"data":"id_nicho_detalle","visible": false},
+                                    {"data":"nombrepasaje"},
+                                    {"data":"categoria"},
+                                    {"data":"nombre_cuartel"},
+                                    {"data":"numero_nicho"},
+                                    {"data":"nivel"},
+                                    {"data":"id_difunto","visible": false},
+                                    {"data":"tnombre"},
+                                    {"data":"tapellido"},
+                                    {"data":"fecha_fallecimiento","visible": false},
+                                    {"data":"idresponsable","visible": false},
+                                    {"data":"Dni_responsable","visible": false},
+                                    {"data":"nombre_responsable"},
+                                    {"data":"apellido_responsable"},
+                                    {"data":"fecha_inicio"},
+                                    {"data":"fecha_final"},
+                                    {"data":"MontoAlquiler"},
+                                    {"data": "Estado_AD", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta )
+                                        {
+                                          
+                                            return '<a href=""><span class="label label-sm label-danger">Eliminado</span></a>'
+                                          
+                                       }
+                                     }                                ],
+                                "language":idioma_espanol,
+                                "lengthMenu": [[3, 10, 20,100,500,20000,10000000], [3, 10, 20, 100,500,20000,10000000]],
+                    });
+                 }
         var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",
@@ -286,7 +338,7 @@
               "url": base_url+"index.php/Alquiler/get_alquiler",
 							type:"POST",
 							success:function(respuesta){
-								console.log(respuesta);
+								//console.log(respuesta);
 
 							}
 						});

@@ -14,6 +14,17 @@ function get_alquiler(){
             return null;
         }
 	}
+function get_DifuntoBaja()
+	 {
+	 	 $DifuntoEliminados= $this->db->query("call get_DifuntoBaja()");
+	        if ($DifuntoEliminados->num_rows() >= 0)
+	        {
+	            return $DifuntoEliminados->result();
+	        } else
+	        {
+	            return null;
+	        }
+	 }
   function DarBajaAlquiler($datas,$id_detallenicho,$datoDetalle,$id_detallenicho2){
 
     $this->db->where('id_nicho',$id_detallenicho);
