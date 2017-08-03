@@ -28,10 +28,10 @@ class Nicho_model extends CI_Model {
                 return true;
 
         }
-        function updatePrecios($txt_IdCuartel,$combo_Nivel,$txt_nivel_Precios)
+        function updatePrecios($txt_IdCuartel,$combo_Nivel,$txt_nivel_Precios,$precio_renovacion)
         {
 
-             $this->db->query("call sp_actualizarprecios('".$txt_IdCuartel."','".$combo_Nivel."','".$txt_nivel_Precios."')");
+             $this->db->query("call sp_actualizarprecios('".$txt_IdCuartel."','".$combo_Nivel."','".$txt_nivel_Precios."','".$precio_renovacion."')");
              return true;
 
         }

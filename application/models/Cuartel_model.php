@@ -82,7 +82,7 @@ class Cuartel_model extends CI_Model {
 
         function NichoIdCuartel($id_cuartel){
 
-        	$listaCuarteId= $this->db->query("SELECT tcuartel.id_cuartel,tcategoria.categoria, pasaje.nombrepasaje,tcuartel.nombre_cuartel,tnicho.numero_nicho,tnicho.nivel,tnicho.precio FROM tcuartel inner join pasaje on tcuartel.id_pasaje=pasaje.id_pasaje inner join tcategoria on tcuartel.id_categoria=tcategoria.id_categoria INNER join tnicho on tcuartel.id_cuartel=tnicho.id_cuartel WHERE tcuartel.id_cuartel='".$id_cuartel."'");
+        	$listaCuarteId= $this->db->query("SELECT tcuartel.id_cuartel,tcategoria.categoria, pasaje.nombrepasaje,tcuartel.nombre_cuartel,tnicho.numero_nicho,tnicho.nivel,tnicho.precio,tnicho.precio_renovacion FROM tcuartel inner join pasaje on tcuartel.id_pasaje=pasaje.id_pasaje inner join tcategoria on tcuartel.id_categoria=tcategoria.id_categoria INNER join tnicho on tcuartel.id_cuartel=tnicho.id_cuartel WHERE tcuartel.id_cuartel='".$id_cuartel."'");
         	return $listaCuarteId->result();
         }
         function CuartelesPadres($id_cuartel)

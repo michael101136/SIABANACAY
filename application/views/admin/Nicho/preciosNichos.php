@@ -8,6 +8,7 @@
 	</div></br>
 	<div class="row">
 			<div class="col-md-3">
+				<label>Nivel</label>
 				 <select class="form-control" id="combo_Nivel" name="combo_Nivel" notValidate>
 				 	<?php foreach ($listarNichosCuarteleId as $value) {?>
 				 			 <option value="<?=$value->nivel ?>">Nivel <?=$value->nivel ?></option>
@@ -15,9 +16,15 @@
 				 </select>
 			</div>
 			<div class="col-md-3">
+				<label>Precio Alquiler</label>
 				<input id="txt_nivel_Precios" name="txt_nivel_Precios" class="form-control" type="text">
 			</div>
-			<div class="col-md-3 col-sm-6 col-xs-12">
+			<div class="col-md-3">
+				<label>Precio Renovacion</label>
+				<input id="txt_nivel_PreciosrRenovacion" name="txt_nivel_PreciosrRenovacion" class="form-control" type="text">
+			</div>
+			<div class="col-md-3 col-sm-6 col-xs-12" style="text-align: center;margin-top: 18px;">
+
 					<input type="button" class="btn btn-success " id="btnAgregarNichoPrecio" name="btnAgregarNichoPrecio" value="Agregar Precios">
 			</div>
 	
@@ -32,7 +39,8 @@
 						<thead>
 							<tr>
 								<td>Nivel</td>
-								<td>Precio</td>
+								<td>Precio Alquiler</td>
+								<td>Precio Renovacion</td>
 								<td></td>
 							</tr>
 						</thead>
@@ -53,14 +61,14 @@
 
 	$("#btnAgregarNichoPrecio").on('click',function(event) {
 		
-			
-
 			var nivel=$("#combo_Nivel").val();
 			var precio  =$("#txt_nivel_Precios").val();
+			var txt_nivel_PreciosrRenovacion  =$("#txt_nivel_PreciosrRenovacion").val();
 
 			var tepPrecioNicho= '<tr>' +
 				'<td> <input type="hidden" value='+nivel+' name="hdIdnivel[]"> '+nivel+'</td>'+
 				'<td> <input type="hidden" value='+precio+' name="hdIdPrecio[]"> '+precio+'</td>'+
+				'<td> <input type="hidden" value='+txt_nivel_PreciosrRenovacion+' name="hdIdPrecioRenovacion[]"> '+txt_nivel_PreciosrRenovacion+'</td>'+
 				'<td class="col-md-1"><a href="#" class="btn btn-warning" onclick="$(this).parent().parent().remove();" style="color: red;font-weight: bold;text-decoration: underline;">Eliminar</a></td>'+
 			'</tr>'
 			$('#addPreciosNichos > tbody').append(tepPrecioNicho);

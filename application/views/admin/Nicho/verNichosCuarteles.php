@@ -28,7 +28,8 @@
 								<td>Nivel</td>
 								<td>Cuartel</td>
 								<td>Numero Nicho</td>
-								<td>Precio</td>
+								<td>Precio Alquiler</td>
+								<td>Precio Renovación</td>
 							</tr>
 						</thead>
 						<tbody>
@@ -42,6 +43,7 @@
 										   		 	 <td> <?= $itemp->nombre_cuartel?> </td>
 											   		 <td> <?= $itemp->numero_nicho?> </td>
 											   		 <td> S/. <?= $itemp->precio?> </td>
+											   		 <td> S/. <?= $itemp->precio_renovacion?> </td>
 											    <?php }?>
 											    </tr>
 									   	 <?php }?>
