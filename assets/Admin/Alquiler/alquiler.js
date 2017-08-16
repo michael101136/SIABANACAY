@@ -215,9 +215,9 @@
                                     "dataSrc":""
                                   },
                                 "columns":[
-                                    {"data":"id_nicho"},
+                                    {"data":"id_nicho","visible":false},
                                     {"data":"id_nicho_detalle","visible": false},
-                                    {"data":"nombrepasaje"},
+                                    {"data":"nombrepasaje","visible": false},
                                     {"data":"categoria"},
                                     {"data":"nombre_cuartel"},
                                     {"data":"numero_nicho"},
@@ -233,6 +233,7 @@
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"},
                                     {"data":"MontoAlquiler"},
+                                    {"data":"deuda"},
                                     {"data": "EstadoA", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta )
                                         {
                                           var i=data;

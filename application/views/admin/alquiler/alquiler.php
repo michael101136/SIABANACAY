@@ -67,6 +67,7 @@
 					                                                <th>Fecha Inicio</th>
 					                                                <th>Fecha Vencimiento</th>
 					                                                <th>Monto Alquiler</th>
+					                                                <th>Deuda</th>
 					                                                <th>Estado</th>
 					                                                <th>Mantenimiento</th>
 					                                            </tr>
