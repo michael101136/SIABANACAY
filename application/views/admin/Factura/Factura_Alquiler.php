@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Provincias españolas en pdf</title>
+    <title>Factura en  pdf</title>
    <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url(); ?>assets/css/theme-default.css"/>
 
     <style type="text/css">
@@ -42,7 +42,12 @@
         }
 
         table{
-            text-align: center; 
+            text-align: center;
+            border:1px solid #CCC;
+            border-collapse:collapse; 
+        }
+        td {
+            border:none;
         }
 
         /* estilos para el footer y el numero de pagina */
@@ -80,12 +85,12 @@
         <!--aqui se muestra el numero de la pagina en numeros romanos-->
         <p class="page"></p>
     </div>
-    <h2>Beneficencia</h2>
-    <table class="table table-bordered"  width="575" border="2" cellspacing="2">
+    <h2>BENEFICENCIA PUBLICA DE LA ABANCAY</h2>
+    <table  width="575" border="0" cellspacing="2" style='border: inset 0pt'>
         <thead>
-            <tr colspan="12">
+            <tr colspan="10">
                 <th colspan="5" rowspan="3">BENEFICENCIA PUBLICA DE LA ABANCAY</th>
-                <th colspan="7" rowspan="3">RUC:2020202020</th>
+                <th colspan="5" rowspan="3">RUC:2020202020</th>
             </tr>
         </thead>
         <tbody>
@@ -94,11 +99,10 @@
             <?php } ?>
         </tbody>
     </table>
-<table width="575" border="2">
+<table width="575" border="0" cellspacing="2" style='border: inset 0pt'>
    <tr>
-    <th colspan="5">Producto</th>
-
-    <th colspan="5">Precio</th>
+    <th colspan="6">Precio</th>
+    <th colspan="6">Precio</th>
    </tr>
    <tr>
     <td colspan="12" align="left">Señor(a): <?php echo $factura->responsable?></td>
@@ -108,45 +112,39 @@
    </tr>
    <tr>
     <td colspan="1">CANT.</td>
-    <td colspan="7">DESCRIPCION</td>
+    <td colspan="8">DESCRIPCION</td>
     <td>P.UNIT.</td>
     <td>IMPORTE</td>
    </tr>
    <tr>
-    <td colspan="1">--</td>
-    <td colspan="7" align="left"> Alquiler de un cuartel en: Pasaje <?php echo $factura->nombrepasaje?></td>
-    <td>--</td>
-    <td>--</td>
+    <td colspan="1"></td>
+    <td colspan="8" align="left"> Alquiler de un cuartel en: Pasaje <?php echo $factura->nombrepasaje?></td>
+    <td></td>
+    <td></td>
    </tr>
    <tr>
     <td colspan="1"></td>
-    <td colspan="7" align="left"> Cuartel: <?php echo $factura->nombre_cuartel?>, Num nicho: <?php echo $factura->numero_nicho?> </td>
-    <td>--</td>
-    <td>--</td>
+    <td colspan="8" align="left"> Cuartel: <?php echo $factura->nombre_cuartel?>, Num nicho: <?php echo $factura->numero_nicho?> </td>
+    <td></td>
+    <td></td>
    </tr>
    <tr>
-    <td colspan="1">--</td>
-    <td colspan="7" align="left"> Difunto: <?php echo $factura->nombre?></td>
-    <td>--</td>
-    <td>--</td>
+    <td colspan="1"></td>
+    <td colspan="8" align="left"> Difunto: <?php echo $factura->nombre?></td>
+    <td></td>
+    <td></td>
    </tr>
    <tr>
-    <td colspan="1">--</td>
-    <td colspan="7">--</td>
-    <td>--</td>
-    <td>--</td>
+    <td colspan="1"></td>
+    <td colspan="8"><?php echo $factura->fecha_inicio?>  a  <?php echo $factura->fecha_final?></td>
+    <td></td>
+    <td></td>
    </tr>
    <tr>
-        <td colspan="3">Subtotal</td>
-        <td>250</td>
-   </tr> 
-   <tr>
-        <td colspan="3">Gastos de envío</td>
-        <td>5</td>
-       </tr> 
-   <tr>
-        <td colspan="3">Precio total</td>
-        <td>255</td>
+        <td colspan="1"></td>
+        <td colspan="8"></td>
+        <td colspan="1"><?php echo $factura->MontoAlquiler?></td>
+        <td><?php echo $factura->MontoAlquiler?></td>
    </tr> 
   </table>
 

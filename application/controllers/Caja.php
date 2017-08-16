@@ -77,52 +77,59 @@ public function generarcaja() {
 //fijar efecto de sombra en el texto
         $pdf->setTextShadow(array('enabled' => true, 'depth_w' => 0.2, 'depth_h' => 0.2, 'color' => array(196, 196, 196), 'opacity' => 0, 'blend_mode' => 'Normal'));
 
-// Establecemos el contenido para imprimir
         $txt_fechaInicio=$this->input->post('txt_fechaInicio');
         $txt_fechafin=$this->input->post('txt_fechafin');
         $caja = $this->Alquiler_model->reportecajamontos($txt_fechaInicio,$txt_fechafin);
-				$suma=0;
-        foreach($caja as $fila)
+        //var_dump(count($caja));exit;
+        if(count($caja)>1)
         {
+    		$suma=0;
 
-						$suma=$suma+($fila->MontoAlquiler);
-        }
-        //preparamos y maquetamos el contenido a crear
-        $html = '';
-        $html .= "<style type=text/css>";
-        $html .= "th{color: #000000; font-weight: bold; background-color: #B0C4DE ; border: 1px solid #000000}";
- 				$html .= "table{color:2px solid #000000;}";
-				$html .= "td{background-color: #FFFFFF; color: #070707;border: 1px solid #000000}";
-        $html .= "</style>";
-        $html .= "<h3>Caja ".$txt_fechaInicio." Hasta: ".$txt_fechafin." Total S/. ".$suma."</h3>";
-        $html .= "<table width='100%'>";
-        $html .= "<thead><tr><th>PASAJE</th><th>CATEGORIA</th><th>CUARTEL</th><th>NICHO</th><th>NIVEL</th><th>DIFUNTO</th><th>RESPONSABLE</th><th>FECHA INICIO</th><th>FECHA FIN</th><th>PRECIO</th></tr></thead>";
+            foreach($caja as $fila)
+            {
 
-        foreach ($caja as $fila)
+    						$suma=$suma+($fila->MontoAlquiler);
+            }
+            $html = '';
+            $html .= "<style type=text/css>";
+            $html .= "th{color: #000000; font-weight: bold; background-color: #B0C4DE ; border: 1px solid #000000}";
+     				$html .= "table{color:2px solid #000000;}";
+    				$html .= "td{background-color: #FFFFFF; color: #070707;border: 1px solid #000000}";
+            $html .= "</style>";
+            $html .= "<h3>Caja ".$txt_fechaInicio." Hasta: ".$txt_fechafin." Total S/. ".$suma."</h3>";
+            $html .= "<table width='100%'>";
+            $html .= "<thead><tr><th>PASAJE</th><th>CATEGORIA</th><th>CUARTEL</th><th>NICHO</th><th>NIVEL</th><th>DIFUNTO</th><th>RESPONSABLE</th><th>FECHA INICIO</th><th>FECHA FIN</th><th>PRECIO</th></tr></thead>";
+
+            foreach ($caja as $fila)
+            {
+                $pasajes = $fila->nombrepasaje;
+                $categoria = $fila->categoria;
+                $nombre_cuartel = $fila->nombre_cuartel;
+                $numero_nicho = $fila->numero_nicho;
+                $nivel = $fila->nivel;
+                $difunto = $fila->nombre;
+                $responsable = $fila->responsable;
+                $fechaalquiler = $fila->fecha_inicio;
+                $fechavenc = $fila->fecha_final;
+                $estado = $fila->EstadoA;
+                $precio = $fila->MontoAlquiler;
+                $html .= "<tr><td class='id'>" .$pasajes. "</td><td class='localidad'>" .$categoria."</td><td class='localidad'>" .$nombre_cuartel."</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nivel."</td><td class='localidad'>" .$difunto."</td><td class='localidad'>" .$responsable."</td><td class='localidad'>" .$fechaalquiler."</td><td class='localidad'>" .$fechavenc."</td><td class='localidad'>" .$precio."</td></tr>";
+            }
+            $html .= "</table>";
+            $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+
+            $nombre_archivo = utf8_decode("Caja de".$categoria.".pdf");
+            $pdf->Output($nombre_archivo, 'I');
+        }else
         {
-            $pasajes = $fila->nombrepasaje;
-            $categoria = $fila->categoria;
-            $nombre_cuartel = $fila->nombre_cuartel;
-            $numero_nicho = $fila->numero_nicho;
-            $nivel = $fila->nivel;
-            $difunto = $fila->nombre;
-            $responsable = $fila->responsable;
-            $fechaalquiler = $fila->fecha_inicio;
-            $fechavenc = $fila->fecha_final;
-            $estado = $fila->EstadoA;
-            $precio = $fila->MontoAlquiler;
-            $html .= "<tr><td class='id'>" .$pasajes. "</td><td class='localidad'>" .$categoria."</td><td class='localidad'>" .$nombre_cuartel."</td><td class='localidad'>" .$numero_nicho."</td><td class='localidad'>" .$nivel."</td><td class='localidad'>" .$difunto."</td><td class='localidad'>" .$responsable."</td><td class='localidad'>" .$fechaalquiler."</td><td class='localidad'>" .$fechavenc."</td><td class='localidad'>" .$precio."</td></tr>";
+            $categoria="No exite dato";
+            $html = '';
+            $html .= "";
+            $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
+
+            $nombre_archivo = utf8_decode("Caja de ".$categoria.".pdf");
+            $pdf->Output($nombre_archivo, 'I');
         }
-        $html .= "</table>";
-
-// Imprimimos el texto con writeHTMLCell()
-        $pdf->writeHTMLCell($w = 0, $h = 0, $x = '', $y = '', $html, $border = 0, $ln = 1, $fill = 0, $reseth = true, $align = '', $autopadding = true);
-
-// ---------------------------------------------------------
-// Cerrar el documento PDF y preparamos la salida
-// Este método tiene varias opciones, consulte la documentación para más información.
-        $nombre_archivo = utf8_decode("Localidades de ".$categoria.".pdf");
-        $pdf->Output($nombre_archivo, 'I');
     }
 
 	public function index()

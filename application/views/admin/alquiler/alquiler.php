@@ -202,7 +202,7 @@
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
                                                            <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"   type="date" class="form-control calendario"  required >
+                                                                 <input id="txt_fechaf" name="txt_fechaf"   class="form-control calendario"  required >
                                                           </div>
 
                                                 </div>
@@ -487,11 +487,6 @@
          <div class="row">
             <div class="col-xs-12">
               <div class="panel panel-default">
-                 <!-- <div class="alert alert-danger" id="erro_alquilerVali" style="text-align:left;">
-                                <strong>¡Importante!</strong> Corregir los siguientes errores.
-                                <div class="list-errors"></div>
-                    </div>
-                  FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                  <div class="panel-heading">
                                     <div class="btn-group pull-right">
                                         <ul class="panel-controls">
@@ -508,7 +503,7 @@
                   <div class="panel-body ">
                           <form class="form-horizontal " id="form-RenovarAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
-                                <div class="row">
+                                <div clasws="row">
                                                 DATOS DEL DIFUNTO<br><br>
                                                 <div class="form-group">
                                                   <input id="id_difuntoModificar" name="id_difuntoModificar"  type="hidden" class="form-control datepicker" required>
