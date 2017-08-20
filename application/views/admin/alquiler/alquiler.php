@@ -493,83 +493,54 @@
                                             <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
                                         </ul>
                                     </div>
-
                                     <div class="btn-group pull-left">
-                                        <div class="page-title">
-                                            <h3><center></span>Renovar Nicho</span></center></h3>
+                                        <div class="page-title" >
+                                            <h3><center></span><label id="DetalleRenovacion"></label></span></center></h3>
                                         </div>
                                     </div>
                   </div>
                   <div class="panel-body ">
+                  		<div id="divRenovacion">
                           <form class="form-horizontal " id="form-RenovarAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div clasws="row">
-                                                DATOS DEL DIFUNTO<br><br>
                                                 <div class="form-group">
-                                                  <input id="id_difuntoModificar" name="id_difuntoModificar"  type="hidden" class="form-control datepicker" required>
-
-                                                          <label class="col-md-1 control-label">Nombre</label>
-                                                           <div class="col-md-4">
-                                                                <input id="txt_nombredifuntoModicar" name="txt_nombredifuntoModicar"  class="form-control" type="text" required>
-                                                          </div>
-                                                           <label class="col-md-2 control-label">Apellidos</label>
-                                                           <div class="col-md-5">
-                                                                <input id="txt_apellidodifuntoModicar" name="txt_apellidodifuntoModicar" class="form-control" type="text" required>
+                                                  		  <input id="id_difuntoRenovacion" name="id_difuntoRenovacion"  type="text" class="form-control" >
+                                                          <label class="col-md-2 control-label">Nombre Completo</label>
+                                                           <div class="col-md-8">
+                                                                <input id="txt_nombredDiCompleto" name="txt_nombredDiCompleto"  class="form-control" type="text">
                                                           </div>
                                                 </div>
-                                                <div class="form-group">
-                                                          <label class="col-md-1 control-label">Fecha Difusion</label>
-                                                           <div class="col-md-4">
-                                                                 <input id="txt_fechafDifucionModicar" name="txt_fechafDifucionModicar" type="date" class="form-control calendario" required >
-                                                          </div>
 
-                                                </div>
                                  </div>
                                  <br>
                                  <div class="row">
 
                                                  <div class="form-group">
-                                                   <input id="Id_alquileINichoDetalle" name="Id_alquileINichoDetalle"  class="form-control" type="hidden" required>
-
-                                                          <label class="col-md-1 control-label">Fecha Alquiler</label>
-                                                           <div class="col-md-3">
-                                                                <input id="txt_fechaalquilerModicar" name="txt_fechaalquilerModicar" type="date" class="form-control calendario" required >
+                                                         
+                                                           <div class="col-md-4">
+                                                                <label class="col-md-10">Fecha Alquiler Final</label>
+                                                                <input class="form-control" id="txt_fechaFinal" name="txt_fechaFinal" >
                                                           </div>
-                                                          <label class="col-md-1 control-label">Fecha Vencimiento</label>
-                                                           <div class="col-md-3">
-                                                                <input id="txt_fechafinalquilerModicar" name="txt_fechafinalquilerModicar"  type="date" class="form-control calendario" required >
+                                                           <div class="col-md-4">
+                                                                <label class="col-md-10">Precio Renovación</label>
+                                                                <input class="form-control" id="precioRenovacionA" name="precioRenovacionA" >
+                                                          </div>
+                                                           <div class="col-md-4">
+                                                           		<label class="col-md-10">Numero de años</label>
+                                                                <input class="form-control" id="txt_aniosAlquiler" name="txt_aniosAlquiler">
                                                           </div>
 
                                                 </div>
                                                  <div class="form-group">
-
+                                                          <label class="col-md-2 control-label">Total</label>
+                                                           <div class="col-md-3">
+                                                                <input class="form-control" id="txt_TotalPago" name="txt_TotalPago">
+                                                          </div>
 
                                                 </div>
                                  </div>
                                  <br>
-                                 <div class="row">
-                                                DATOS DEL RESPONSABLE<br><br>
-                                                <input id="txt_idresponsableModificar" name="txt_idresponsableModificar"  type="hidden" class="form-control datepicker" >
-
-                                                <div class="form-group">
-                                                          <label class="col-md-1 control-label">DNI</label>
-                                                           <div class="col-md-4">
-                                                                <input id="txt_DniModicar" name="txt_DniModicar"  class="form-control" type="number" required>
-                                                          </div>
-                                                           <label class="col-md-2 control-label">Nombre</label>
-                                                           <div class="col-md-5">
-                                                                <input id="txt_nombreresposableModicar" name="txt_nombreresposableModicar" class="form-control" type="text" required>
-                                                          </div>
-                                                </div>
-                                                <div class="form-group">
-                                                          <label class="col-md-1 control-label">Apellidos</label>
-                                                           <div class="col-md-4">
-                                                                <input id="txt_apellidoresponsableModicar" name="txt_apellidoresponsableModicar"  class="form-control" type="text" required>
-                                                          </div>
-                                                           
-                                                </div>
-                                 </div>
-                                <br><br><br>
                                <div class="form-group">
                                   <div class="col-md-12 col-md-offset-3">
                                     <button id="send" type="submit" class="btn btn-success">
@@ -583,6 +554,50 @@
                                   </div>
                                 </div>
                           </form>
+                        </div><br/>
+                        <div id="divDeuda">
+                        	<form class="form-horizontal " id="form-DeudaNicho" action="<?php echo  base_url();?>Alquiler/updateDeudaNicho" method="POST">
+                                <div class="hr hr-1 dotted hr-double"></div>
+                                <div clasws="row">
+                                                <div class="form-group">
+                                                  		  <input id="id_detalleNicho" name="id_detalleNicho"  type="text" class="form-control">
+
+                                                          <label class="col-md-2 control-label">Nombre Completo</label>
+                                                           <div class="col-md-8">
+                                                                <input id="txt_nombredDiCompletoDeuda" name="txt_nombredDiCompletoDeuda"  class="form-control" type="text">
+                                                          </div>
+                                                </div>
+                                 </div>
+                                 <br>
+                                 <div class="row">
+
+                                     <div class="form-group">
+                                             
+                                           <div class="col-md-4">
+                                                <label class="col-md-10">Fecha Alquiler Final</label>
+                                                <input class="form-control" id="txt_fechaFinalDeuda" name="txt_fechaFinal" >
+                                          </div>
+                                          <div class="col-md-3">
+                                        	    <label class="col-md-2 control-label">Deuda</label>
+                                                <input class="form-control" id="txt_Deuda" name="txt_Deuda">
+                                          </div>
+                                    </div>
+                                 </div><br/>
+                               <div class="form-group">
+                                  <div class="col-md-12 col-md-offset-3">
+                                    <button id="send" type="submit" class="btn btn-success">
+                                      <span class="glyphicon glyphicon-floppy-disk"></span>
+                                      Pagar Deuda
+                                    </button>
+                                     <button  class="btn btn-danger" data-dismiss="modal">
+                                       <span class="glyphicon glyphicon-remove"></span>
+                                      Cancelar
+                                    </button>
+                                  </div>
+                                </div>
+                          </form>
+
+                        </div>
                 </div>
               </div>
             </div><!-- /.span -->

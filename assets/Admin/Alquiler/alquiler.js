@@ -92,6 +92,28 @@
                     get_DifuntoBaja();
                 });
                 //FIN AGREGAR ALQUILER
+                $('#txt_aniosAlquiler').keyup(function(){
+                        
+                        var precioRenovacionA=$("#precioRenovacionA").val();
+                        var txt_aniosAlquiler=$("#txt_aniosAlquiler").val();    
+                        //alert("/"+precioRenovacionA+ " /" +txt_aniosAlquiler+"");                 
+                        var total=Number(precioRenovacionA) * Number(txt_aniosAlquiler);
+                        $("#txt_TotalPago").val(total);
+                })
+
+             $("#form-DeudaNicho").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Alquiler/updateDeudaNicho",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(respuesta){
+                          alert(respuesta);
+                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
+                        }
+                    });
+                });
 			});
         var get_categoria=function(){
           html="";
@@ -245,15 +267,66 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn-warning' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'><i class='ace-icon fa fa-pencil bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaRenovacionNichos' data-rel='tooltip' title='Renovacion de Nichos'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn-warning' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'><i class='ace-icon fa fa-pencil bigger-120'></i> </button> <button class='renovacion btn btn-xs btn-success' data-toggle='modal' data-target='#VentanaRenovacionNichos' data-rel='tooltip' title='Renovacion de Nichos'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
                                 ],
                                 "language":idioma_espanol,
                                 "lengthMenu": [[3, 10, 20,100,500,20000,10000000], [3, 10, 20, 100,500,20000,10000000]],
                     });
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                    DatalDarBaja("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
+                   renovacion("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                 }
+                var  renovacion=function(tbody,table)
+                {
+                    $(tbody).on("click","button.renovacion",function(){
+                        var data=table.row($(this).parents("tr")).data();
+                          $("#id_difuntoRenovacion").val(data.id_difunto);
+                          $('#Id_alquileINichoDetalle').val(data.id_nicho_detalle);
+                          $('#txt_fechaFinal').val(data.fecha_final);
+                          $("#txt_nombredDiCompleto").val(data.tnombre+' '+data.tapellido);
+                          $("#txt_nombredDiCompletoDeuda").val(data.tnombre+' '+data.tapellido);
+                          $("#txt_Deuda").val(data.deuda);
+                          $("#divRenovacion").hide();
+                          $("#divDeuda").hide();
+                          if(data.deuda>0)
+                          {
+                            var id_nicho_detalle=data.id_nicho_detalle;
+                            $("#id_detalleNicho").val(id_nicho_detalle);
+                            $("#txt_fechaFinalDeuda").val(data.fecha_final);
+                            $("#divDeuda").show();
+                          }else{
+                            var id_nicho_detalle=data.id_nicho_detalle;
+                            var id_difunto=data.id_difunto;
+                            var id_nicho=data.id_nicho;
+                            var deuda=data.deuda;
+                            $("#divRenovacion").show();
+                          }
+                          var id_nicho=data.id_nicho;
+                          var nivel=data.nivel;
 
+                          $.ajax({ "url":base_url +"index.php/Alquiler/get_nichoDetalleRenovacion",type:"POST",data:{id_nicho:id_nicho,nivel:nivel},
+		                          	success:function(respuesta)
+		                          	{	
+		                          		var registros = eval(respuesta);
+                                        $("#DetalleRenovacion").html("");
+			                            for (var i = 0; i <registros.length;i++) 
+			                             {
+    	                                  var numero_nicho=registros[i]["numero_nicho"];
+    	                                  var nivel=registros[i]["nivel"];
+    	                                  var precioRenovacion=registros[i]["precio_renovacion"];
+                                          $("#precioRenovacionA").val(precioRenovacion);
+                                          if(data.deuda>0)
+                                          {
+                                          $("#DetalleRenovacion").append('Pago de Deuda Numero '+numero_nicho+' Nivel '+nivel+'  '+precioRenovacion );
+                                          }else{
+                                          $("#DetalleRenovacion").append('Precio Renovacion Numero '+numero_nicho+' Nivel '+nivel+'  '+precioRenovacion );
+                                          }
+                           				 };
+		                          		
+									}
+								});
+                    });
+                }
                 var  Datalquiler=function(tbody,table)
                 {
                     $(tbody).on("click","button.editar",function(){

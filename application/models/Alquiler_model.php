@@ -14,6 +14,12 @@ function get_alquiler(){
             return null;
         }
 	}
+function get_nichoDetalleRenovacion($id_nicho,$nivel)
+{
+  $DetalleNombreAlquiler= $this->db->query("select * from tnicho where id_nicho='".$id_nicho."' and nivel='".$nivel."' ");
+
+  return $DetalleNombreAlquiler->result();
+}
 function get_DifuntoBaja()
 	 {
 	 	 $DifuntoEliminados= $this->db->query("call get_DifuntoBaja()");
@@ -39,6 +45,25 @@ function get_DifuntoBaja()
     }
 
   }
+  function updateAlquilerDeuda($id_detalleNicho,$fechaActRenova,$precio_renovacion)	
+  {
+      $this->db->query("call updateAlquilerDeuda_U(".$id_detalleNicho.",'".$fechaActRenova."',".$precio_renovacion.")");
+      Mysqli_next_result($this->db->conn_id);
+      return true;
+  }
+   function detalleDeudaAquiler($id_detallenicho){
+
+    $deuda= $this->db->query("call sp_deuda(".$id_detallenicho.")");
+
+    return $deuda->result()[0];
+
+  }
+
+  function insertAlquilerHistorial($NichoHistorial)
+  {
+  	$this->db->insert('thistorial',$NichoHistorial);
+  }
+
 function ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle){
 
 		$this->db->where('id_difunto',$id_difuntoModificar);

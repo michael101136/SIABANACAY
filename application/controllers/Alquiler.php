@@ -30,6 +30,18 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     }
   }
   //fin para actulizar lospagos
+   public function get_nichoDetalleRenovacion(){
+    if ($this->input->is_ajax_request()) {
+      $id_nicho=$this->input->post('id_nicho');
+      $nivel=$this->input->post('nivel');
+      $datos = $this->Alquiler_model->get_nichoDetalleRenovacion($id_nicho,$nivel);
+      echo json_encode($datos);
+    }
+    else
+    {
+      show_404();
+    }
+  }
   public function AddAlquiler()
   {
     if ($this->input->is_ajax_request())
@@ -150,6 +162,35 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       show_404();
     }
 
+  }
+  public function updateDeudaNicho()
+  {
+    if ($this->input->is_ajax_request()) {
+      $id_detalleNicho=$this->input->post('id_detalleNicho');
+      $datos = $this->Alquiler_model->detalleDeudaAquiler($id_detalleNicho);
+      
+      echo json_encode($datos);
+      $fecha=date("d-m", strtotime($datos->fecha_final)); 
+      $fechaSistema=date("Y", strtotime($datos->fechaSistema)); 
+      
+      $fechaActRenova=$fechaSistema.'-'.$fecha;
+      $precio_renovacion=$datos->precio_renovacion;
+      
+      $this->Alquiler_model->updateAlquilerDeuda($id_detalleNicho,$fechaActRenova,$precio_renovacion);
+
+      /*$NichoHistorial = array(
+          "id_nicho_detalle" =>$id_detalleNicho,
+          "fechaih" =>$fechaActRenova,
+          "fechafh" =>$fechaActRenova,
+          "montoRenovacion" =>$datos->deuda
+          );
+      $this->Alquiler_model->insertAlquilerHistorial($NichoHistorial);*/
+
+    }
+    else
+    {
+      show_404();
+    }
   }
   public function get_cuartel()
   {
