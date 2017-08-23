@@ -72,7 +72,7 @@
 			                                                     </button>
 			                                                    <ul class="dropdown-menu" role="menu">
 			                                                        <li>
-			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, 'Registro de presupuesto para formulación y evaluación',null,base_url+'index.php/Cuartel/editar', 'GET', null, null, false, true);" >
+			                                                        	<button type="button" class="btn btn-link  bt-xs"   onclick="paginaAjaxDialogo(null, 'Modificar cuartel',{ id_cuartel: '<?=$itemp->id_cuartel?>' },base_url+'index.php/Cuartel/editar', 'GET', null, null, false, true);" >
 			                                                        		<span class="fa fa-pencil-square-o"></span>
 			                                                        		Modificar
 			                                                        	</button>

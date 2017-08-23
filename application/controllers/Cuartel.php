@@ -95,17 +95,24 @@ class Cuartel extends CI_Controller {/* Mantenimiento de division funcional y gr
 	    //var_dump($pasajes);exit();
 	    $this->load->view('admin/Cuartel/insertar',['categoria' => $categoria ,'pasajes' => $pasajes]);
    }
-  public function editar()
-  {
-      if($_POST)
-      {
-      	
+  function editar()
+    { 
+        if($this->input->post('hdId'))
+        {
+            $id_cuartel=$this->input->post('hdId');
 
-      }
+            $txt_cuartel=$this->input->post('txt_cuartel');
 
-      $this->load->view('admin/Cuartel/editar');
+            $this->Cuartel_model->editar($id_cuartel,$txt_cuartel);
 
-  }
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
+        }
+        $id_cuartel=$this->input->get('id_cuartel');
+        $cuartelEditar=$this->Cuartel_model->cuartel($id_cuartel)[0];
+
+        return $this->load->view('admin/Cuartel/editar',['cuartelEditar'=>$cuartelEditar]); 
+    }
+
   public function verNichosCuarteles()
   {
   	$id_cuartel=$this->input->GET('id_cuartel');

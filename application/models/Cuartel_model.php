@@ -102,8 +102,21 @@ class Cuartel_model extends CI_Model {
 
          $listaCuarteIdPadre= $this->db->query("SELECT tcuartel.id_cuartel,tcuartel.nombre_cuartel FROM tcuartel  WHERE tcuartel.id_cuartel='".$id_cuartel."'");
         return $listaCuarteIdPadre->result();
-        
-     }
+        }
+
+        function cuartel($id_cuartel)
+	    {
+	        $cuartel=$this->db->query("select * from tcuartel where id_cuartel='".$id_cuartel."'");
+
+	        return $cuartel->result();
+	    }
+        function editar($id_cuartel,$txt_cuartel)
+   		{
+        $data=$this->db->query("update tcuartel set  nombre_cuartel='".$txt_cuartel."' where id_cuartel='".$id_cuartel."'");
+
+        return true;
+    	}
+
 
 
 }
