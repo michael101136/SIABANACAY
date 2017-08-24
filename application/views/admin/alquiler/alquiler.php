@@ -164,25 +164,16 @@
          <div class="row">
             <div class="col-xs-12">
               <div class="panel panel-default">
-                 <!-- <div class="alert alert-danger" id="erro_alquilerVali" style="text-align:left;">
-                                <strong>¡Importante!</strong> Corregir los siguientes errores.
-                                <div class="list-errors"></div>
-                    </div>
-                  FORULARIO PARA REGISTRAR NUEVO FUNCION  -->
                  <div class="panel-heading">
-
-
-                                    <div class="btn-group pull-right">
-                                        <ul class="panel-controls">
-                                            <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-                                        </ul>
-                                        <button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>Exportar</button>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="<?php echo site_url('Factura/')?>"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> BOLETA</a></li>
-                                        </ul>
-                                    </div>
-
-
+                 	<div class="btn-group pull-right">
+                 		<ul class="panel-controls">
+                 			<li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+                 		</ul>
+                 		<button class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bars"></i>Exportar</button>
+                 		<ul class="dropdown-menu">
+                 			<li><a href="<?php echo site_url('Factura/')?>"><img src='<?php echo  base_url();?>assets/img/icons/pdf.png' width="24"/> BOLETA</a></li>
+                 		</ul>
+                 	</div>
                   </div>
                   <div class="panel-body ">
                           <form class="form-horizontal " id="form-addAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
@@ -614,3 +605,80 @@
     </div>
   </div>
 <!-- /.fin alquiler-->
+<script type="text/javascript">
+	$(document).on("ready",function(){
+	$('#form-addAlquiler').bootstrapValidator({
+ 
+   message: 'Este valor no es valido',
+ 
+   feedbackIcons: {
+ 
+     valid: 'glyphicon glyphicon-ok',
+ 
+     invalid: 'glyphicon glyphicon-remove',
+ 
+     validating: 'glyphicon glyphicon-refresh'
+ 
+   },
+   fields: {
+ 
+     txt_nombredifunto: {
+ 
+       validators: {
+ 
+         notEmpty: {
+ 
+           message: 'El nombre del difunto es requerido'
+ 
+         }
+ 
+       }
+,
+     },
+      txt_apellidodifunto: {
+ 
+       validators: {
+ 
+         notEmpty: {
+ 
+           message: 'El apellido del difunto es requerido'
+ 
+         }
+ 
+       }
+ 
+     },
+      txt_Dni: {
+ 
+       validators: {
+       	 regexp: {
+ 
+					 regexp: /^[0-9]+$/,
+ 
+					 message: 'El teléfono solo puede contener números'
+ 
+				 },
+ 
+         notEmpty: {
+ 
+           message: 'El apellido del difunto es requerido'
+ 
+         },
+         stringLength: {
+ 
+					 min: 9,
+ 
+					 message: 'El DNI debe contener al menos 9 caracteres'
+ 
+				 }
+ 
+       }
+ 
+     }
+ 
+   }
+ 
+});
+});
+
+</script>

@@ -23,6 +23,9 @@
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
+        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jqBootstrapValidation.js"></script>
         
         <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
