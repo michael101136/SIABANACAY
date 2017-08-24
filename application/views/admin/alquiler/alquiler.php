@@ -501,11 +501,11 @@
                   </div>
                   <div class="panel-body ">
                   		<div id="divRenovacion">
-                          <form class="form-horizontal " id="form-RenovarAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
+                          <form class="form-horizontal " id="form-RenovarAlquiler" action="<?php echo  base_url();?>Alquiler/RenovacionAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div clasws="row">
                                                 <div class="form-group">
-                                                  		  <input id="id_difuntoRenovacion" name="id_difuntoRenovacion"  type="text" class="form-control" >
+                                                  		  <input id="id_detalleNichoR" name="id_detalleNichoR"  type="text" class="form-control" >
                                                           <label class="col-md-2 control-label">Nombre Completo</label>
                                                            <div class="col-md-8">
                                                                 <input id="txt_nombredDiCompleto" name="txt_nombredDiCompleto"  class="form-control" type="text">
@@ -520,7 +520,7 @@
                                                          
                                                            <div class="col-md-4">
                                                                 <label class="col-md-10">Fecha Alquiler Final</label>
-                                                                <input class="form-control" id="txt_fechaFinal" name="txt_fechaFinal" >
+                                                                <input  class="form-control" id="txt_fechaFinalA" name="txt_fechaFinalA" required >
                                                           </div>
                                                            <div class="col-md-4">
                                                                 <label class="col-md-10">Precio Renovación</label>
@@ -545,7 +545,7 @@
                                   <div class="col-md-12 col-md-offset-3">
                                     <button id="send" type="submit" class="btn btn-success">
                                       <span class="glyphicon glyphicon-floppy-disk"></span>
-                                      Guardar
+                                       Renovación de alquiler
                                     </button>
                                      <button  class="btn btn-danger" data-dismiss="modal">
                                        <span class="glyphicon glyphicon-remove"></span>

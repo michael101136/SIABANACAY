@@ -169,28 +169,58 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       $id_detalleNicho=$this->input->post('id_detalleNicho');
       $datos = $this->Alquiler_model->detalleDeudaAquiler($id_detalleNicho);
       
-      echo json_encode($datos);
-      $fecha=date("d-m", strtotime($datos->fecha_final)); 
-      $fechaSistema=date("Y", strtotime($datos->fechaSistema)); 
       
+      $fecha=date("d-m", strtotime($datos->fecha_final)); 
+      $fechaSistema=(int)(date("Y", strtotime($datos->fechaSistema)))+1; 
+      //condicion en caso de ser mayor
       $fechaActRenova=$fechaSistema.'-'.$fecha;
       $precio_renovacion=$datos->precio_renovacion;
       
       $this->Alquiler_model->updateAlquilerDeuda($id_detalleNicho,$fechaActRenova,$precio_renovacion);
-
-      /*$NichoHistorial = array(
+      $NichoHistorial = array(
           "id_nicho_detalle" =>$id_detalleNicho,
           "fechaih" =>$fechaActRenova,
           "fechafh" =>$fechaActRenova,
           "montoRenovacion" =>$datos->deuda
           );
-      $this->Alquiler_model->insertAlquilerHistorial($NichoHistorial);*/
-
+      $this->Alquiler_model->insertAlquilerHistorial($NichoHistorial);
+      echo json_encode($id_detalleNicho);
     }
     else
     {
       show_404();
     }
+  }
+  public function RenovacionAlquiler()
+  {
+    if($this->input->is_ajax_request())
+    {
+      $id_detalleNichoR=$this->input->post('id_detalleNichoR');
+      $txt_fechaFinalA=$this->input->post('txt_fechaFinalA');
+      $precioRenovacionA=$this->input->post('precioRenovacionA');
+      $txt_aniosAlquiler=$this->input->post('txt_aniosAlquiler');
+      $txt_TotalPago=$this->input->post('txt_TotalPago');
+      
+      $fechaFinalTemp=date("d-m",strtotime($txt_fechaFinalA));
+      $anioTemp=date("Y" , strtotime($txt_fechaFinalA));
+
+      $anioTempFinalAlquiler=(int)$anioTemp + (int)$txt_aniosAlquiler;
+      $fechaFinalAlquiler=$anioTempFinalAlquiler.'-'.$fechaFinalTemp;
+
+      $tnichoDetalle=array(
+        "fecha_inicio" =>$txt_fechaFinalA,
+        "fecha_final" =>$fechaFinalAlquiler,
+        "EstadoA"  =>'1',
+        "CantidadAnio" =>$txt_aniosAlquiler,
+        "MontoAlquiler" =>$precioRenovacionA
+        );
+      $data=$this->Alquiler_model->RenovacionAlquiler($tnichoDetalle,$id_detalleNichoR);
+      echo json_encode($data);exit;
+
+    }else{
+      show_404();
+    }
+
   }
   public function get_cuartel()
   {

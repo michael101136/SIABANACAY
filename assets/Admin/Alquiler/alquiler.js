@@ -109,6 +109,18 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(respuesta){
+                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
+                        }
+                    });
+                });
+             $("#form-RenovarAlquiler").submit(function(event)
+                {
+                    event.preventDefault();
+                    $.ajax({
+                        url:base_url+"index.php/Alquiler/RenovacionAlquiler",
+                        type:$(this).attr('method'),
+                        data:$(this).serialize(),
+                        success:function(respuesta){
                           alert(respuesta);
                           $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
                         }
@@ -280,9 +292,9 @@
                 {
                     $(tbody).on("click","button.renovacion",function(){
                         var data=table.row($(this).parents("tr")).data();
-                          $("#id_difuntoRenovacion").val(data.id_difunto);
+                          $("#id_detalleNichoR").val(data.id_nicho_detalle);
                           $('#Id_alquileINichoDetalle').val(data.id_nicho_detalle);
-                          $('#txt_fechaFinal').val(data.fecha_final);
+                          $('#txt_fechaFinalA').val(data.fecha_final);
                           $("#txt_nombredDiCompleto").val(data.tnombre+' '+data.tapellido);
                           $("#txt_nombredDiCompletoDeuda").val(data.tnombre+' '+data.tapellido);
                           $("#txt_Deuda").val(data.deuda);
