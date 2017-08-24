@@ -120,6 +120,24 @@ class Nicho extends CI_Controller {/* Mantenimiento de division funcional y grup
 		$this->load->view('admin/Nicho/insertar',['listarCbxcuartel'=>$listarCbxcuartel]);
 	}
 
+   function editar()
+    { 
+        if($this->input->post('hdId'))
+        {
+            $id_nicho=$this->input->post('hdId');
+            $txt_numero_nicho=$this->input->post('txt_numero_nicho');
+            $txt_nivel=$this->input->post('txt_nivel');
+            $txt_precio_alquiler=$this->input->post('txt_precio_alquiler');
+            $txt_precio_renovacion=$this->input->post('txt_precio_renovacion');
+            $this->Nicho_model->editar($id_nicho,$txt_numero_nicho,$txt_nivel,$txt_precio_alquiler,$txt_precio_renovacion);
+
+            echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos actualizados correctamente.']);exit;  
+        }
+        $id_nicho=$this->input->get('id_nicho');
+        $nichoEditar=$this->Nicho_model->nichos($id_nicho)[0];
+
+        return $this->load->view('admin/Nicho/insertar',['nichoEditar'=>$nichoEditar]); 
+    }
 	function _load_layout($template)
     {
       $this->load->view('layout/admin/alquiler/header');

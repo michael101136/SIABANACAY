@@ -35,6 +35,19 @@ class Nicho_model extends CI_Model {
              return true;
 
         }
+
+        function nichos($id_nicho)
+        {
+            $nicho=$this->db->query("select * from tnicho where id_nicho='".$id_nicho."'");
+
+            return $nicho->result();
+        }
+        function editar($id_nicho,$txt_numero_nicho,$txt_nivel,$txt_precio_alquiler,$txt_precio_renovacion)
+        {
+        $data=$this->db->query("update tnicho set  txt_numero_nicho='".$txt_numero_nicho."', txt_nivel='".$txt_nivel."', txt_precio_alquiler='".$txt_precio_alquiler."',txt_precio_renovacion='".$txt_precio_renovacion."'  where id_nicho='".$id_nicho."'");
+
+        return true;
+        }
     
 
 }
