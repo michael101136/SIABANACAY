@@ -5,7 +5,7 @@
  * @author  Benj Carson <benjcarson@digitaljunkies.ca>
  * @author  Helmut Tischer <htischer@weihenstephan.org>
  * @author  Fabien Ménager <fabien.menager@gmail.com>
- * @autho   Brian Sweeney <eclecticgeek@gmail.com>
+ * @author   Brian Sweeney <eclecticgeek@gmail.com>
  * @license http://www.gnu.org/copyleft/lesser.html GNU Lesser General Public License
  */
 
@@ -34,12 +34,12 @@ define("DOMPDF_LIB_DIR", DOMPDF_DIR . "/lib");
  */
 if( !isset($_SERVER['DOCUMENT_ROOT']) ) {
   $path = "";
-  
+
   if ( isset($_SERVER['SCRIPT_FILENAME']) )
     $path = $_SERVER['SCRIPT_FILENAME'];
   elseif ( isset($_SERVER['PATH_TRANSLATED']) )
     $path = str_replace('\\\\', '\\', $_SERVER['PATH_TRANSLATED']);
-    
+
   $_SERVER['DOCUMENT_ROOT'] = str_replace( '\\', '/', substr($path, 0, 0-strlen($_SERVER['PHP_SELF'])));
 }
 
@@ -88,7 +88,7 @@ def("DOMPDF_FONT_DIR", DOMPDF_DIR . "/lib/fonts/");
  *
  * This directory contains the cached font metrics for the fonts used by DOMPDF.
  * This directory can be the same as DOMPDF_FONT_DIR
- * 
+ *
  * Note: This directory must exist and be writable by the webserver process.
  */
 def("DOMPDF_FONT_CACHE", DOMPDF_FONT_DIR);
@@ -246,9 +246,11 @@ def("DOMPDF_DPI", 96);
  * If this setting is set to true then DOMPDF will automatically evaluate
  * inline PHP contained within <script type="text/php"> ... </script> tags.
  *
+ * Attention!
  * Enabling this for documents you do not trust (e.g. arbitrary remote html
- * pages) is a security risk.  Set this option to false if you wish to process
- * untrusted documents.
+ * pages) is a security risk. Inline scripts are run with the same level of
+ * system access available to dompdf. Set this option to false (recommended)
+ * if you wish to process untrusted documents.
  *
  * @var bool
  */
@@ -329,7 +331,7 @@ require_once(DOMPDF_LIB_DIR . "/html5lib/Parser.php");
  */
 if (DOMPDF_ENABLE_AUTOLOAD) {
   require_once(DOMPDF_INC_DIR . "/autoload.inc.php");
-  require_once(DOMPDF_LIB_DIR . "/php-font-lib/classes/Font.php");
+  //require_once(DOMPDF_LIB_DIR . "/php-font-lib/classes/Font.php");
 }
 
 /**

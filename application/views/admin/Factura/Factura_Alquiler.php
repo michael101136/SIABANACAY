@@ -89,7 +89,7 @@
     <table  width="575" border="0" cellspacing="2" style='border: inset 0pt'>
         <thead>
             <tr colspan="10">
-                <th colspan="5" rowspan="3">BENEFICENCIA PUBLICA DE LA ABANCAY</th>
+                <th colspan="5" rowspan="3"> <?php echo $title?></th>
                 <th colspan="5" rowspan="3">RUC:2020202020</th>
             </tr>
         </thead>
