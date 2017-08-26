@@ -1,8 +1,4 @@
 ﻿ $(document).on("ready" ,function(){
-          $("#txt_fechaf").datepicker({ 
-             showButtonPanel: true,
-             maxDate: '+0d' 
-         });
           ControlAlquiler();
           listaAlquiler();
           get_DifuntoBaja();

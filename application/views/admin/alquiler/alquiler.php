@@ -180,7 +180,7 @@
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div class="row">
                                                 DATOS DEL DIFUNTO<br><br>
-                                                <div class="form-group has success">
+                                                <div class="form-group">
                                                           <label class="col-md-1 control-label">Nombre</label>
                                                            <div class="col-md-4">
                                                                 <input id="txt_nombredifunto" name="txt_nombredifunto"  class="form-control" type="text" required>
@@ -192,10 +192,9 @@
                                                 </div>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
-                                                           <div class="col-md-4">
-                                                                 <input id="txt_fechaf" name="txt_fechaf"   class="form-control calendario"  required >
+                                                           <div class="col-md-3">
+                                                                 <input id="txt_fechaf" name="txt_fechaf"  type="date" class="form-control calendario"  required >
                                                           </div>
-
                                                 </div>
                                  </div>
                                  <br>
@@ -610,7 +609,6 @@
 	$('#form-addAlquiler').bootstrapValidator({
  
    message: 'Este valor no es valido',
- 
    feedbackIcons: {
  
      valid: 'glyphicon glyphicon-ok',
@@ -632,8 +630,7 @@
  
          }
  
-       }
-,
+       },
      },
       txt_apellidodifunto: {
  

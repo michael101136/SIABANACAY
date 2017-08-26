@@ -8,33 +8,23 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
-        <!-- END META SECTION -->
 
-        <!-- CSS INCLUDE -->
         <link rel="stylesheet" type="text/css" id="theme" href="<?php echo base_url(); ?>assets/css/theme-default.css"/>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery.min.js"></script>
                 <audio id="audio-alert" src="<?php echo base_url(); ?>assets/audio/alert.mp3" preload="auto"></audio>
         <audio id="audio-fail" src="<?php echo base_url(); ?>assets/audio/fail.mp3" preload="auto"></audio>
-        <!-- END PRELOADS -->                      
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <!-- START SCRIPTS -->
-        <!-- START PLUGINS -->
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/jquery/jquery-ui.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/plugins/bootstrap/bootstrap.min.js"></script>        
         <!-- END PLUGINS -->
-        <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-        <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment-with-locales.min.js"></script>
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/jqBootstrapValidation.js"></script>
         
         <script src="<?php echo base_url(); ?>assets/dist/js/sweetalert-dev.js"></script>
         <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/js/sweetalert.css">
         <script type="text/javascript" src="<?php echo base_url(); ?>assets/Helper/jsHelper.js"></script>
 
-        
-
-        <!-- EOF CSS INCLUDE -->
          <script>
          var base_url="<?php echo  base_url();?>";
          </script>
