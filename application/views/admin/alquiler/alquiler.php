@@ -623,16 +623,20 @@
  
      txt_nombredifunto: {
  
-       validators: {
+       validators: 
+       {
+        notEmpty: 
+	        {
+	 
+	           message: 'El nombre del difunto es requerido'
+	        },
+        regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "nombre del difunto " debe ser solo letras.</b>'
+			}
  
-         notEmpty: {
- 
-           message: 'El nombre del difunto es requerido'
- 
-         }
- 
-       }
-,
+       },
      },
       txt_apellidodifunto: {
  
@@ -642,7 +646,12 @@
  
            message: 'El apellido del difunto es requerido'
  
-         }
+         },
+          regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "apellido del difunto " debe ser solo letras.</b>'
+			}
  
        }
  
@@ -652,31 +661,65 @@
        validators: {
        	 regexp: {
  
-					 regexp: /^[0-9]+$/,
+					 regexp: /^[0-8]+$/,
  
-					 message: 'El teléfono solo puede contener números'
+					 message: 'El DNI solo puede contener números'
  
 				 },
  
          notEmpty: {
  
-           message: 'El apellido del difunto es requerido'
+           message: 'El campo DNI del responsable es requerido'
  
          },
          stringLength: {
  
-					 min: 9,
+					 min: 8,
  
-					 message: 'El DNI debe contener al menos 9 caracteres'
+					 message: 'El DNI debe contener con 8 dígitoss'
  
 				 }
  
        }
  
-     }
+     },
+
+    txt_nombreresposable: 
+    {
+     	validators: {
  
+        notEmpty: {
+ 
+        message: 'El nombre del responsable es requerido'
+ 
+        },
+          regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "nombre del respnsable" debe ser solo letras.</b>'
+			}
+        }
+    },
+    txt_apellidoresponsable: 
+    {
+     	validators: {
+ 
+        notEmpty: {
+ 
+        message: 'El apellido del responsable es requerido'
+ 
+        },
+          regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "apellido del responsable" debe ser solo letras.</b>'
+			}
+        }
+    }
+
    }
-})
+ 
+});
 	$('#btn_AddAlquiler').on('click', function(event)
 	{
 		alert("hola");
@@ -707,6 +750,125 @@
 		}, false, true);
 	});
 
+
+	$('#form-ModificarAlquiler').bootstrapValidator({
+ 
+   message: 'Este valor no es valido',
+   feedbackIcons: {
+ 
+     valid: 'glyphicon glyphicon-ok',
+ 
+     invalid: 'glyphicon glyphicon-remove',
+ 
+     validating: 'glyphicon glyphicon-refresh'
+ 
+   },
+   fields: {
+ 
+     txt_nombredifuntoModicar: {
+ 
+       validators: 
+       {
+        notEmpty: 
+	        {
+	 
+	           message: 'El nombre del difunto es requerido'
+	        },
+        regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "nombre del difunto " debe ser solo letras.</b>'
+			}
+ 
+       }
+,
+     },
+      txt_apellidodifuntoModicar: {
+ 
+       validators: {
+ 
+         notEmpty: {
+ 
+           message: 'El apellido del difunto es requerido'
+ 
+         },
+          regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "apellido del difunto " debe ser solo letras.</b>'
+			}
+ 
+       }
+ 
+     },
+      txt_DniModicar: {
+ 
+       validators: {
+       	 regexp: {
+ 
+					 regexp: /^[0-8]+$/,
+ 
+					 message: 'El DNI solo puede contener números'
+ 
+				 },
+ 
+         notEmpty: {
+ 
+           message: 'El campo DNI del responsable es requerido'
+ 
+         },
+         stringLength: {
+ 
+					 min: 8,
+ 
+					 message: 'El DNI debe contener con 8 dígitoss'
+ 
+				 }
+ 
+       }
+ 
+     },
+
+    txt_nombreresposableModicar: 
+    {
+     	validators: {
+ 
+        notEmpty: {
+ 
+        message: 'El nombre del responsable es requerido'
+ 
+        },
+          regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "nombre del respnsable" debe ser solo letras.</b>'
+			}
+        }
+    },
+    txt_apellidoresponsableModicar: 
+    {
+     	validators: {
+ 
+        notEmpty: {
+ 
+        message: 'El apellido del responsable es requerido'
+ 
+        },
+          regexp:
+			{
+				regexp: /^[a-z][a-z]*/,
+				message: '<b style="color: red;">El campo "apellido del responsable" debe ser solo letras.</b>'
+			}
+        }
+    }
+    
+   }
+})
+	
+ 
 });
+
+
+
 
 </script>
