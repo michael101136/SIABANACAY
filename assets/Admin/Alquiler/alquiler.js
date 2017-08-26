@@ -40,20 +40,8 @@
             var nivel=$("#cbxNivel").val();
             mostrarPrecioNicho(id_cuartel,nivel);
           });
-                //AGREGAR ALQUILER
-                $("#form-addAlquiler").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/Alquiler/AddAlquiler",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(respuesta){
-                          alert(respuesta);
-                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
-                        }
-                    });
-                });
+                 
+             
                 //FIN AGREGAR ALQUILER
                 //AGREGAR ALQUILER
                 $("#form-ModificarAlquiler").submit(function(event)

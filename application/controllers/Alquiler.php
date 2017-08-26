@@ -44,8 +44,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
   }
   public function AddAlquiler()
   {
-    if ($this->input->is_ajax_request())
-      {
+    
         $txt_Dni=$this->input->post("txt_Dni");
         $txt_nombreresposable =$this->input->post("txt_nombreresposable");
         $txt_apellidoresponsable =$this->input->post("txt_apellidoresponsable");
@@ -58,17 +57,8 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
         $txt_fechaalquiler =$this->input->post("txt_fechaalquiler");
         $txt_fechafinalquiler =$this->input->post("txt_fechafinalquiler");
         $txt_detallealquiler=$this->input->post("txt_detallealquiler");
-        if($this->Alquiler_model->AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$txt_direccion,$txt_nombredifunto,$txt_apellidodifunto,$txt_fechaf,$cbNicho,$txt_precio,$txt_fechaalquiler,$txt_fechafinalquiler,$txt_detallealquiler) == true)
-          echo "Se realizo el proceso de alquiler";
-          else
-          echo "No se realizo el proceso de alquiler";
-
-
-    }
-  else
-    {
-       show_404();
-    }
+        $this->Alquiler_model->AddAlquiler($txt_Dni,$txt_nombreresposable,$txt_apellidoresponsable,$txt_direccion,$txt_nombredifunto,$txt_apellidodifunto,$txt_fechaf,$cbNicho,$txt_precio,$txt_fechaalquiler,$txt_fechafinalquiler,$txt_detallealquiler);
+        echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados  correctamente.']);exit;
   }
 
 	public function ModificarAlquiler(){
@@ -116,17 +106,9 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
 
   public function get_alquiler()
   {
-    if ($this->input->is_ajax_request()) {
 
       $datos = $this->Alquiler_model->get_alquiler();
       echo json_encode($datos);
-
-    }
-    else
-    {
-      show_404();
-    }
-
   }
    public function get_DifuntoBaja()
   {

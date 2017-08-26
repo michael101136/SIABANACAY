@@ -176,7 +176,7 @@
                  	</div>
                   </div>
                   <div class="panel-body ">
-                          <form class="form-horizontal " id="form-addAlquiler" action="<?php echo  base_url();?>Alquiler/AddAlquiler" method="POST">
+                          <form class="form-horizontal " id="form-addAlquiler" action="<?php echo base_url();?>index.php/Alquiler/AddAlquiler" method="POST">
                                 <div class="hr hr-1 dotted hr-double"></div>
                                 <div class="row">
                                                 DATOS DEL DIFUNTO<br><br>
@@ -192,7 +192,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                           <label class="col-md-1 control-label">Fecha Difusion</label>
-                                                           <div class="col-md-3">
+                                                           <div class="col-md-4">
                                                                  <input id="txt_fechaf" name="txt_fechaf"  type="date" class="form-control calendario"  required >
                                                           </div>
                                                 </div>
@@ -280,7 +280,7 @@
                                 <br><br><br>
                                <div class="form-group">
                                   <div class="col-md-12 col-md-offset-3">
-                                    <button id="send" type="submit" class="btn btn-success">
+                                    <button id="btn_AddAlquiler"  class="btn btn-success">
                                       <span class="glyphicon glyphicon-floppy-disk"></span>
                                       Guardar
                                     </button>
@@ -575,7 +575,7 @@
                                  </div><br/>
                                <div class="form-group">
                                   <div class="col-md-12 col-md-offset-3">
-                                    <button id="send" type="submit" class="btn btn-success">
+                                    <button id="btn_enviar"  class="btn btn-success">
                                       <span class="glyphicon glyphicon-floppy-disk"></span>
                                       Pagar Deuda
                                     </button>
@@ -609,6 +609,7 @@
 	$('#form-addAlquiler').bootstrapValidator({
  
    message: 'Este valor no es valido',
+ 
    feedbackIcons: {
  
      valid: 'glyphicon glyphicon-ok',
@@ -630,7 +631,8 @@
  
          }
  
-       },
+       }
+,
      },
       txt_apellidodifunto: {
  
@@ -674,8 +676,37 @@
      }
  
    }
- 
-});
+})
+	$('#btn_AddAlquiler').on('click', function(event)
+	{
+		alert("hola");
+		event.preventDefault();
+
+		$('#form-addAlquiler').data('formValidation').validate();
+
+		if(!($('#form-addAlquiler').data('formValidation').isValid()))
+		{
+			return;
+		}
+
+		paginaAjaxJSON($('#form-addAlquiler').serialize(), '<?=base_url();?>index.php/Alquiler/AddAlquiler', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+			objectJSON=JSON.parse(objectJSON);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/Alquiler/index';
+				renderLoading();
+			});
+		}, false, true);
+	});
+
 });
 
 </script>
