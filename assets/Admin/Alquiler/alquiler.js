@@ -59,22 +59,7 @@
                 });
                 //FIN AGREGAR ALQUILER
                 
-                //AGREGAR ALQUILER
-                $("#form_darBajaDifunto").submit(function(event)
-                {
-                    event.preventDefault();
-                    $.ajax({
-                        url:base_url+"index.php/Alquiler/DarBajaAlquiler",
-                        type:$(this).attr('method'),
-                        data:$(this).serialize(),
-                        success:function(respuesta){
-                          $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
-                            swal('Se elimino','Correctamente el Difunto','success');
-                            $("#VentaDarBaja").modal('hide');
-                        }
-                    });
-                    get_DifuntoBaja();
-                });
+                
                 //FIN AGREGAR ALQUILER
                 $('#txt_aniosAlquiler').keyup(function(){
                         
@@ -263,7 +248,7 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn-warning' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'><i class='ace-icon fa fa-pencil bigger-120'></i> </button> <button class='renovacion btn btn-xs btn-success' data-toggle='modal' data-target='#VentanaRenovacionNichos' data-rel='tooltip' title='Renovacion de Nichos'><i class='ace-icon fa fa-pencil bigger-120'></i> </button>"}
+                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn btn-danger' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'><i class='ace-icon fa fa-pencil bigger-120'></i> </button> <button class='renovacion btn btn-xs btn-success' data-toggle='modal' data-target='#VentanaRenovacionNichos' data-rel='tooltip' title='Renovacion de Nichos'><i class='ace-icon fa fa-undo bigger-120'></i> </button>"}
                                 ],
                                 "language":idioma_espanol,
                                 "lengthMenu": [[3, 10, 20,100,500,20000,10000000], [3, 10, 20, 100,500,20000,10000000]],

@@ -405,7 +405,7 @@
                                 <br><br><br>
                                <div class="form-group">
                                   <div class="col-md-12 col-md-offset-3">
-                                    <button id="send" type="submit" class="btn btn-success">
+                                    <button id="btn_EnviarAlquilerModificar" class="btn btn-success">
                                       <span class="glyphicon glyphicon-floppy-disk"></span>
                                       Guardar
                                     </button>
@@ -450,10 +450,9 @@
           <input type="hidden" id="txt_nichoDetalle2" name="txt_nichoDetalle2" class="form-control">
         </div>
         <div class="modal-footer">
-          <button id="send" type="submit" class="btn btn-success">
+          <button id="btn_darBajaDifunto"  class="btn btn-success">
                  <span class="glyphicon glyphicon-floppy-disk"></span>
                   Eliminar
-
          </button>
 
           <button data-dismiss="modal" class="btn btn-danger">
@@ -606,123 +605,124 @@
 <!-- /.fin alquiler-->
 <script type="text/javascript">
 	$(document).on("ready",function(){
-	$('#form-addAlquiler').bootstrapValidator({
- 
-   message: 'Este valor no es valido',
- 
-   feedbackIcons: {
- 
-     valid: 'glyphicon glyphicon-ok',
- 
-     invalid: 'glyphicon glyphicon-remove',
- 
-     validating: 'glyphicon glyphicon-refresh'
- 
-   },
-   fields: {
- 
-     txt_nombredifunto: {
- 
-       validators: 
-       {
-        notEmpty: 
-	        {
-	 
-	           message: 'El nombre del difunto es requerido'
-	        },
-        regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "nombre del difunto " debe ser solo letras.</b>'
-			}
- 
-       },
-     },
-      txt_apellidodifunto: {
- 
-       validators: {
- 
-         notEmpty: {
- 
-           message: 'El apellido del difunto es requerido'
- 
-         },
-          regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "apellido del difunto " debe ser solo letras.</b>'
-			}
- 
-       }
- 
-     },
-      txt_Dni: {
- 
-       validators: {
-       	 regexp: {
- 
-					 regexp: /^[0-8]+$/,
- 
-					 message: 'El DNI solo puede contener números'
- 
-				 },
- 
-         notEmpty: {
- 
-           message: 'El campo DNI del responsable es requerido'
- 
-         },
-         stringLength: {
- 
-					 min: 8,
- 
-					 message: 'El DNI debe contener con 8 dígitoss'
- 
-				 }
- 
-       }
- 
-     },
+	$('#form-addAlquiler').bootstrapValidator
+		({
+			 
+				  	 message: 'Este valor no es valido',
+				 
+				  	 feedbackIcons:
+				  	  {
+				 
+				     valid: 'glyphicon glyphicon-ok',
+				 
+				     invalid: 'glyphicon glyphicon-remove',
+				 
+				     validating: 'glyphicon glyphicon-refresh'
+			 
+			   		 },
+			   fields: {
+			 
+			     txt_nombredifunto: {
+			 
+			       validators: 
+			       {
+			        notEmpty: 
+				        {
+				 
+				           message: 'El nombre del difunto es requerido'
+				        },
+			        regexp:
+						{
+							regexp: /^[a-z][a-z]*/,
+							message: '<b style="color: red;">El campo "nombre del difunto " debe ser solo letras.</b>'
+						}
+			 
+			       },
+			     },
+			      txt_apellidodifunto: {
+			 
+			       validators: {
+			 
+			         notEmpty: {
+			 
+			           message: 'El apellido del difunto es requerido'
+			 
+			         },
+			          regexp:
+						{
+							regexp: /^[a-z][a-z]*/,
+							message: '<b style="color: red;">El campo "apellido del difunto " debe ser solo letras.</b>'
+						}
+			 
+			       }
+			 
+			     },
+			      txt_Dni: {
+			 
+			       validators: {
+			       	 regexp: {
+			 
+								 regexp: /^[0-8]+$/,
+			 
+								 message: 'El DNI solo puede contener números'
+			 
+							 },
+			 
+			         notEmpty: {
+			 
+			           message: 'El campo DNI del responsable es requerido'
+			 
+			         },
+			         stringLength: {
+			 
+								 min: 8,
+			 
+								 message: 'El DNI debe contener con 8 dígitoss'
+			 
+							 }
+			 
+			       }
+			 
+			     },
 
-    txt_nombreresposable: 
-    {
-     	validators: {
- 
-        notEmpty: {
- 
-        message: 'El nombre del responsable es requerido'
- 
-        },
-          regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "nombre del respnsable" debe ser solo letras.</b>'
-			}
-        }
-    },
-    txt_apellidoresponsable: 
-    {
-     	validators: {
- 
-        notEmpty: {
- 
-        message: 'El apellido del responsable es requerido'
- 
-        },
-          regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "apellido del responsable" debe ser solo letras.</b>'
-			}
-        }
-    }
+			    txt_nombreresposable: 
+			    {
+			     	validators: {
+			 
+			        notEmpty: {
+			 
+			        message: 'El nombre del responsable es requerido'
+			 
+			        },
+			          regexp:
+						{
+							regexp: /^[a-z][a-z]*/,
+							message: '<b style="color: red;">El campo "nombre del respnsable" debe ser solo letras.</b>'
+						}
+			        }
+			    },
+			    txt_apellidoresponsable: 
+			    {
+			     	validators: {
+			 
+			        notEmpty: {
+			 
+			        message: 'El apellido del responsable es requerido'
+			 
+			        },
+			          regexp:
+						{
+							regexp: /^[a-z][a-z]*/,
+							message: '<b style="color: red;">El campo "apellido del responsable" debe ser solo letras.</b>'
+						}
+			        }
+			    }
 
-   }
+			   }
  
 });
 	$('#btn_AddAlquiler').on('click', function(event)
 	{
-		alert("hola");
 		event.preventDefault();
 
 		$('#form-addAlquiler').data('formValidation').validate();
@@ -750,12 +750,10 @@
 		}, false, true);
 	});
 
-
-	$('#form-ModificarAlquiler').bootstrapValidator({
+$('#form-ModificarAlquiler').bootstrapValidator({
  
    message: 'Este valor no es valido',
    feedbackIcons: {
- 
      valid: 'glyphicon glyphicon-ok',
  
      invalid: 'glyphicon glyphicon-remove',
@@ -780,8 +778,7 @@
 				message: '<b style="color: red;">El campo "nombre del difunto " debe ser solo letras.</b>'
 			}
  
-       }
-,
+       },
      },
       txt_apellidodifuntoModicar: {
  
@@ -837,12 +834,7 @@
  
         message: 'El nombre del responsable es requerido'
  
-        },
-          regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "nombre del respnsable" debe ser solo letras.</b>'
-			}
+        }
         }
     },
     txt_apellidoresponsableModicar: 
@@ -853,18 +845,71 @@
  
         message: 'El apellido del responsable es requerido'
  
-        },
-          regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "apellido del responsable" debe ser solo letras.</b>'
-			}
+        }
         }
     }
     
    }
 })
+	$('#btn_EnviarAlquilerModificar').on('click', function(event)
+	{
+		event.preventDefault();
+
+		$('#form-ModificarAlquiler').data('formValidation').validate();
+
+		if(!($('#form-ModificarAlquiler').data('formValidation').isValid()))
+		{
+			return;
+		}
+
+		paginaAjaxJSON($('#form-ModificarAlquiler').serialize(), '<?=base_url();?>index.php/Alquiler/AddAlquiler', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+			objectJSON=JSON.parse(objectJSON);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/Alquiler/index';
+				renderLoading();
+			});
+		}, false, true);
+	});
+
 	
+
+	$('#btn_darBajaDifunto').on('click', function(event)
+	{
+		event.preventDefault();
+
+		$('#form_darBajaDifunto').data('formValidation').validate();
+
+		if(!($('#form_darBajaDifunto').data('formValidation').isValid()))
+		{
+			return;
+		}
+
+		paginaAjaxJSON($('#form_darBajaDifunto').serialize(), '<?=base_url();?>index.php/Alquiler/AddAlquiler', 'POST', null, function(objectJSON)
+		{
+			$('#modalTemp').modal('hide');
+			objectJSON=JSON.parse(objectJSON);
+			swal(
+			{
+				title: '',
+				text: objectJSON.mensaje,
+				type: (objectJSON.proceso=='Correcto' ? 'success' : 'error')
+			},
+			function()
+			{
+				window.location.href='<?=base_url();?>index.php/Alquiler/index';
+				renderLoading();
+			});
+		}, false, true);
+	});
  
 });
 

@@ -98,10 +98,9 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
 				"fecha_final" => $txt_fechafinalquilerModicar,
 				);
 
-				if($this->Alquiler_model->ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle) == true)
-          echo "Se actualizo el el proceso de alquiler";
-          else
-          echo "Se actualizo el el proceso de alquiler";
+				$this->Alquiler_model->ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle);
+        echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Datos  actualizo  del proceso de alquiler']);exit;
+
 	}
 
   public function get_alquiler()
@@ -115,7 +114,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
   	if ($this->input->is_ajax_request()) {
 
       $datos = $this->Alquiler_model->get_DifuntoBaja();
-      echo json_encode($datos);
+      echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se eleimino el difunto']);exit;
     }
     else
     {
@@ -126,7 +125,6 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
   
    public function DarBajaAlquiler()//a los nichos
   {
-    if ($this->input->is_ajax_request()) {
         $id_detallenicho=$this->input->post('txt_nichoDetalle');
          $id_detallenicho2=$this->input->post('txt_nichoDetalle2');
         $datas = array(
@@ -136,14 +134,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
           "Estado_AD" =>1,//Desablitar los disfuntos
           );
       $datos = $this->Alquiler_model->DarBajaAlquiler($datas,$id_detallenicho,$datoDetalle,$id_detallenicho2);
-      echo json_encode($datos);
-
-    }
-    else
-    {
-      show_404();
-    }
-
+      echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Dastos registrados  correctamente.']);exit;
   }
   public function updateDeudaNicho()
   {
