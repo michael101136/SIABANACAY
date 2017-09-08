@@ -462,7 +462,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Eliminar  Difunto</h4>
+          <h4 class="modal-title">Dar de baja a un Difunto</h4>
         </div>
         <div class="modal-body">
          <input type="hidden" id="txt_nichoDetalle" name="txt_nichoDetalle" class="form-control">
@@ -471,8 +471,8 @@
         </div>
         <div class="modal-footer">
           <button id="btn_darBajaDifunto"  class="btn btn-success">
-                 <span class="glyphicon glyphicon-floppy-disk"></span>
-                  Eliminar
+                <span class="glyphicon glyphicon-floppy-disk"></span>
+                  Dar de baja
          </button>
 
           <button data-dismiss="modal" class="btn btn-danger">
@@ -909,6 +909,12 @@ $('#form-ModificarAlquiler').bootstrapValidator({
 	});
  
 });
+
+
+  $('.modal').on('hidden.bs.modal', function(){
+    $(this).find('form')[0].reset(); //para borrar todos los datos que tenga los input, textareas, select.
+    $("label.error").remove();  //lo utilice para borrar la etiqueta de error del jquery validate
+  });
 
 
 
