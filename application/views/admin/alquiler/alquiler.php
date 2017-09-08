@@ -6,7 +6,7 @@
                 </ul>
 
                 <div class="page-title">
-                    <h2><span class="fa fa-arrow-circle-o-left"></span>Alquiler de nichos</h2>
+                    <h2><span class="fa fa-arrow-circle-o-left"></span>Alquiler de nichos de difuntos</h2>
                 </div>
            
                 <div class="page-content-wrap">
