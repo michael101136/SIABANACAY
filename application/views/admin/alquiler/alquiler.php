@@ -211,7 +211,7 @@
                                                           </div>
                                                 </div>
                                                 <div class="form-group">
-                                                          <label class="col-md-1 control-label">Fecha Difusion</label>
+                                                          <label class="col-md-1 control-label">Fecha Difunsion</label>
                                                            <div class="col-md-4">
                                                                  <input id="txt_fechaf" name="txt_fechaf"  type="date" class="form-control calendario"  required >
                                                           </div>
@@ -371,7 +371,7 @@
                                                           </div>
                                                 </div>
                                                 <div class="form-group">
-                                                          <label class="col-md-1 control-label">Fecha Difusion</label>
+                                                          <label class="col-md-1 control-label">Fecha Difunsion</label>
                                                            <div class="col-md-4">
                                                                  <input id="txt_fechafDifucionModicar" name="txt_fechafDifucionModicar" type="date" class="form-control calendario" required >
                                                           </div>
