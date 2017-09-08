@@ -17,7 +17,7 @@
                             <div class="panel panel-default tabs">                            
                                 <ul class="nav nav-tabs" role="tablist">
                                     <li class="active"><a href="#tab-alquiler" role="tab" data-toggle="tab">Alquiler</a></li>
-                                    <li><a href="#tab-EliminadoDifunto" role="tab" data-toggle="tab">Difuntos desabilidtos</a></li>
+                                    <li><a href="#tab-EliminadoDifunto" role="tab" data-toggle="tab">Difuntos deshabilitados</a></li>
                                 </ul>                            
                                 <div class="panel-body tab-content">
                                     <div class="tab-pane active" id="tab-alquiler">
