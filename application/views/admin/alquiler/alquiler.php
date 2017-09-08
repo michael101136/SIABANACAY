@@ -109,34 +109,53 @@
 					                                    </div>
 					                                </div>
 					                                <div class="panel-body ">
-					                                    <table id="tabla-DifuntoEliminados" class="table datatable_simple hover display compact">
-					                                        <thead>
+					                                    <table id="tabla-DifuntoEliminados" class="table datatable">
+					                                        <thead style="background: #f1f5f9;">
 					                                            <tr>
-					                                                <th>#</th>
-					                                                <th>#</th>
-					                                                <th>Pasaje</th>
-					                                                <th>Categía</th>
-					                                                <th>Cuartel</th>
-					                                                <th>Nicho</th>
-					                                                <th>Nivel</th>
-					                                                <th>Id difunto</th>
-					                                                <th>Difunto Nombre</th>
-					                                                <th>Difunto Apellido</th>
-					                                                <th>Fecha De Difusión</th>
-					                                                <th>Id responsable</th>
-					                                                <th>Dni</th>
-					                                                <th>Responsable Nombre</th>
-					                                                <th>Responsable Apellido</th>
-					                                                <th>Fecha Inicio</th>
-					                                                <th>Fecha Vencimiento</th>
-					                                                <th>Monto Alquiler</th>
-					                                                <th>Estado</th>
-					                                         
+					                                                <td>Pasaje</td>
+					                                                <td>Categía</td>
+					                                                <td>Cuartel</td>
+					                                                <td>Nicho</td>
+					                                                <td>Nivel</td>
+					                                                <td>Difunto Nombre</td>
+					                                                <td>Difunto Apellido</td>
+					                                                <td>Fecha De Difusión</td>
+					                                                <td>Dni</td>
+					                                                <td>Responsable Nombre</td>
+					                                                <td>Responsable Apellido</td>
+					                                                <td>Fecha Inicio</td>
+					                                                <td>Fecha Vencimiento</td>
+					                                                <td>Monto Alquiler</td>
+					                                                <td></td>
 					                                            </tr>
 					                                        </thead>
-
 				                                            <tbody>
-
+															 <?php  foreach ($listaDibuntoBaja as $Itemp){?>
+															 		<tr>
+															 			<td><?= $Itemp->nombrepasaje;?></td>
+																		<td><?= $Itemp->categoria;?></td>
+																		<td><?= $Itemp->nombre_cuartel;?></td>
+																		<td><?= $Itemp->numero_nicho;?></td>
+																		<td><?= $Itemp->nivel;?></td>
+																		<td><?= $Itemp->tnombre;?></td>
+																		<td><?= $Itemp->tapellido;?></td>
+																		<td><?= $Itemp->fecha_fallecimiento;?></td>
+																		<td><?= $Itemp->Dni_responsable;?></td>
+																		<td><?= $Itemp->nombre_responsable;?></td>
+																		<td><?= $Itemp->apellido_responsable;?></td>
+																		<td><?= $Itemp->fecha_inicio;?></td>
+																		<td><?= $Itemp->fecha_final;?></td>
+																		<td><?= $Itemp->MontoAlquiler;?></td>
+																		<td>
+																			<div class="btn-group">
+							                                                    <a href="#" data-toggle="dropdown" class="btn btn-link dropdown-toggle"><span class="fa fa-ellipsis-v"></span></a>
+							                                                    <ul class="dropdown-menu  pull-right " role="menu">
+							                                                        <li><a href="#">Restaurar</a></li>                                                  
+							                                                    </ul>
+							                                                </div>
+																		</td>
+															 		</tr>
+				                               				 <?php } ?>
 				                                            </tbody>
 					                                    </table>
 
@@ -159,6 +178,7 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">ALQUILER DE NICHOS </h4>
+
         </div>
         <div class="modal-body">
          <div class="row">
@@ -204,13 +224,13 @@
                                                           <label class="col-md-1 control-label">Categoria</label>
                                                            <div class="col-md-3">
                                                                  <select class="form-control" id="cbCategoria" name="cbCategoria" required>
+                                                              	 </select>
 
-                                                              </select>
                                                           </div>
                                                            <label class="col-md-1 control-label">Cuartel</label>
                                                            <div class="col-md-3">
                                                                 <select class="form-control" id="cbCuartel" name="cbCuartel" required >
-
+																		
                                                                 </select>
                                                           </div>
                                                           <label class="col-md-1 control-label">Nivel</label>
@@ -605,6 +625,12 @@
 <!-- /.fin alquiler-->
 <script type="text/javascript">
 	$(document).on("ready",function(){
+		$('#tabla-DifuntoEliminados').DataTable(
+		{
+			paging: false,
+   			searching: false,
+   			"bDestroy": true,
+		});
 	$('#form-addAlquiler').bootstrapValidator
 		({
 			 
@@ -771,13 +797,7 @@ $('#form-ModificarAlquiler').bootstrapValidator({
 	        {
 	 
 	           message: 'El nombre del difunto es requerido'
-	        },
-        regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "nombre del difunto " debe ser solo letras.</b>'
-			}
- 
+	        }
        },
      },
       txt_apellidodifuntoModicar: {
@@ -788,44 +808,10 @@ $('#form-ModificarAlquiler').bootstrapValidator({
  
            message: 'El apellido del difunto es requerido'
  
-         },
-          regexp:
-			{
-				regexp: /^[a-z][a-z]*/,
-				message: '<b style="color: red;">El campo "apellido del difunto " debe ser solo letras.</b>'
-			}
- 
+         }
        }
  
      },
-      txt_DniModicar: {
- 
-       validators: {
-       	 regexp: {
- 
-					 regexp: /^[0-8]+$/,
- 
-					 message: 'El DNI solo puede contener números'
- 
-				 },
- 
-         notEmpty: {
- 
-           message: 'El campo DNI del responsable es requerido'
- 
-         },
-         stringLength: {
- 
-					 min: 8,
- 
-					 message: 'El DNI debe contener con 8 dígitoss'
- 
-				 }
- 
-       }
- 
-     },
-
     txt_nombreresposableModicar: 
     {
      	validators: {
@@ -850,7 +836,7 @@ $('#form-ModificarAlquiler').bootstrapValidator({
     }
     
    }
-})
+});
 	$('#btn_EnviarAlquilerModificar').on('click', function(event)
 	{
 		event.preventDefault();
@@ -862,7 +848,7 @@ $('#form-ModificarAlquiler').bootstrapValidator({
 			return;
 		}
 
-		paginaAjaxJSON($('#form-ModificarAlquiler').serialize(), '<?=base_url();?>index.php/Alquiler/AddAlquiler', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form-ModificarAlquiler').serialize(), '<?=base_url();?>index.php/Alquiler/ModificarAlquiler', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 			objectJSON=JSON.parse(objectJSON);
@@ -880,7 +866,19 @@ $('#form-ModificarAlquiler').bootstrapValidator({
 		}, false, true);
 	});
 
-	
+	$('#form_darBajaDifunto').bootstrapValidator({
+ 
+	   message: 'Este valor no es valido',
+	   feedbackIcons: {
+	     valid: 'glyphicon glyphicon-ok',
+	 
+	     invalid: 'glyphicon glyphicon-remove',
+	 
+	     validating: 'glyphicon glyphicon-refresh'
+	 
+	   },
+	   
+	});
 
 	$('#btn_darBajaDifunto').on('click', function(event)
 	{
@@ -892,8 +890,7 @@ $('#form-ModificarAlquiler').bootstrapValidator({
 		{
 			return;
 		}
-
-		paginaAjaxJSON($('#form_darBajaDifunto').serialize(), '<?=base_url();?>index.php/Alquiler/AddAlquiler', 'POST', null, function(objectJSON)
+		paginaAjaxJSON($('#form_darBajaDifunto').serialize(), '<?=base_url();?>index.php/Alquiler/DarBajaAlquiler', 'POST', null, function(objectJSON)
 		{
 			$('#modalTemp').modal('hide');
 			objectJSON=JSON.parse(objectJSON);

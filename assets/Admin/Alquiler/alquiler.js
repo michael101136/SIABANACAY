@@ -1,7 +1,6 @@
 ﻿ $(document).on("ready" ,function(){
           ControlAlquiler();
           listaAlquiler();
-          get_DifuntoBaja();
           lista();
           $("#btn_alquiler").click(function(){
                   get_categoria();
@@ -105,6 +104,7 @@
                         type:"POST",
                         success:function(respuesta){
                            var registros = eval(respuesta);
+                            html +="<option value='0'> Seleccionar Categoria</option>";
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_categoria"]+"> "+registros[i]["categoria"]+" </option>";
                             };
@@ -153,6 +153,7 @@
                         data:{categoria:categoria},
                         success:function(respuesta){
                            var registros = eval(respuesta);
+                            html +="<option value='0'> Seleccionar Cuartel</option>";
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["id_cuartel"]+"> "+registros[i]["nombre_cuartel"]+" </option>";
                             };
@@ -162,7 +163,7 @@
                     });
         }
         var  get_nivel=function(id_cuartel){
-                    html="";
+                    var html="";
                     $("#cbxNivel").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -171,6 +172,7 @@
                         data:{id_cuartel:id_cuartel},
                         success:function(respuesta){
                           var registros = eval(respuesta);
+                            html +="<option value='0'> Seleccionar Nivel</option>";
                             for (var i = 0; i <registros.length;i++) {
                               html +="<option value="+registros[i]["nivel"]+"> "+registros[i]["nivel"]+" </option>";
                             };
@@ -181,7 +183,7 @@
                     });
         }
         var  get_nicho=function(id_cuartel,nivel){
-                    html="";
+                    var html="";
                     $("#cbNicho").html(html);
                     event.preventDefault();
                     $.ajax({
@@ -190,6 +192,7 @@
                         data:{id_cuartel:id_cuartel,nivel:nivel},
                         success:function(respuesta){
                            var registros = eval(respuesta);
+                             html +="<option value='0'> Seleccionar Nicho</option>";
                             for (var i = 0; i <registros.length;i++) {
                                  if(registros[i]["estado"]==1)
                                  {
@@ -236,7 +239,16 @@
                                     {"data":"fecha_inicio"},
                                     {"data":"fecha_final"},
                                     {"data":"MontoAlquiler"},
-                                    {"data":"deuda"},
+                                    {"data":"deuda","defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta )
+                                        {
+                                          var i=data;
+                                          if(i==-0 || i<0)
+                                          {
+                                            return '<a href=""><span class="label label-sm label-success"> 0</span></a>'
+                                          }else{
+                                            return '<a href=""><span class="label label-sm label-danger"> '+data+'</span></a>'
+                                          }
+                                       }},
                                     {"data": "EstadoA", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta )
                                         {
                                           var i=data;
@@ -344,50 +356,7 @@
                               //fin datos del responsable
                         });
                 }
-                 var  get_DifuntoBaja=function ()
-                 {
-                   var table=$("#tabla-DifuntoEliminados").DataTable({
-                     "processing":true,
-                      "scrollCollapse": true,
-                      "paging":         true,
-                      destroy:true,
-                      "serverSide": false,
-                      
-                         "ajax":{
-                                    "url": base_url+"index.php/Alquiler/get_DifuntoBaja",
-                                    "type":"POST",
-                                    "dataSrc":""
-                                  },
-                                "columns":[
-                                    {"data":"id_nicho"},
-                                    {"data":"id_nicho_detalle","visible": false},
-                                    {"data":"nombrepasaje"},
-                                    {"data":"categoria"},
-                                    {"data":"nombre_cuartel"},
-                                    {"data":"numero_nicho"},
-                                    {"data":"nivel"},
-                                    {"data":"id_difunto","visible": false},
-                                    {"data":"tnombre"},
-                                    {"data":"tapellido"},
-                                    {"data":"fecha_fallecimiento","visible": false},
-                                    {"data":"idresponsable","visible": false},
-                                    {"data":"Dni_responsable","visible": false},
-                                    {"data":"nombre_responsable"},
-                                    {"data":"apellido_responsable"},
-                                    {"data":"fecha_inicio"},
-                                    {"data":"fecha_final"},
-                                    {"data":"MontoAlquiler"},
-                                    {"data": "Estado_AD", "defaultContent": "<button>Estado</button>", "class": "center","render": function ( data, type, full, meta )
-                                        {
-                                          
-                                            return '<a href=""><span class="label label-sm label-danger">Eliminado</span></a>'
-                                          
-                                       }
-                                     }                                ],
-                                "language":idioma_espanol,
-                                "lengthMenu": [[3, 10, 20,100,500,20000,10000000], [3, 10, 20, 100,500,20000,10000000]],
-                    });
-                 }
+                 
         var idioma_espanol=
                 {
                     "sProcessing":     "Procesando...",

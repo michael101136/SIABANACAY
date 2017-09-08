@@ -13,8 +13,9 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     /* Pagina principal de la vista entidad Y servicio publico asociado */
 	public function index()
 	{
+    $listaDibuntoBaja = $this->Alquiler_model->get_DifuntoBaja();
 		$this->load->view('layout/admin/alquiler/header');
-		$this->load->view('admin/alquiler/alquiler');
+		$this->load->view('admin/alquiler/alquiler',["listaDibuntoBaja" => $listaDibuntoBaja]);
 		$this->load->view('layout/admin/alquiler/footer');
     //$this->_load_layout('Front/Administracion/frmFuncion');
 	}
@@ -109,20 +110,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       $datos = $this->Alquiler_model->get_alquiler();
       echo json_encode($datos);
   }
-   public function get_DifuntoBaja()
-  {
-  	if ($this->input->is_ajax_request()) {
 
-      $datos = $this->Alquiler_model->get_DifuntoBaja();
-      echo json_encode(['proceso' => 'Correcto', 'mensaje' => 'Se eleimino el difunto']);exit;
-    }
-    else
-    {
-      show_404();
-    }
-
-  }
-  
    public function DarBajaAlquiler()//a los nichos
   {
         $id_detallenicho=$this->input->post('txt_nichoDetalle');
