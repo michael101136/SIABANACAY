@@ -209,7 +209,8 @@
       var listaAlquiler=function()
                 {
                     var table=$("#tabla-alquiler").DataTable({
-                     "processing":true,
+                      "order": [[ 1, "desc" ]],
+                      "processing":true,
                       "scrollCollapse": true,
                       "paging":         true,
                       destroy:true,
