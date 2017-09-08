@@ -89,7 +89,7 @@
                         type:$(this).attr('method'),
                         data:$(this).serialize(),
                         success:function(respuesta){
-                          alert(respuesta);
+                          swal("Se Renovo Correctamente")
                           $('#tabla-alquiler').dataTable()._fnAjaxUpdate();
                         }
                     });
