@@ -71,10 +71,14 @@ function get_DifuntoBaja()
   	return true;
   }
 
-   function RenovacionAlquiler($tnichoDetalle,$id_detalleNichoR)
+   function RenovacionAlquiler($tnichoDetalle,$id_detalleNichoR,$thistorial)
   {
     $this->db->where('id_nicho_detalle',$id_detalleNichoR);
     $this->db->update('tnicho_detalle', $tnichoDetalle);
+
+
+    $this->db->insert('thistorial',$thistorial);
+
     return true;
   }
 function ActualizarAlquiler($datos,$id_difuntoModificar,$datas,$txt_idresponsableModificar,$datass,$Id_alquileINichoDetalle){
@@ -167,6 +171,17 @@ function get_nicho($id_cuartel,$nivel){
               if ($cajaMontos->num_rows() > 0)
               {
                   return $cajaMontos->result();
+              } else
+              {
+                  return false;
+              }
+      }
+      function BoletaAlquiler($iddetalleNicho)
+      {
+           $boletaAlquiler= $this->db->query("call sp_boletarenovacion('".$iddetalleNicho."') ");
+              if ($boletaAlquiler->num_rows() > 0)
+              {
+                  return $boletaAlquiler->result()[0];
               } else
               {
                   return false;

@@ -7,6 +7,7 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
       parent::__construct();
         $this->load->model("Alquiler_model");
         $this->load->helper("date");
+        $this->load->library('mydompdf');
 
 	}
 
@@ -175,7 +176,14 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
         "CantidadAnio" =>$txt_aniosAlquiler,
         "MontoAlquiler" =>$precioRenovacionA
         );
-      $data=$this->Alquiler_model->RenovacionAlquiler($tnichoDetalle,$id_detalleNichoR);
+      $thistorial=array(
+        "id_nicho_detalle" =>$id_detalleNichoR,
+        "fechaih" =>$txt_fechaFinalA,
+        "fechafh" =>$fechaFinalAlquiler,
+        "montoRenovacion" =>$precioRenovacionA
+      );
+
+      $data=$this->Alquiler_model->RenovacionAlquiler($tnichoDetalle,$id_detalleNichoR,$thistorial);
       echo json_encode($data);exit;
 
     }else{
@@ -234,6 +242,18 @@ class Alquiler extends CI_Controller {/* Mantenimiento de division funcional y g
     {
       show_404();
     }
+  }
+  public function BoletaAlquiler($iddetalleNicho){
+
+            $data=array(
+              'title' => 'Boleta',
+              'boleta' => $this->Alquiler_model->BoletaAlquiler($iddetalleNicho)
+              );
+            $html=$this->load->view('admin/Factura/comprobante', $data, true);
+            $this->mydompdf->load_html($html);
+            $this->mydompdf->render();
+            $this->mydompdf->stream("comprobante.pdf", array("Attachment" => false));   
+        
   }
 
 	function _load_layout($template)

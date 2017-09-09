@@ -69,7 +69,7 @@
 					                                                <th>Monto Alquiler</th>
 					                                                <th>Deuda</th>
 					                                                <th>Estado</th>
-					                                                <th>Mantenimiento</th>
+					                                                <th>Acción</th>
 					                                            </tr>
 					                                        </thead>
 

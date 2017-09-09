@@ -261,7 +261,7 @@
                                           }
                                        }
                                      },
-                                    {"defaultContent":"<button class='DarBajaDifunto btn btn-xs btn btn-danger' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'><i class='ace-icon fa fa-long-arrow-down bigger-120'></i> </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'><i class='ace-icon fa fa-pencil bigger-120'></i> </button> <button class='renovacion btn btn-xs btn-success' data-toggle='modal' data-target='#VentanaRenovacionNichos' data-rel='tooltip' title='Renovacion de Nichos'><i class='ace-icon fa fa-undo bigger-120'></i> </button>"}
+                                    {"defaultContent":"<div class='btn-group'> <a href='#' data-toggle='dropdown' class='btn btn-link dropdown-toggle'><span class='fa fa-ellipsis-v'></span></a> <ul class='dropdown-menu  pull-right ' role='menu'>  <button class='DarBajaDifunto btn btn-xs btn btn-danger' data-toggle='modal' data-target='#VentaDarBaja' data-rel='tooltip' title='Eliminar Difunto'>Dele </button> <button class='editar btn btn-xs btn-info' data-toggle='modal' data-target='#VentanaModificarAlquiler' data-rel='tooltip' title='Editar Difunto y responsable'>Editar </button> <button class='renovacion btn btn-xs btn-success' data-toggle='modal' data-target='#VentanaRenovacionNichos' data-rel='tooltip' title='Renovacion de Nichos'>Reno </button><button class='boleta btn btn-xs btn-info' data-toggle='modal' data-target='' data-rel='tooltip' title='Boleta'>Boleta </button></ul>"}
                                 ],
                                 "language":idioma_espanol,
                                 "lengthMenu": [[3, 10, 20,100,500,20000,10000000], [3, 10, 20, 100,500,20000,10000000]],
@@ -269,6 +269,7 @@
                    Datalquiler("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                    DatalDarBaja("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
                    renovacion("#tabla-alquiler",table);  //obtener data de la division funcional para agregar  AGREGAR
+                   boleta("#tabla-alquiler",table);
                 }
                 var  renovacion=function(tbody,table)
                 {
@@ -321,6 +322,35 @@
 								});
                     });
                 }
+
+                 var  boleta=function(tbody,table)
+                {
+                    $(tbody).on("click","button.boleta",function()
+                    {
+                        var data=table.row( $(this).parents("tr")).data();
+                            var boleta=data.id_nicho_detalle;
+                            swal({
+                            title: "Esta seguro de generar una boleta!",
+                            text: "",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-danger",
+                            confirmButtonText: "Yes, Generar",
+                            cancelButtonText: "No, cancelado",
+                            closeOnConfirm: false,
+                            closeOnCancel: false
+                          },
+                          function(isConfirm) {
+                            if (isConfirm) {
+                              window.location.href=base_url+"index.php/Alquiler/BoletaAlquiler/"+boleta;
+                            } else {
+                              swal("Cancelado", "", "error");
+                            }
+                          });
+
+                    });
+                }
+
                 var  Datalquiler=function(tbody,table)
                 {
                     $(tbody).on("click","button.editar",function(){
